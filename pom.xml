@@ -16,10 +16,10 @@
         <version>2.1.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.travelmanager</groupId>
-    <artifactId>server</artifactId>
+    <groupId>com.travelmanager.server</groupId>
+    <artifactId>main</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>server</name>
+    <name>main</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -40,12 +40,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.4</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
