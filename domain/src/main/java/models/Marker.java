@@ -1,5 +1,6 @@
 package models;
 
+import enums.MarkerType;
 import lombok.Getter;
 
 @Getter
