@@ -12,5 +12,11 @@
 
     <artifactId>logic</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.travelmanager.server</groupId>
+            <artifactId>domain</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
