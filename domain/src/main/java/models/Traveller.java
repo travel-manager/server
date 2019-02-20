@@ -1,5 +1,8 @@
 package models;
 
+import enums.Gender;
+import enums.Language;
+import enums.Nationality;
 import lombok.Getter;
 import java.util.List;
 
