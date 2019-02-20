@@ -2,12 +2,14 @@ package models;
 
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
-public class Chat {
-    private int id;
+public class Chat extends StorableItem{
+    private List<Message> messages;
 
     public Chat(int id){
-        this.id = id;
+        super(id);
     }
 }
 

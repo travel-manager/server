@@ -4,13 +4,14 @@ import enums.MarkerType;
 import lombok.Getter;
 
 @Getter
-public class Marker {
+public class Marker extends StorableItem{
     private String markerJsonString;
     private Traveller creator;
     private String note;
     private MarkerType type;
 
-    public Marker(String markerJsonString, Traveller creator, String note, MarkerType type) {
+    public Marker(int id, String markerJsonString, Traveller creator, String note, MarkerType type) {
+        super(id);
         this.markerJsonString = markerJsonString;
         this.creator = creator;
         this.note = note;

@@ -7,7 +7,8 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class Traveller {
+public class Traveller extends StorableItem{
+
     private String username;
     private String firstname;
     private String surname;
@@ -20,7 +21,8 @@ public class Traveller {
     private List<Trip> tripList;
     private Nationality nationality;
 
-    public Traveller(String username, String firstname, String surname, String email, String bio, String profilePictureURL, Double rating, Gender gender, List<Language> languageSpoken, List<Trip> tripList, Nationality nationality) {
+    public Traveller(int id, String username, String firstname, String surname, String email, String bio, String profilePictureURL, Double rating, Gender gender, List<Language> languageSpoken, List<Trip> tripList, Nationality nationality) {
+        super(id);
         this.username = username;
         this.firstname = firstname;
         this.surname = surname;

@@ -6,7 +6,7 @@ import java.text.DateFormat;
 import java.util.List;
 
 @Getter
-public class Trip {
+public class Trip extends StorableItem{
     private List<Location> locationList;
     private String name;
     private String pictureURL;
@@ -19,7 +19,8 @@ public class Trip {
     private List<Marker> markerList;
     private List<Notification>notificationList;
 
-    public Trip(List<Location> locationList, String name, String pictureURL, DateFormat dateStartTrip, DateFormat dateEndTrip, List<Traveller> travellerList, Traveller owner, Chat chat, List<Transaction> transactionList, List<Marker> markerList, List<Notification> notificationList) {
+    public Trip(int id, List<Location> locationList, String name, String pictureURL, DateFormat dateStartTrip, DateFormat dateEndTrip, List<Traveller> travellerList, Traveller owner, Chat chat, List<Transaction> transactionList, List<Marker> markerList, List<Notification> notificationList) {
+        super(id);
         this.locationList = locationList;
         this.name = name;
         this.pictureURL = pictureURL;
