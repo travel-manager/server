@@ -12,11 +12,6 @@ public class AccountHandler implements IAccountHandler {
     }
 
     @Override
-    public void register(Traveller traveller) {
-
-    }
-
-    @Override
     public void register(String firstname, String lastname, String username, String password) {
 
     }
