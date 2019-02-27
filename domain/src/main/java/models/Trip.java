@@ -2,20 +2,33 @@ package models;
 
 import lombok.Getter;
 
+import javax.persistence.*;
 import java.text.DateFormat;
 import java.util.List;
 
 @Getter
+@Entity(name = "trip")
 public class Trip extends StorableItem{
     private List<Location> locationList;
+    @Column(name = "Name")
     private String name;
+    @Column(name = "Picture")
     private String pictureURL;
+    @Column(name = "DateStart")
     private DateFormat dateStartTrip;
+    @Column(name = "DateEnd")
     private DateFormat dateEndTrip;
+    @OneToMany
     private List<Traveller>travellerList;
+    @OneToOne
+    @Column(name = "Owner")
     private Traveller owner;
+    @OneToOne
+    @Column(name = "ChatId")
     private Chat chat;
+    @OneToMany
     private List<Transaction>transactionList;
+    @OneToMany
     private List<Marker> markerList;
     private List<Notification>notificationList;
 

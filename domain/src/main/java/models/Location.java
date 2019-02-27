@@ -2,6 +2,8 @@ package models;
 
 import lombok.Getter;
 
+import javax.persistence.Entity;
+
 @Getter
 public class Location extends StorableItem{
     private String continent;
