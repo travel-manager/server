@@ -40,6 +40,11 @@
     <session id="740286013">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.28" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="3" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.43" value="1" />
@@ -50,6 +55,10 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="3" />
+          <entry key="gitignore" value="7" />
+          <entry key="java" value="10" />
+          <entry key="md" value="2" />
+          <entry key="xml" value="9" />
           <entry key="gitignore" value="5" />
           <entry key="java" value="51" />
           <entry key="md" value="3" />
@@ -62,6 +71,12 @@
           <entry key="CLASS" value="3" />
           <entry key="JAVA" value="51" />
           <entry key="Markdown" value="3" />
+          <entry key="JAVA" value="10" />
+          <entry key="Markdown" value="2" />
+          <entry key="PLAIN_TEXT" value="7" />
+          <entry key="XML" value="9" />
+          <entry key="JAVA" value="19" />
+          <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="Properties" value="2" />
           <entry key="XML" value="18" />
@@ -69,6 +84,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="gitignore" value="5" />
+          <entry key="java" value="23" />
+          <entry key="xml" value="12" />
           <entry key="gitignore" value="17" />
           <entry key="java" value="889" />
           <entry key="properties" value="65" />
@@ -77,7 +95,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="889" />
+          <entry key="JAVA" value="23" />
+          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="XML" value="12" />
+          <entry key="JAVA" value="328" />
           <entry key="PLAIN_TEXT" value="17" />
           <entry key="Properties" value="65" />
           <entry key="XML" value="65" />
@@ -326,6 +347,12 @@
       <recent name="interfaces.websocket" />
     </key>
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects - Hard Drive\TravelManager\server\domain\src\main\java" />
+      <recent name="D:\Projects - Hard Drive\TravelManager\server\domain\src" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -396,6 +423,8 @@
       <workItem from="1550673689544" duration="901000" />
       <workItem from="1551091666464" duration="40000" />
       <workItem from="1551261236355" duration="3395000" />
+      <workItem from="1549461574065" duration="1794000" />
+      <workItem from="1549728185393" duration="543000" />
       <workItem from="1550655396469" duration="598000" />
       <workItem from="1550665619499" duration="4782000" />
       <workItem from="1552402682483" duration="3550000" />
@@ -622,7 +651,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/logic/src/main/java/handlers/MarkerHandler.java">
+    <entry file="file://$PROJECT_DIR$/domain/src/main/java/models/Trip.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
@@ -759,11 +788,34 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        <state relative-caret-position="19">
+          <caret line="1" column="31" lean-forward="true" selection-start-line="1" selection-start-column="31" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/restapi/src/main/java/com/travelmanager/restapi/RestapiApplication.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restapi/src/main/java/com/travelmanager/restapi/controller/TestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#191#192#0" expanded="true" />
+            <element signature="e#243#244#0" expanded="true" />
+          </folding>
         <state relative-caret-position="95">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
