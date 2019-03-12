@@ -13,7 +13,7 @@ public class Marker extends StorableItem{
     @Column(name = "PlacedBy")
     private Traveller placedBy;
     @ManyToOne
-    @JoinColumn(name = "TripId",foreignKey = @ForeignKey(name = "TripId"))
+    @JoinColumn(name = "TripId")
     private Trip trip;
     @Column(name = "Note")
     private String note;

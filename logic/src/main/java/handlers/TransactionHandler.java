@@ -1,9 +1,7 @@
 package handlers;
 
 import interfaces.logic.ITransactionHandler;
-import interfaces.rest.ITransactionController;
 import models.Transaction;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
