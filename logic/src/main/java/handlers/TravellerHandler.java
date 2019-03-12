@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TravellerHandler implements ITravellerHandler {
 
-    ITravellerRepository repository;
+    private ITravellerRepository repository;
 
     @Override
     public int login(String username, String password) {
