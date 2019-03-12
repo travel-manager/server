@@ -5,5 +5,4 @@ import models.Chat;
 import models.Message;
 
 public interface IChatHandler extends ICRUD<Chat, Integer> {
-    int getMessagesFromChat(Chat chat);
 }

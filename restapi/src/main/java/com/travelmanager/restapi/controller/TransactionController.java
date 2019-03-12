@@ -2,7 +2,6 @@ package com.travelmanager.restapi.controller;
 
 import interfaces.logic.handlers.ITransactionHandler;
 import interfaces.rest.ITransactionController;
-import handlers.TransactionHandler;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/transaction")
 public class TransactionController implements ITransactionController {
 
-    ITransactionHandler logic = new TransactionHandler();
+    ITransactionHandler logic;
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity create(String jsonString) {

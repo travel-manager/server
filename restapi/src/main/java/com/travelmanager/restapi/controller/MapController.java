@@ -2,7 +2,6 @@ package com.travelmanager.restapi.controller;
 
 import interfaces.logic.handlers.IMarkerHandler;
 import interfaces.rest.IMapController;
-import handlers.MarkerHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/map")
 public class MapController implements IMapController {
 
-    IMarkerHandler logic = new MarkerHandler();
+    IMarkerHandler logic;
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity create(String jsonString) {

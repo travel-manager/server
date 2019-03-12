@@ -7,8 +7,8 @@ import java.util.List;
 
 public class TripHandler implements ITripHandler {
     @Override
-    public void create(Trip entity) {
-
+    public Integer create(Trip entity) {
+        return null;
     }
 
     @Override
@@ -27,12 +27,12 @@ public class TripHandler implements ITripHandler {
     }
 
     @Override
-    public void update(Trip entity) {
-
+    public Integer update(Trip entity) {
+        return null;
     }
 
     @Override
-    public void delete(int id) {
-
+    public Integer delete(int id) {
+        return null;
     }
 }

@@ -11,17 +11,18 @@ public class TravellerHandler implements ITravellerHandler {
     ITravellerRepository repository;
 
     @Override
-    public void login(String username, String password) {
+    public int login(String username, String password) {
+        return 0;
     }
 
     @Override
-    public void register(String firstname, String lastname, String username, String password) {
-
+    public int register(String firstname, String lastname, String username, String password) {
+        return 0;
     }
 
     @Override
-    public void create(Traveller entity) {
-
+    public Integer create(Traveller entity) {
+        return null;
     }
 
     @Override
@@ -40,12 +41,12 @@ public class TravellerHandler implements ITravellerHandler {
     }
 
     @Override
-    public void update(Traveller entity) {
-
+    public Integer update(Traveller entity) {
+        return null;
     }
 
     @Override
-    public void delete(int id) {
-
+    public Integer delete(int id) {
+        return null;
     }
 }
