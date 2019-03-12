@@ -8,7 +8,6 @@ public interface ICRUD<T, R> {
 
     T read(int id);
     List<T> readAll();
-    List<T> readRange(List<Integer> ids);
 
     R update(T entity);
 

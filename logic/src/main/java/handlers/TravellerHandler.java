@@ -22,31 +22,46 @@ public class TravellerHandler implements ITravellerHandler {
 
     @Override
     public Integer create(Traveller entity) {
-        return null;
+        try {
+            return repository.create(entity);
+        } catch (Exception ex) {
+            return -1;
+        }
     }
 
     @Override
     public Traveller read(int id) {
-        return null;
+        try {
+            return repository.queryForId(id);
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     @Override
     public List<Traveller> readAll() {
-        return null;
-    }
-
-    @Override
-    public List<Traveller> readRange(List<Integer> ids) {
-        return null;
+        try {
+            return repository.queryForAll();
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     @Override
     public Integer update(Traveller entity) {
-        return null;
+        try {
+            return repository.update(entity);
+        } catch (Exception ex) {
+            return -1;
+        }
     }
 
     @Override
     public Integer delete(int id) {
-        return null;
+        try {
+            return repository.delete(repository.queryForId(id));
+        } catch (Exception ex) {
+            return -1;
+        }
     }
 }
