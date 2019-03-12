@@ -1,6 +1,6 @@
 package handlers;
 
-import interfaces.logic.ITripHandler;
+import interfaces.logic.handlers.ITripHandler;
 import models.Trip;
 
 import java.util.List;

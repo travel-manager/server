@@ -1,6 +1,6 @@
 package com.travelmanager.restapi.controller;
 
-import interfaces.logic.IMarkerHandler;
+import interfaces.logic.handlers.IMarkerHandler;
 import interfaces.rest.IMapController;
 import handlers.MarkerHandler;
 import org.springframework.http.HttpStatus;

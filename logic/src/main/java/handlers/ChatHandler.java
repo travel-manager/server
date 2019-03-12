@@ -1,6 +1,6 @@
 package handlers;
 
-import interfaces.logic.IChatHandler;
+import interfaces.logic.handlers.IChatHandler;
 import models.Chat;
 import models.Message;
 

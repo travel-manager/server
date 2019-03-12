@@ -1,7 +1,7 @@
 package com.travelmanager.restapi.controller;
 
 import handlers.TripHandler;
-import interfaces.logic.ITripHandler;
+import interfaces.logic.handlers.ITripHandler;
 import interfaces.rest.ITripController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package com.travelmanager.restapi.controller;
 
-import interfaces.logic.ITransactionHandler;
+import interfaces.logic.handlers.ITransactionHandler;
 import interfaces.rest.ITransactionController;
 import handlers.TransactionHandler;
 import org.springframework.http.ResponseEntity;

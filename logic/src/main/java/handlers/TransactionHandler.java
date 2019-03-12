@@ -1,6 +1,6 @@
 package handlers;
 
-import interfaces.logic.ITransactionHandler;
+import interfaces.logic.handlers.ITransactionHandler;
 import models.Transaction;
 
 import java.util.List;

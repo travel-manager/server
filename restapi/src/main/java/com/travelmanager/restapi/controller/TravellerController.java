@@ -1,24 +1,19 @@
 package com.travelmanager.restapi.controller;
 
-import handlers.AccountHandler;
-import interfaces.logic.IAccountHandler;
-import interfaces.rest.IAccountController;
+import handlers.TravellerHandler;
+import interfaces.logic.handlers.ITravellerHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import javax.websocket.server.PathParam;
-
 @RestController
 @RequestMapping("/traveller")
 public class TravellerController{
 
-    IAccountHandler logic = new AccountHandler();
+    ITravellerHandler logic = new TravellerHandler();
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<String> login(@RequestParam(name = "username",required = true) String username, @RequestParam(name = "password", required = true) String password){

@@ -1,14 +1,17 @@
 package handlers;
 
-import interfaces.logic.IAccountHandler;
+import interfaces.logic.handlers.ITravellerHandler;
 import models.Traveller;
+import repositories.ITravellerRepository;
 
 import java.util.List;
 
-public class AccountHandler implements IAccountHandler {
+public class TravellerHandler implements ITravellerHandler {
+
+    ITravellerRepository repository;
+
     @Override
     public void login(String username, String password) {
-
     }
 
     @Override

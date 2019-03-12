@@ -1,6 +1,6 @@
 package handlers;
 
-import interfaces.logic.IMarkerHandler;
+import interfaces.logic.handlers.IMarkerHandler;
 import models.Marker;
 
 import java.util.List;
