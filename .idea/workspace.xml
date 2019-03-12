@@ -279,7 +279,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="1912" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -335,17 +335,6 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Projects - Hard Drive\TravelManager\server\domain\src\main\java" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="repositories" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="interfaces.websocket" />
-    </key>
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -788,8 +777,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        <state relative-caret-position="19">
-          <caret line="1" column="31" lean-forward="true" selection-start-line="1" selection-start-column="31" selection-end-line="10" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -816,8 +803,6 @@
             <element signature="e#191#192#0" expanded="true" />
             <element signature="e#243#244#0" expanded="true" />
           </folding>
-        <state relative-caret-position="95">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
