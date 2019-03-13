@@ -40,7 +40,7 @@ public class TravellerController implements ITravellerController {
     }
 
     @Override
-    @GetMapping("/")
+    @PutMapping("/")
     public ResponseEntity update(String jsonString) {
         return null;
     }
