@@ -2,15 +2,18 @@ package models;
 
 import lombok.Getter;
 
+import javax.persistence.Entity;
+
 @Getter
-public class Location {
+public class Location extends StorableItem{
     private String continent;
     private String country;
     private String region;
     private String city;
     private String residenceURL;
 
-    public Location(String continent, String country, String region, String city, String residenceURL) {
+    public Location(int id, String continent, String country, String region, String city, String residenceURL) {
+        super(id);
         this.continent = continent;
         this.country = country;
         this.region = region;
