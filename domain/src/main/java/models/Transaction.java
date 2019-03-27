@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Entity(name = "transaction")
-public class Transaction extends StorableItem{
+public class Transaction extends StorableItem {
     @OneToOne
     @Column(name = "Payer")
     private Traveller payer;

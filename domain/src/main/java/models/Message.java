@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 
 @Getter
 @Entity(name = "message")
-public class Message extends StorableItem{
+public class Message extends StorableItem {
     @OneToOne
     @Column(name = "Sender")
     private Traveller sender;

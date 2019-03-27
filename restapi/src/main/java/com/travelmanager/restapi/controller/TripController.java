@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/trip")
 public class TripController implements ITripController {
 
-    ITripHandler logic  = new TripHandler();
+    ITripHandler logic = new TripHandler();
 
     @PostMapping("/")
     public ResponseEntity create(String jsonString) {

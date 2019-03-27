@@ -6,7 +6,7 @@ import lombok.Getter;
 import java.sql.Timestamp;
 
 @Getter
-public class Notification extends StorableItem{
+public class Notification extends StorableItem {
     private Timestamp timeNotified;
     private NotificationType type;
     private String content;

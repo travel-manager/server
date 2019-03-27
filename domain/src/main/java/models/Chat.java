@@ -9,11 +9,11 @@ import java.util.List;
 
 @Getter
 @Entity(name = "chat")
-public class Chat extends StorableItem{
+public class Chat extends StorableItem {
     @OneToMany
     private List<Message> messages;
 
-    public Chat(int id){
+    public Chat(int id) {
         super(id);
     }
 }

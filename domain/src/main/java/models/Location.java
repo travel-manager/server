@@ -5,7 +5,7 @@ import lombok.Getter;
 import javax.persistence.Entity;
 
 @Getter
-public class Location extends StorableItem{
+public class Location extends StorableItem {
     private String continent;
     private String country;
     private String region;

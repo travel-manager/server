@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class MvcConfig implements WebMvcConfigurer {
 
     @Bean
-    InternalResourceViewResolver viewResolver(){
+    InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/webapp/");
         resolver.setPrefix(".html");

@@ -7,6 +7,7 @@ public interface ICRUD<T, R> {
     R create(T entity);
 
     T read(int id);
+
     List<T> readAll();
 
     R update(T entity);

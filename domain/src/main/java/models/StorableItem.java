@@ -14,7 +14,7 @@ public abstract class StorableItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    public StorableItem(int id){
+    public StorableItem(int id) {
         this.id = id;
     }
 }

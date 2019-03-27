@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Entity(name = "trip")
-public class Trip extends StorableItem{
+public class Trip extends StorableItem {
     private List<Location> locationList;
     @Column(name = "Name")
     private String name;
@@ -19,7 +19,7 @@ public class Trip extends StorableItem{
     @Column(name = "DateEnd")
     private DateFormat dateEndTrip;
     @OneToMany
-    private List<Traveller>travellerList;
+    private List<Traveller> travellerList;
     @OneToOne
     @Column(name = "Owner")
     private Traveller owner;
@@ -27,10 +27,10 @@ public class Trip extends StorableItem{
     @Column(name = "ChatId")
     private Chat chat;
     @OneToMany
-    private List<Transaction>transactionList;
+    private List<Transaction> transactionList;
     @OneToMany
     private List<Marker> markerList;
-    private List<Notification>notificationList;
+    private List<Notification> notificationList;
 
     public Trip(int id, List<Location> locationList, String name, String pictureURL, DateFormat dateStartTrip, DateFormat dateEndTrip, List<Traveller> travellerList, Traveller owner, Chat chat, List<Transaction> transactionList, List<Marker> markerList, List<Notification> notificationList) {
         super(id);

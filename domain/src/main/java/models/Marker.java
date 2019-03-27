@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Getter
 @Entity(name = "pin")
-public class Marker extends StorableItem{
+public class Marker extends StorableItem {
     private String markerJsonString;
     @OneToOne
     @Column(name = "PlacedBy")

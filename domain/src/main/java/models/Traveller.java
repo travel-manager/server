@@ -13,7 +13,7 @@ import java.util.List;
 
 @Getter
 @Entity(name = "traveller")
-public class Traveller extends StorableItem{
+public class Traveller extends StorableItem {
     @Column(name = "UserName")
     private String username;
     @Column(name = "FirstName")
