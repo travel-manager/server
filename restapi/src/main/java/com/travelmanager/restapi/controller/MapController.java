@@ -1,7 +1,7 @@
 package com.travelmanager.restapi.controller;
 
-import interfaces.logic.handlers.IMarkerHandler;
-import interfaces.rest.IMapController;
+import com.travelmanager.domain.interfaces.logic.services.IMarkerHandler;
+import com.travelmanager.domain.interfaces.rest.IMapController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

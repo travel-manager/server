@@ -1,8 +1,8 @@
 package com.travelmanager.restapi.controller;
 
-import handlers.TripHandler;
-import interfaces.logic.handlers.ITripHandler;
-import interfaces.rest.ITripController;
+import com.travelmanager.domain.interfaces.logic.services.ITripHandler;
+import com.travelmanager.domain.interfaces.rest.ITripController;
+import com.travelmanager.logic.services.TripHandler;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/trip")
 public class TripController implements ITripController {
 
-    ITripHandler logic = new TripHandler();
+    ITripHandler logic  = new TripHandler();
 
     @PostMapping("/")
     public ResponseEntity create(String jsonString) {

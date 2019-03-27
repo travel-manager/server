@@ -18,7 +18,7 @@
       <module name="domain" target="1.8" />
       <module name="logic" target="1.8" />
       <module name="restapi" target="1.8" />
-      <module name="server" target="1.8" />
+      <module name="serverTest" target="1.8" />
       <module name="websocket" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -28,6 +28,7 @@
       <module name="domain" options="-parameters" />
       <module name="logic" options="-parameters" />
       <module name="restapi" options="-parameters" />
+      <module name="serverTest" options="-parameters" />
       <module name="websocket" options="-parameters" />
     </option>
   </component>

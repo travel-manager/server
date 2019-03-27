@@ -11,13 +11,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>dal</artifactId>
+
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-        <dependency>
-            <groupId>com.j256</groupId>
-            <artifactId>ormlite</artifactId>
-            <version>2.5</version>
-        </dependency>
         <dependency>
             <groupId>com.travelmanager.server</groupId>
             <artifactId>domain</artifactId>
