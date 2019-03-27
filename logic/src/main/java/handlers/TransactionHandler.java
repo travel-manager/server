@@ -1,11 +1,13 @@
 package handlers;
 
+import components.TransactionComponent;
 import interfaces.logic.handlers.ITransactionHandler;
 import models.PaymentRequest;
 import models.Transaction;
 import models.Traveller;
 import repositories.ITransactionRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionHandler implements ITransactionHandler {
@@ -58,6 +60,15 @@ public class TransactionHandler implements ITransactionHandler {
     }
 
     public PaymentRequest calculatePayRequestForTraveller(Traveller traveller){
-        return null;
+        List<Transaction> allTransactions = readAll();
+        List<Transaction> travellerTransactions = new ArrayList<>();
+        for (Transaction t: allTransactions) {
+            if (t.getPayer() == traveller)
+                travellerTransactions.add(t);
+            if (t.getFreeloaders().contains(traveller))
+                travellerTransactions.add(t);
+        }
+        TransactionComponent transactionComponent = new TransactionComponent();
+        return transactionComponent.calcPaymentRequest(travellerTransactions, traveller);
     }
 }
