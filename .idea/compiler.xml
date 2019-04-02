@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="dal" />
         <module name="domain" />
+        <module name="hateoas" />
         <module name="logic" />
         <module name="restapi" />
         <module name="websocket" />
@@ -16,7 +17,9 @@
     <bytecodeTargetLevel>
       <module name="dal" target="1.8" />
       <module name="domain" target="1.8" />
+      <module name="hateoas" target="1.8" />
       <module name="logic" target="1.8" />
+      <module name="main" target="1.8" />
       <module name="restapi" target="1.8" />
       <module name="serverTest" target="1.8" />
       <module name="websocket" target="1.8" />
@@ -24,12 +27,12 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="dal" options="-parameters" />
-      <module name="domain" options="-parameters" />
-      <module name="logic" options="-parameters" />
-      <module name="restapi" options="-parameters" />
+      <module name="dal" options="" />
+      <module name="domain" options="" />
+      <module name="logic" options="" />
+      <module name="restapi" options="" />
       <module name="serverTest" options="-parameters" />
-      <module name="websocket" options="-parameters" />
+      <module name="websocket" options="" />
     </option>
   </component>
 </project>

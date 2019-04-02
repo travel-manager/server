@@ -9,6 +9,7 @@
         <module>dal</module>
         <module>restapi</module>
         <module>websocket</module>
+        <module>hateoas</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
