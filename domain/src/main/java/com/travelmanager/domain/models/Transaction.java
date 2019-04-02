@@ -1,6 +1,8 @@
 package com.travelmanager.domain.models;
 
+import com.travelmanager.hateoas.abstracts.PersistenceEntity;
 import lombok.Getter;
+import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +13,7 @@ import java.util.List;
 
 @Getter
 @Entity(name = "transaction")
-public class Transaction extends StorableItem{
+public class Transaction extends PersistenceEntity<Integer> {
     @OneToOne
     @Column(name = "Payer")
     private Traveller payer;
@@ -25,7 +27,6 @@ public class Transaction extends StorableItem{
     private DateFormat date;
 
     public Transaction(int id, Traveller payer, Double amount, List<Traveller> freeloaders, String subject, DateFormat date) {
-        super(id);
         this.payer = payer;
         this.amount = amount;
         this.freeloaders = freeloaders;

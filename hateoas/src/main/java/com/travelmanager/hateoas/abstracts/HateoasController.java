@@ -23,11 +23,11 @@ import java.util.stream.Collectors;
  *
  * @author lfb0801
  */
-public abstract class HateaosController<T extends ResourceSupport, Identifier extends Serializable> {
+public abstract class HateoasController<T extends ResourceSupport, Identifier extends Serializable> {
 
-    private HateaosService<T, Identifier> service;
+    private HateoasService<T, Identifier> service;
 
-    public HateaosController(HateaosService<T, Identifier> _service) {
+    public HateoasController(HateoasService<T, Identifier> _service) {
         this.service = _service;
     }
 
@@ -36,7 +36,7 @@ public abstract class HateaosController<T extends ResourceSupport, Identifier ex
      *
      * @return class of the instance.
      */
-    public abstract Class<? extends HateaosController<T, Identifier>> getClazz();
+    public abstract Class<? extends HateoasController<T, Identifier>> getClazz();
 
     /**
      * Retrieve the options for this rest services.

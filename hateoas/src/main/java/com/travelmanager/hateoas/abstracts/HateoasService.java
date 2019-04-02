@@ -12,12 +12,12 @@ import java.util.Optional;
  *
  * @author lfb0801
  */
-public abstract class HateaosService<T, Identifier> {
+public abstract class HateoasService<T, Identifier> {
 
     @Getter
     private PagingAndSortingRepository<T, Identifier> repo;
 
-    public HateaosService(PagingAndSortingRepository<T, Identifier> _repo) {
+    public HateoasService(PagingAndSortingRepository<T, Identifier> _repo) {
         repo = _repo;
     }
 
@@ -26,7 +26,7 @@ public abstract class HateaosService<T, Identifier> {
      *
      * @return class of the instance.
      */
-    public abstract Class<? extends HateaosService<T, Identifier>> getClazz();
+    public abstract Class<? extends HateoasService<T, Identifier>> getClazz();
 
     public void create(T entity) {
         repo.save(entity);

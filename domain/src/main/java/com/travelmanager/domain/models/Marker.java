@@ -1,13 +1,15 @@
 package com.travelmanager.domain.models;
 
 import com.travelmanager.domain.enums.MarkerType;
+import com.travelmanager.hateoas.abstracts.PersistenceEntity;
 import lombok.Getter;
+import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 
 @Getter
 @Entity(name = "pin")
-public class Marker extends StorableItem{
+public class Marker extends PersistenceEntity<Integer> {
     private String markerJsonString;
     @OneToOne
     @Column(name = "PlacedBy")
@@ -21,8 +23,7 @@ public class Marker extends StorableItem{
     private String location;
     private MarkerType type;
 
-    public Marker(int id, String markerJsonString, Traveller placedBy, Trip trip, String note, String location, MarkerType type) {
-        super(id);
+    public Marker(String markerJsonString, Traveller placedBy, Trip trip, String note, String location, MarkerType type) {
         this.markerJsonString = markerJsonString;
         this.placedBy = placedBy;
         this.trip = trip;

@@ -1,34 +1,26 @@
 package com.travelmanager.restapi.controller;
 
-import com.travelmanager.domain.interfaces.logic.services.ITripHandler;
 import com.travelmanager.domain.interfaces.rest.ITripController;
+import com.travelmanager.domain.models.Trip;
+import com.travelmanager.hateoas.abstracts.HateoasController;
 import com.travelmanager.logic.services.TripService;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/trip")
-public class TripController implements ITripController {
+public class TripController extends HateoasController<Trip, Integer> implements ITripController {
 
-    ITripHandler logic  = new TripService();
+    TripService service;
 
-    @PostMapping("/")
-    public ResponseEntity create(String jsonString) {
-        return null;
+    @Autowired
+    public TripController(TripService _service) {
+        super(_service);
+        this.service = _service;
     }
 
-    @GetMapping("/")
-    public ResponseEntity read(String jsonString) {
-        return null;
-    }
-
-    @PutMapping("/")
-    public ResponseEntity update(String jsonString) {
-        return null;
-    }
-
-    @DeleteMapping("/")
-    public ResponseEntity delete(String jsonString) {
+    @Override
+    public Class<? extends HateoasController<Trip, Integer>> getClazz() {
         return null;
     }
 }

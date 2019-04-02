@@ -1,6 +1,8 @@
 package com.travelmanager.domain.models;
 
+import com.travelmanager.hateoas.abstracts.PersistenceEntity;
 import lombok.Getter;
+import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +13,7 @@ import java.util.List;
 
 @Getter
 @Entity(name = "trip")
-public class Trip extends StorableItem{
+public class Trip extends PersistenceEntity<Integer> {
     private List<Location> locationList;
     @Column(name = "Name")
     private String name;
@@ -36,7 +38,6 @@ public class Trip extends StorableItem{
     private List<Notification>notificationList;
 
     public Trip(int id, List<Location> locationList, String name, String pictureURL, DateFormat dateStartTrip, DateFormat dateEndTrip, List<Traveller> travellerList, Traveller owner, Chat chat, List<Transaction> transactionList, List<Marker> markerList, List<Notification> notificationList) {
-        super(id);
         this.locationList = locationList;
         this.name = name;
         this.pictureURL = pictureURL;
