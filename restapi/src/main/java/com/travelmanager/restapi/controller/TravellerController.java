@@ -1,6 +1,6 @@
 package com.travelmanager.restapi.controller;
 
-import com.travelmanager.domain.interfaces.logic.services.ITravellerHandler;
+import com.travelmanager.domain.interfaces.logic.services.ITravellerService;
 import com.travelmanager.domain.interfaces.rest.ITravellerController;
 import com.travelmanager.logic.services.TravellerService;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/traveller")
 public class TravellerController implements ITravellerController {
 
-    ITravellerHandler logic = new TravellerService();
+    ITravellerService logic = new TravellerService();
 
     @Override
     @RequestMapping(value = "/login", method = RequestMethod.POST)

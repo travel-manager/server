@@ -2,12 +2,10 @@ package com.travelmanager.logic.services;
 
 
 import com.travelmanager.dal.repositories.ITravellerRepository;
-import com.travelmanager.domain.interfaces.logic.services.ITravellerHandler;
+import com.travelmanager.domain.interfaces.logic.services.ITravellerService;
 import com.travelmanager.domain.models.Traveller;
 
-import java.util.List;
-
-public class TravellerService implements ITravellerHandler {
+public class TravellerService implements ITravellerService {
 
     private ITravellerRepository repository;
 

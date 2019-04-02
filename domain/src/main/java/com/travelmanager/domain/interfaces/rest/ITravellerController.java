@@ -3,7 +3,7 @@ package com.travelmanager.domain.interfaces.rest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestParam;
 
-public interface ITravellerController extends ICRUDController{
+public interface ITravellerController{
 
     ResponseEntity<String> login(@RequestParam(name = "username", required = true) String username, @RequestParam(name = "password", required = true) String password);
 

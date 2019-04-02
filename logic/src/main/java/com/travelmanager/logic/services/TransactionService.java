@@ -1,13 +1,13 @@
 package com.travelmanager.logic.services;
 
 import com.travelmanager.dal.repositories.ITransactionRepository;
-import com.travelmanager.domain.interfaces.logic.services.ITransactionHandler;
+import com.travelmanager.domain.interfaces.logic.services.ITransactionService;
 import com.travelmanager.domain.models.Transaction;
 import com.travelmanager.domain.models.Traveller;
 
 import java.util.List;
 
-public class TransactionService implements ITransactionHandler {
+public class TransactionService implements ITransactionService {
     private ITransactionRepository repository;
 
     @Override
