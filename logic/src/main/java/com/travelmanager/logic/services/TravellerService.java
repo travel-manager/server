@@ -7,7 +7,7 @@ import com.travelmanager.domain.models.Traveller;
 
 import java.util.List;
 
-public class TravellerHandler implements ITravellerHandler {
+public class TravellerService implements ITravellerHandler {
 
     private ITravellerRepository repository;
 

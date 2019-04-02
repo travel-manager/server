@@ -2,7 +2,7 @@ package com.travelmanager.restapi.controller;
 
 import com.travelmanager.domain.interfaces.logic.services.ITripHandler;
 import com.travelmanager.domain.interfaces.rest.ITripController;
-import com.travelmanager.logic.services.TripHandler;
+import com.travelmanager.logic.services.TripService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/trip")
 public class TripController implements ITripController {
 
-    ITripHandler logic  = new TripHandler();
+    ITripHandler logic  = new TripService();
 
     @PostMapping("/")
     public ResponseEntity create(String jsonString) {

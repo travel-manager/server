@@ -7,7 +7,7 @@ import com.travelmanager.domain.models.Traveller;
 
 import java.util.List;
 
-public class TransactionHandler implements ITransactionHandler {
+public class TransactionService implements ITransactionHandler {
     private ITransactionRepository repository;
 
     @Override

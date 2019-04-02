@@ -2,14 +2,14 @@ package com.travelmanager.domain.interfaces;
 
 import java.util.List;
 
-public interface ICRUD<T, R> {
+public interface ICRUD<T> {
 
-    R create(T entity);
+    void create(T entity);
 
     T read(int id);
     Iterable<T> readAll();
 
-    R update(T entity);
+    void update(T entity);
 
     void delete(int id);
 }

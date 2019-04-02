@@ -3,7 +3,7 @@ package com.travelmanager.restapi.controller;
 import com.travelmanager.domain.enums.Gender;
 import com.travelmanager.domain.models.Transaction;
 import com.travelmanager.domain.models.Traveller;
-import com.travelmanager.logic.services.TransactionHandler;
+import com.travelmanager.logic.services.TransactionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/transaction")
 public class TransactionController  {
 
-    TransactionHandler logic = new TransactionHandler();
+    TransactionService logic = new TransactionService();
 
     @PostMapping("/")
     public ResponseEntity create(String jsonString) {
