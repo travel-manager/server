@@ -26,7 +26,7 @@ public class TransactionService extends HateoasService<Transaction, Integer> imp
     }
 
     @Override
-    public List<Transaction> calculatePayRequestForTraveller(Traveller traveller) {
+    public Transaction calculatePayRequestForTraveller(Traveller traveller) {
         // TODO: 10-4-2019 let component handle the calculation 
         return repository.getAllTransactionWhoPaid(traveller);
     }

@@ -11,7 +11,7 @@ import java.util.List;
 public class TransactionComponent implements ITransactionService {
 
     @Override
-    public List<Transaction> calculatePayRequestForTraveller(Traveller traveller) {
+    public Transaction calculatePayRequestForTraveller(Traveller traveller) {
         return null;
     }
 }

@@ -10,7 +10,7 @@ import java.text.DateFormat;
 import java.util.List;
 
 @Getter
-@Entity
+@Entity(name = "Trips")
 public class Trip extends ResourceSupport {
     @Id
     @GeneratedValue
@@ -35,6 +35,7 @@ public class Trip extends ResourceSupport {
     @JoinTable(name = "members")
     private List<Traveller>travellerList;
     @OneToOne
+    @JoinTable(name = "Travellers")
     private Traveller owner;
 //    @OneToOne
 //    private Chat chat;

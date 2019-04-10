@@ -9,7 +9,7 @@ import java.text.DateFormat;
 import java.util.List;
 
 @Getter
-@Entity(name = "transaction")
+@Entity(name = "Transactions")
 public class Transaction extends ResourceSupport {
     @Id
     @GeneratedValue

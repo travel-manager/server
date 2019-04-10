@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Getter
-@Entity(name = "message")
+@Entity(name = "Messages")
 public class Message  extends ResourceSupport {
     @Id
     @GeneratedValue
