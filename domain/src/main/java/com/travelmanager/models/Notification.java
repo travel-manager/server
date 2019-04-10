@@ -5,8 +5,7 @@ import lombok.Getter;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Getter
@@ -18,15 +17,26 @@ public class Notification extends ResourceSupport {
     public Link getId() {
         return new Link(id.toString());
     }
-    private Timestamp timeNotified;
-    private NotificationType type;
-    private String content;
-    private String title;
 
-    public Notification(Timestamp timeNotified, NotificationType type, String content, String title) {
-        this.timeNotified = timeNotified;
+    @Column(name = "timestamp")
+    private String timestamp;
+    @Column(name = "type")
+    private String type;
+    @Column(name = "content")
+    private String content;
+    @Column(name = "icon")
+    private String icon;
+    @ManyToOne
+    private Trip trip;
+
+    public Notification() {
+    }
+
+    public Notification(String timestamp, String type, String content, String icon, Trip trip) {
+        this.timestamp = timestamp;
         this.type = type;
         this.content = content;
-        this.title = title;
+        this.icon = icon;
+        this.trip = trip;
     }
 }
