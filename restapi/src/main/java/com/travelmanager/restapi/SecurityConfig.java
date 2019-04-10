@@ -10,4 +10,18 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        //forcing HTTPS
+        http.requiresChannel().antMatchers("/**").requiresSecure();
+
+        //CSRF protection
+        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+
+        //XSS protection
+        http.headers()
+                .contentSecurityPolicy("script-src 'self'");
+    }
+
 }
