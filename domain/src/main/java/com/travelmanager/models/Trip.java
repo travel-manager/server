@@ -1,6 +1,7 @@
 package com.travelmanager.models;
 
 import lombok.Getter;
+import org.apache.catalina.User;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
@@ -21,6 +22,7 @@ public class Trip extends ResourceSupport {
 
     //    @Column(name = "LocationList")
     //  private List<Location> locationList;
+
 
     private String name;
     @Column(name = "picture")

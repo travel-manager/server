@@ -17,16 +17,26 @@ public class Message  extends ResourceSupport {
     public Link getId() {
         return new Link(id.toString());
     }
-    @OneToOne
-    private Traveller sender;
-    @Column(name = "MessageContent")
-    private String content;
-    @Column(name = "TimeStamp")
-    private Timestamp timeSent;
 
-    public Message(Traveller sender, String content, Timestamp timeSent) {
+    @Column(name = "timestamp")
+    private String timestamp;
+    @Column(name = "content")
+    private String content;
+    @OneToOne
+    private Traveller traveller;
+    @ManyToOne
+    private Trip trip;
+
+    /*public Message(Traveller sender, String content, Timestamp timeSent) {
         this.sender = sender;
         this.content = content;
         this.timeSent = timeSent;
+    }*/
+
+    public Message(String timestamp, String content, Traveller traveller, Trip trip) {
+        this.timestamp = timestamp;
+        this.content = content;
+        this.traveller = traveller;
+        this.trip = trip;
     }
 }

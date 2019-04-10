@@ -17,7 +17,7 @@ public class Marker  extends ResourceSupport {
     public Link getId() {
         return new Link(id.toString());
     }
-    private String markerJsonString;
+    /*private String markerJsonString;
     @OneToOne
     private Traveller placedBy;
     @ManyToOne
@@ -27,16 +27,30 @@ public class Marker  extends ResourceSupport {
     private String note;
     @Column(name = "Location")
     private String location;
-    private MarkerType type;
+    private MarkerType type;*/
 
-    public Marker(String markerJsonString, Traveller placedBy, Trip trip, String note, String location, MarkerType type) {
-        this.markerJsonString = markerJsonString;
-        this.placedBy = placedBy;
-        this.trip = trip;
-        this.note = note;
-        this.location = location;
-        this.type = type;
+    @Column(name = "lat")
+    private Float latitude;
+    @Column(name = "long")
+    private Float longtitude;
+    @Column(name = "type")
+    private String type;
+    @Column(name = "creator")
+    private String creator;
+    @Column(name = "note")
+    private String note;
+    @ManyToOne
+    private Trip trip;
+
+    public Marker() {
     }
 
-
+    public Marker(Float latitude, Float longtitude, String type, String creator, String note, Trip trip) {
+        this.latitude = latitude;
+        this.longtitude = longtitude;
+        this.type = type;
+        this.creator = creator;
+        this.note = note;
+        this.trip = trip;
+    }
 }
