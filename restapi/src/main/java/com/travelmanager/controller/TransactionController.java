@@ -1,38 +1,33 @@
 package com.travelmanager.controller;
 
 import com.travelmanager.enums.Gender;
+import com.travelmanager.hateoas.abstracts.HateoasController;
+import com.travelmanager.hateoas.abstracts.HateoasService;
 import com.travelmanager.models.Transaction;
 import com.travelmanager.models.Traveller;
 import com.travelmanager.services.TransactionService;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
 @RequestMapping("/transaction")
-public class TransactionController  {
+public class TransactionController extends HateoasController<Transaction, Integer> {
 
-    TransactionService logic = new TransactionService();
+    @Setter
+    private TransactionService service;
 
-    @PostMapping("/")
-    public ResponseEntity create(String jsonString) {
-        return null;
+    @Autowired
+    public TransactionController(TransactionService _service) {
+        super(_service);
     }
 
-    @GetMapping("/test")
-    public List<Transaction> read(String jsonString) {
-        Traveller tr = new Traveller("","","","","","",0.1, Gender.MALE, null,null,null);
-        return logic.calculatePayRequestForTraveller(tr);
-    }
-
-    @PutMapping("/")
-    public ResponseEntity update(String jsonString) {
-        return null;
-    }
-
-    @DeleteMapping("/")
-    public ResponseEntity delete(String jsonString) {
-        return null;
+    @Override
+    public Class<? extends HateoasController<Transaction, Integer>> getClazz() {
+        return this.getClass();
     }
 }

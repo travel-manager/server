@@ -1,6 +1,5 @@
 package com.travelmanager.controller;
 
-import com.travelmanager.domain.interfaces.rest.ITripController;
 import com.travelmanager.models.Trip;
 import com.travelmanager.hateoas.abstracts.HateoasController;
 import com.travelmanager.services.TripService;
@@ -9,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/trip")
-public class TripController extends HateoasController<Trip, Integer> implements ITripController {
+@RequestMapping("/trips")
+public class TripController extends HateoasController<Trip, Integer> {
 
     @Setter
     TripService service;

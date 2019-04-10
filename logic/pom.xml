@@ -19,17 +19,13 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.travelmanager.server</groupId>
+            <groupId>com.travelmanager</groupId>
             <artifactId>dal</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.travelmanager</groupId>
-            <artifactId>hateoas</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.travelmanager.server</groupId>
             <artifactId>hateoas</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
