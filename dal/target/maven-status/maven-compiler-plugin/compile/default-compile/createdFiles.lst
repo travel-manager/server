@@ -1,7 +1,0 @@
-repositories\IMarkerRepository.class
-repositories\ITravellerRepository.class
-repositories\INotificationRepository.class
-repositories\ITransactionRepository.class
-repositories\ITripRepository.class
-repositories\IChatRepository.class
-repositories\ILocationRepository.class
