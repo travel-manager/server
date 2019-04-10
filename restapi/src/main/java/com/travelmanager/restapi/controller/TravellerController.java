@@ -26,28 +26,4 @@ public class TravellerController implements ITravellerController {
         logic.register(firstName,lastName,username,password);
         return new ResponseEntity<String>("First name: " + firstName + ", last name: " + lastName + ", username: " + username + ", password : " + password, HttpStatus.OK);
     }
-
-    @Override
-    @PostMapping("/")
-    public ResponseEntity create(String jsonString) {
-        return null;
-    }
-
-    @Override
-    @GetMapping("/")
-    public ResponseEntity read(String jsonString) {
-        return null;
-    }
-
-    @Override
-    @PutMapping("/")
-    public ResponseEntity update(String jsonString) {
-        return null;
-    }
-
-    @Override
-    @DeleteMapping("/")
-    public ResponseEntity delete(String jsonString) {
-        return null;
-    }
 }

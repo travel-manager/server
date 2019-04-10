@@ -1,7 +1,7 @@
 package com.travelmanager.dal.repositories;
 
-import com.travelmanager.domain.models.Transaction;
-import com.travelmanager.domain.models.Traveller;
+import com.travelmanager.models.Transaction;
+import com.travelmanager.models.Traveller;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

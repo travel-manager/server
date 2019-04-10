@@ -1,8 +1,8 @@
 package com.travelmanager.restapi.controller;
 
-import com.travelmanager.domain.enums.Gender;
-import com.travelmanager.domain.models.Transaction;
-import com.travelmanager.domain.models.Traveller;
+import com.travelmanager.enums.Gender;
+import com.travelmanager.models.Transaction;
+import com.travelmanager.models.Traveller;
 import com.travelmanager.logic.services.TransactionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,7 @@ public class TransactionController  {
 
     @GetMapping("/test")
     public List<Transaction> read(String jsonString) {
-        Traveller tr = new Traveller(1,"","","","","","",0.1, Gender.MALE, null,null,null);
+        Traveller tr = new Traveller("","","","","","",0.1, Gender.MALE, null,null,null);
         return logic.calculatePayRequestForTraveller(tr);
     }
 
