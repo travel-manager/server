@@ -1,11 +1,10 @@
 package com.travelmanager.logic.services;
 
-import com.travelmanager.dal.repositories.ITransactionRepository;
+import com.travelmanager.repositories.ITransactionRepository;
 import com.travelmanager.hateoas.abstracts.HateoasService;
 import com.travelmanager.interfaces.ITransactionService;
 import com.travelmanager.models.Transaction;
 import com.travelmanager.models.Traveller;
-import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
@@ -13,9 +12,9 @@ public class TransactionService extends HateoasService<Transaction, Integer> imp
 
     private ITransactionRepository repository;
 
-    public TransactionService(ITransactionRepository _repo) {
-        super(_repo);
-        repository = _repo;
+    public TransactionService(ITransactionRepository repository) {
+        super(repository);
+        repository = repository;
     }
 
 

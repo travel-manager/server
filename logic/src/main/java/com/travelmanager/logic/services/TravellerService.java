@@ -1,21 +1,21 @@
 package com.travelmanager.logic.services;
 
 
-import com.travelmanager.dal.repositories.ITravellerRepository;
-import com.travelmanager.domain.interfaces.logic.services.ITravellerService;
+import com.travelmanager.repositories.ITravellerRepository;
+import com.travelmanager.hateoas.abstracts.HateoasService;
 import com.travelmanager.models.Traveller;
 
-public class TravellerService implements ITravellerService {
+public class TravellerService extends HateoasService<Traveller, Integer> {
 
     private ITravellerRepository repository;
 
-    @Override
-    public int login(String username, String password) {
-        return 0;
+    public TravellerService(ITravellerRepository repository) {
+        super(repository);
+        this.repository = repository;
     }
 
     @Override
-    public int register(String firstname, String lastname, String username, String password) {
-        return 0;
+    public Class<? extends HateoasService<Traveller, Integer>> getClazz() {
+        return this.getClass();
     }
 }

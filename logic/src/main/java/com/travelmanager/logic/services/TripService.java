@@ -1,6 +1,6 @@
 package com.travelmanager.logic.services;
 
-import com.travelmanager.dal.repositories.ITripRepository;
+import com.travelmanager.repositories.ITripRepository;
 import com.travelmanager.hateoas.abstracts.HateoasService;
 import com.travelmanager.models.Trip;
 import lombok.Setter;
@@ -14,8 +14,8 @@ public class TripService extends HateoasService<Trip, Integer> {
     private ITripRepository repository;
 
     @Autowired
-    public TripService(ITripRepository _repo) {
-        super(_repo);
+    public TripService(ITripRepository repository) {
+        super(repository);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.travelmanager.dal.repositories;
+package com.travelmanager.repositories;
 
 
 import com.travelmanager.models.Marker;
