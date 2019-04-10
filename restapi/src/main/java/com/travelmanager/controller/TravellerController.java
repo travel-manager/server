@@ -1,8 +1,8 @@
-package com.travelmanager.restapi.controller;
+package com.travelmanager.controller;
 
 import com.travelmanager.domain.interfaces.logic.services.ITravellerService;
 import com.travelmanager.domain.interfaces.rest.ITravellerController;
-import com.travelmanager.logic.services.TravellerService;
+import com.travelmanager.services.TravellerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

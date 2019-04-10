@@ -1,9 +1,9 @@
-package com.travelmanager.restapi.controller;
+package com.travelmanager.controller;
 
 import com.travelmanager.domain.interfaces.rest.ITripController;
 import com.travelmanager.models.Trip;
 import com.travelmanager.hateoas.abstracts.HateoasController;
-import com.travelmanager.logic.services.TripService;
+import com.travelmanager.services.TripService;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

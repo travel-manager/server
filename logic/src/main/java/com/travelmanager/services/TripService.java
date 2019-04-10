@@ -1,4 +1,4 @@
-package com.travelmanager.logic.services;
+package com.travelmanager.services;
 
 import com.travelmanager.repositories.ITripRepository;
 import com.travelmanager.hateoas.abstracts.HateoasService;

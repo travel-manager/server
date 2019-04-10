@@ -1,9 +1,9 @@
-package com.travelmanager.restapi.controller;
+package com.travelmanager.controller;
 
 import com.travelmanager.enums.Gender;
 import com.travelmanager.models.Transaction;
 import com.travelmanager.models.Traveller;
-import com.travelmanager.logic.services.TransactionService;
+import com.travelmanager.services.TransactionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package com.travelmanager.restapi.config;
+package com.travelmanager.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.travelmanager.restapi;
+package com.travelmanager.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

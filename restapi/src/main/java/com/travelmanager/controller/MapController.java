@@ -1,4 +1,4 @@
-package com.travelmanager.restapi.controller;
+package com.travelmanager.controller;
 
 import com.travelmanager.domain.interfaces.logic.services.IMarkerService;
 import com.travelmanager.domain.interfaces.rest.IMapController;
