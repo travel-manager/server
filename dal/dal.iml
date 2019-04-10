@@ -28,7 +28,6 @@
     <orderEntry type="module" module-name="domain" />
     <orderEntry type="module" module-name="hateoas" />
     <orderEntry type="library" name="Maven: org.assertj:assertj-core:3.11.1" level="project" />
-    <orderEntry type="library" name="Maven: javax.persistence:persistence-api:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.google.maps:google-maps-services:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.12.0" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.15.0" level="project" />
