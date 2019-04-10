@@ -18,8 +18,11 @@ public class Transaction extends ResourceSupport {
     public Link getId() {
         return new Link(id.toString());
     }
-    @JoinTable(name = "members",joinColumns = @JoinColumn(name = "Trips",columnDefinition = "id"),inverseJoinColumns = @JoinColumn(name = "Travellers", columnDefinition = "id"))
+    @OneToOne
+    @JoinTable(name = "Members", joinColumns = {@JoinColumn(name = "idTravellers",referencedColumnName = "id")})
     private Traveller payer;
+    @OneToOne
+    @JoinColumn(name = "idTrips",referencedColumnName = "id")
     private Trip trip;
     @Column(name = "amount")
     private Double amount;

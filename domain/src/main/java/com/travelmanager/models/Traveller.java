@@ -40,6 +40,7 @@ public class Traveller extends ResourceSupport {
     private String country;
 
     //private List<Language> languageSpoken;
+    @OneToMany
     @JoinTable(name="members")
     private List<Trip> tripList;
 

@@ -35,7 +35,7 @@ public class Trip extends ResourceSupport {
     @JoinTable(name = "members")
     private List<Traveller>travellerList;
     @OneToOne
-    private int owner;
+    private Traveller owner;
 //    @OneToOne
 //    private Chat chat;
     @OneToMany
@@ -56,7 +56,7 @@ public class Trip extends ResourceSupport {
 
     private String description;
 
-    public Trip(String name, String pictureURL, DateFormat dateStartTrip, DateFormat dateEndTrip, List<Traveller> travellerList, int owner, List<Transaction> transactionList, List<Marker> markerList, float latitude, float longitude, int isPublic, String description) {
+    public Trip(String name, String pictureURL, DateFormat dateStartTrip, DateFormat dateEndTrip, List<Traveller> travellerList, Traveller owner, List<Transaction> transactionList, List<Marker> markerList, float latitude, float longitude, int isPublic, String description) {
         this.name = name;
         this.pictureURL = pictureURL;
         this.dateStartTrip = dateStartTrip;
