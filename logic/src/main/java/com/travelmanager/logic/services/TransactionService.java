@@ -1,18 +1,31 @@
 package com.travelmanager.logic.services;
 
 import com.travelmanager.dal.repositories.ITransactionRepository;
-import com.travelmanager.domain.interfaces.logic.services.ITransactionService;
+import com.travelmanager.hateoas.abstracts.HateoasService;
+import com.travelmanager.interfaces.ITransactionService;
 import com.travelmanager.models.Transaction;
 import com.travelmanager.models.Traveller;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
-public class TransactionService implements ITransactionService {
+public class TransactionService extends HateoasService<Transaction, Integer> implements ITransactionService {
 
     private ITransactionRepository repository;
+
+    public TransactionService(ITransactionRepository _repo) {
+        super(_repo);
+        repository = _repo;
+    }
+
 
     @Override
     public List<Transaction> calculatePayRequestForTraveller(Traveller traveller) {
         return repository.getAllTransactionWhoPaid(traveller);
+    }
+
+    @Override
+    public Class<? extends HateoasService<Transaction, Integer>> getClazz() {
+        return this.getClass();
     }
 }
