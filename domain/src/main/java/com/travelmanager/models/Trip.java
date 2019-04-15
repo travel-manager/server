@@ -1,6 +1,7 @@
 package com.travelmanager.models;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.apache.catalina.User;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
@@ -22,8 +23,7 @@ public class Trip extends ResourceSupport {
 
     //    @Column(name = "LocationList")
     //  private List<Location> locationList;
-
-
+/*
     private String name;
     @Column(name = "picture")
     private String pictureURL;
@@ -57,7 +57,47 @@ public class Trip extends ResourceSupport {
 
     private String description;
 
-    public Trip(String name, String pictureURL, DateFormat dateStartTrip, DateFormat dateEndTrip, List<Traveller> travellerList, Traveller owner, List<Transaction> transactionList, List<Marker> markerList, float latitude, float longitude, int isPublic, String description) {
+*/
+    @Column(name = "location")
+    private String location;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "picture")
+    private String picture;
+    @Column(name = "datestart")
+    private String datestart;
+    @Column(name = "dateend")
+    private String dateend;
+    @Column(name = "lat")
+    private Float latitude;
+    @Column(name = "long")
+    private Float longtitude;
+    @Column(name = "description")
+    private String description;
+    @Column(name = "public")
+    private Boolean isPublic;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id",table = "travellers")
+    private Traveller owner;
+
+
+    public Trip() {
+    }
+
+    public Trip(String location, String name, String picture, String datestart, String dateend, Float latitude, Float longtitude, String description, Boolean isPublic, Traveller owner) {
+        this.location = location;
+        this.name = name;
+        this.picture = picture;
+        this.datestart = datestart;
+        this.dateend = dateend;
+        this.latitude = latitude;
+        this.longtitude = longtitude;
+        this.description = description;
+        this.isPublic = isPublic;
+        this.owner = owner;
+    }
+
+    /*public Trip(String name, String pictureURL, DateFormat dateStartTrip, DateFormat dateEndTrip, List<Traveller> travellerList, Traveller owner, List<Transaction> transactionList, List<Marker> markerList, float latitude, float longitude, int isPublic, String description) {
         this.name = name;
         this.pictureURL = pictureURL;
         this.dateStartTrip = dateStartTrip;
@@ -70,5 +110,5 @@ public class Trip extends ResourceSupport {
         this.longitude = longitude;
         this.isPublic = isPublic;
         this.description = description;
-    }
+    }*/
 }
