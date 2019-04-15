@@ -1,5 +1,6 @@
 package handlers;
 
+import enums.Gender;
 import interfaces.logic.handlers.ITravellerHandler;
 import models.Traveller;
 import repositories.ITravellerRepository;
@@ -9,16 +10,6 @@ import java.util.List;
 public class TravellerHandler implements ITravellerHandler {
 
     private ITravellerRepository repository;
-
-    @Override
-    public int login(String username, String password) {
-        return 0;
-    }
-
-    @Override
-    public int register(String firstname, String lastname, String username, String password) {
-        return 0;
-    }
 
     @Override
     public Integer create(Traveller entity) {
@@ -64,4 +55,6 @@ public class TravellerHandler implements ITravellerHandler {
             return -1;
         }
     }
+
+
 }
