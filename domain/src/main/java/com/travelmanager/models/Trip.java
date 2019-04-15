@@ -34,8 +34,8 @@ public class Trip extends ResourceSupport {
     @OneToMany
     @JoinTable(name = "members")
     private List<Traveller>travellerList;
-    @OneToOne
-    @JoinTable(name = "Travellers")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id",table = "travellers")
     private Traveller owner;
 //    @OneToOne
 //    private Chat chat;
@@ -44,7 +44,7 @@ public class Trip extends ResourceSupport {
     private List<Transaction>transactionList;
     @OneToMany
     private List<Marker> markerList;
-    //  private List<Notification>notificationList;
+    //  private List<Notification>notificationL ist;
 
     @Column(name = "lat")
     private float latitude;

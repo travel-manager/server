@@ -27,7 +27,8 @@ public class Notification extends ResourceSupport {
     private String content;
     @Column(name = "icon")
     private String icon;
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name = "id",table = "trips")
     private Trip trip;
 
     public Notification() {

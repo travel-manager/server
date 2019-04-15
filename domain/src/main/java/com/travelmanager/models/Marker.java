@@ -39,7 +39,8 @@ public class Marker  extends ResourceSupport {
     private String creator;
     @Column(name = "note")
     private String note;
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name = "id",table = "trips")
     private Trip trip;
 
     public Marker() {

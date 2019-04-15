@@ -4,6 +4,7 @@ import com.travelmanager.hateoas.abstracts.HateoasController;
 import com.travelmanager.hateoas.abstracts.HateoasService;
 import com.travelmanager.models.Notification;
 import com.travelmanager.services.NotificationService;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/notifications")
 public class NotificationController extends HateoasController<Notification, Integer> {
 
+    @Setter
     private NotificationService service;
 
     @Autowired
@@ -21,6 +23,6 @@ public class NotificationController extends HateoasController<Notification, Inte
 
     @Override
     public Class<? extends HateoasController<Notification, Integer>> getClazz() {
-        return null;
+        return this.getClass();
     }
 }

@@ -18,11 +18,14 @@ public class Transaction extends ResourceSupport {
     public Link getId() {
         return new Link(id.toString());
     }
-    @OneToOne
-    @JoinTable(name = "Members", joinColumns = {@JoinColumn(name = "idTravellers",referencedColumnName = "id")})
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id",table = "travellers")
     private Traveller payer;
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "idTrips",referencedColumnName = "id")
+*/
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id",table = "trips")
     private Trip trip;
     @Column(name = "amount")
     private Double amount;
