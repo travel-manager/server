@@ -4,6 +4,7 @@ import com.travelmanager.enums.Gender;
 import com.travelmanager.enums.Language;
 import com.travelmanager.enums.Nationality;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
@@ -11,10 +12,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Getter
+@Setter
 @Entity(name = "Travellers")
 public class Traveller extends ResourceSupport {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     public Link getId() {
