@@ -15,6 +15,7 @@ public class Transaction extends ResourceSupport {
     @GeneratedValue
     private Integer id;
 
+    @Override
     public Link getId() {
         return new Link(id.toString());
     }

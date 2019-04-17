@@ -14,6 +14,7 @@ public class Message  extends ResourceSupport {
     @GeneratedValue
     private Integer id;
 
+    @Override
     public Link getId() {
         return new Link(id.toString());
     }

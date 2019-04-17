@@ -1,6 +1,7 @@
 package com.travelmanager.models;
 
 import lombok.Getter;
+import org.springframework.hateoas.Link;
 
 import javax.persistence.*;
 
