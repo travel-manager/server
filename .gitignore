@@ -22,3 +22,5 @@
 /nbdist/
 /.nb-gradle/
 /build/
+
+*.class
