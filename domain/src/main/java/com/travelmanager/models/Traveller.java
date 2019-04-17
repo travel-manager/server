@@ -38,6 +38,8 @@ public class Traveller extends ResourceSupport {
 //    private Gender gender;
     @Column(name = "country")
     private String country;
+    @Column(name = "password")
+    private String password;
 
     //private List<Language> languageSpoken;
     @OneToMany
@@ -49,13 +51,14 @@ public class Traveller extends ResourceSupport {
     public Traveller() {
     }
 
-    public Traveller(String username, String firstname, String surname, String bio, String profilePictureURL, String country, List<Trip> tripList) {
+    public Traveller(String username, String firstname, String surname, String bio, String profilePictureURL, String country, String password, List<Trip> tripList) {
         this.username = username;
         this.firstname = firstname;
         this.surname = surname;
         this.bio = bio;
         this.profilePictureURL = profilePictureURL;
         this.country = country;
+        this.password = password;
         this.tripList = tripList;
     }
 }
