@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/traveller")
+@RequestMapping("/travellers")
 public class TravellerController extends HateoasController<Traveller, Integer> {
 
     private Gson gson = new Gson();

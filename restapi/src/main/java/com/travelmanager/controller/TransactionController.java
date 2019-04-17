@@ -15,7 +15,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
-@RequestMapping("/transaction")
+@RequestMapping("/transactions")
 public class TransactionController extends HateoasController<Transaction, Integer> {
 
     @Setter
