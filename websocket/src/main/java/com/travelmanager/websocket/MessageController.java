@@ -21,8 +21,8 @@ public class MessageController {
         this.service = service;
     }
 
-    @MessageMapping("/websocket")
-    @SendTo("/chat")
+    @MessageMapping("/message")
+    @SendTo("/chat/response")
     public ResponseEntity sendMessage(WebsocketMessage msg){
         service.create(msg);
         return new ResponseEntity<>(msg, HttpStatus.valueOf(200));
