@@ -19,9 +19,9 @@ public class Traveller extends ResourceSupport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    public Link getId() {
-        return new Link(id.toString());
-    }
+    @Override
+    public Link getId() {return new Link(id.toString());}
+
     @Column(name = "username")
     private String username;
     @Column(name = "firstname")

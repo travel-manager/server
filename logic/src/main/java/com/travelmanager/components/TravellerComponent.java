@@ -6,6 +6,7 @@ import com.travelmanager.models.Traveller;
 import com.travelmanager.models.User;
 import com.travelmanager.repositories.ITravellerRepository;
 import com.travelmanager.repositories.IUserRepository;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 

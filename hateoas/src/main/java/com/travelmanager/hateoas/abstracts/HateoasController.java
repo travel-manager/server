@@ -4,6 +4,7 @@ import com.travelmanager.hateoas.annotations.WrapWithLink;
 import com.travelmanager.hateoas.utils.HateoasResponse;
 import com.travelmanager.hateoas.utils.HateoasUtil;
 import org.assertj.core.util.Lists;
+import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -56,6 +57,7 @@ public abstract class HateoasController<T extends ResourceSupport, Identifier ex
         service.create(entity);
         return HateoasUtil.build(entity);
     }
+    //  public Link getId() {return new Link(id.toString());}
 
     @GetMapping(value = "/")
     @WrapWithLink
