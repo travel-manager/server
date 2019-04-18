@@ -31,7 +31,6 @@
       <module name="hateoas" options="-parameters" />
       <module name="logic" options="-parameters" />
       <module name="restapi" options="-parameters" />
-      <module name="serverTest" options="-parameters" />
       <module name="websocket" options="-parameters" />
     </option>
   </component>
