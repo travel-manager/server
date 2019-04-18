@@ -3,16 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.travelmanager</groupId>
+        <groupId>com.travelmanager.server</groupId>
         <artifactId>main</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
     <artifactId>restapi</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>restapi</name>
-    <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>

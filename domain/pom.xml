@@ -14,7 +14,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.travelmanager</groupId>
+            <groupId>com.travelmanager.server</groupId>
             <artifactId>hateoas</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
