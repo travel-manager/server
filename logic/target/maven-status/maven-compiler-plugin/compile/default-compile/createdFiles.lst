@@ -1,0 +1,7 @@
+com\travelmanager\services\TripService.class
+com\travelmanager\services\MessageService.class
+com\travelmanager\services\TransactionService.class
+com\travelmanager\services\TravellerService.class
+com\travelmanager\services\MarkerService.class
+com\travelmanager\services\NotificationService.class
+com\travelmanager\components\TransactionComponent.class

@@ -1,0 +1,9 @@
+com\travelmanager\controller\MarkerController.class
+com\travelmanager\config\MvcConfig.class
+com\travelmanager\restapi\SecurityConfig.class
+com\travelmanager\application\RestapiApplication.class
+com\travelmanager\controller\NotificationController.class
+com\travelmanager\controller\TransactionController.class
+com\travelmanager\controller\TravellerController.class
+com\travelmanager\controller\TripController.class
+com\travelmanager\config\WebsocketConfig.class

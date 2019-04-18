@@ -1,0 +1,6 @@
+com\travelmanager\repositories\IMessageRepository.class
+com\travelmanager\repositories\ITravellerRepository.class
+com\travelmanager\repositories\ITripRepository.class
+com\travelmanager\repositories\ITransactionRepository.class
+com\travelmanager\repositories\IMarkerRepository.class
+com\travelmanager\repositories\INotificationRepository.class

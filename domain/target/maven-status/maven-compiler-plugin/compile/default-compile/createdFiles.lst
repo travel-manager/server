@@ -1,0 +1,14 @@
+com\travelmanager\models\Transaction.class
+com\travelmanager\enums\MarkerType.class
+com\travelmanager\models\Marker.class
+com\travelmanager\enums\Gender.class
+com\travelmanager\enums\NotificationType.class
+com\travelmanager\enums\Language.class
+com\travelmanager\models\PaymentRequest.class
+com\travelmanager\models\Traveller.class
+com\travelmanager\models\Message.class
+com\travelmanager\models\Notification.class
+com\travelmanager\interfaces\ITransactionService.class
+com\travelmanager\models\WebsocketMessage.class
+com\travelmanager\models\Trip.class
+com\travelmanager\enums\Nationality.class
