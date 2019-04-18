@@ -4,20 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>main</artifactId>
-        <groupId>com.travelmanager.server</groupId>
+        <groupId>com.travelmanager</groupId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>dal</artifactId>
+
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-        <dependency>
-            <groupId>com.j256</groupId>
-            <artifactId>ormlite</artifactId>
-            <version>2.5</version>
-        </dependency>
         <dependency>
             <groupId>com.travelmanager.server</groupId>
             <artifactId>domain</artifactId>
