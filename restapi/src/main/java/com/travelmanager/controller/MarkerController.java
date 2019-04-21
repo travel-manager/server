@@ -34,12 +34,12 @@ public class MarkerController extends HateoasController<Marker, Integer> {
         return this.getClass();
     }
 
-    @RequestMapping(value = "/getallbytrip", method = RequestMethod.POST)
+    @RequestMapping(value = "/getallbytrip", method = RequestMethod.GET)
     public ResponseEntity<String> getAllMarkersByTripId(@RequestParam(name = "tripid") int tripId){
         return new ResponseEntity<String>(json.toJson(service.getAllMarkersByTripId(tripId)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/deletebytrip", method = RequestMethod.POST)
+    @RequestMapping(value = "/deletebytrip", method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteAllMarkersByTripId(@RequestParam(name = "tripid") int tripId){
         if (service.deleteAllMarkersByTripId(tripId)){
             return new ResponseEntity<Boolean>(true, HttpStatus.OK);

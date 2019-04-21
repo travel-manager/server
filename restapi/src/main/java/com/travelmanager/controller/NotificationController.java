@@ -33,12 +33,12 @@ public class NotificationController extends HateoasController<Notification, Inte
         return this.getClass();
     }
 
-    @RequestMapping(value = "/getallbytrip", method = RequestMethod.POST)
+    @RequestMapping(value = "/getallbytrip", method = RequestMethod.GET)
     public ResponseEntity<String> getAllNotificationsByTripId(@RequestParam(name = "tripid") int tripId){
         return new ResponseEntity<String>(json.toJson(service.getAllNotificationsByTripId(tripId)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/deleteallbytrip", method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteallbytrip", method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteAllNotificationsByTripId(@RequestParam(name = "tripid") int tripId){
         if(service.deleteAllNotificationsByTripId(tripId)){
             return new ResponseEntity<Boolean>(true, HttpStatus.OK);

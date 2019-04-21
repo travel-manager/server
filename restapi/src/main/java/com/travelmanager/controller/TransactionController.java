@@ -35,12 +35,12 @@ public class TransactionController extends HateoasController<Transaction, Intege
         return this.getClass();
     }
 
-    @RequestMapping(value = "/getallbypayerandtripid", method = RequestMethod.POST)
+    @RequestMapping(value = "/getallbypayerandtripid", method = RequestMethod.GET)
     public ResponseEntity<String> getAllByPayerAndTripId(@RequestParam(name = "payer") String payer, @RequestParam(name = "tripId") int tripId){
         return new ResponseEntity<String>(json.toJson(service.getAllByPayerAndTripId(payer,tripId)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/getallbypayerandtripid", method = RequestMethod.POST)
+    @RequestMapping(value = "/getallbyfreeloaderandtripid", method = RequestMethod.GET)
     public ResponseEntity<String> getAllByFreeLoaderAndTripId(@RequestParam(name = "freeloader") String freeLoader, @RequestParam(name = "tripId") int tripId){
         return new ResponseEntity<String>(json.toJson(service.getAllByFreeLoaderAndTripId(freeLoader,tripId)), HttpStatus.OK);
     }

@@ -29,7 +29,7 @@ public class TripController extends HateoasController<Trip, Integer> {
         super(_service);
     }
 
-    @GetMapping(value = "/get")
+    @GetMapping(value = "/getbydate")
     public ResponseEntity<String> getAllByDateEndAndDateStart(@RequestParam(name = "dateStart", required = true) String dateStart, @RequestParam(name = "dateEnd", required = true) String dateEnd, @RequestParam(name = "isPublic", required = true) Boolean isPublic){
         Date start;
         Date end;
@@ -44,7 +44,7 @@ public class TripController extends HateoasController<Trip, Integer> {
         return new ResponseEntity<>(gson.toJson(result), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/get")
+    @GetMapping(value = "/getbylongandlat")
     public ResponseEntity<String> getAllByLatAndLong(@RequestParam(name = "lat", required = true) String latitude, @RequestParam(name = "long", required = true) String longitude, @RequestParam(name = "range", required = true) String range){
         long longLatitude;
         long longLongitude;

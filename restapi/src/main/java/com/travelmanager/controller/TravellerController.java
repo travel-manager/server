@@ -38,7 +38,7 @@ public class TravellerController extends HateoasController<Traveller, Integer> {
 //    }
 
     @GetMapping(value = "/get")
-    public ResponseEntity<String> register(@RequestParam(name = "username", required = true) String username){
+    public ResponseEntity<String> getByUsername(@RequestParam(name = "username", required = true) String username){
        Traveller result = service.getByUsername(username);
        return new ResponseEntity<>(gson.toJson(result), HttpStatus.OK);
     }
