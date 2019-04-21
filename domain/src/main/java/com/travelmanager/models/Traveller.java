@@ -11,7 +11,7 @@ import org.springframework.hateoas.ResourceSupport;
 import javax.persistence.*;
 import java.util.List;
 
-@Getter
+
 @Setter
 @Entity(name = "Travellers")
 public class Traveller extends ResourceSupport {
@@ -19,30 +19,35 @@ public class Traveller extends ResourceSupport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    public Link getId() {
-        return new Link(id.toString());
-    }
+
+    @Getter
     @Column(name = "username")
     private String username;
+    @Getter
     @Column(name = "firstname")
     private String firstname;
+    @Getter
     @Column(name = "lastname")
     private String surname;
 //    @Column(name = "Mail")
 //    private String email;
+    @Getter
     @Column(name = "bio")
     private String bio;
+    @Getter
     @Column(name = "picture")
     private String profilePictureURL;
 //    @Column(name = "Rating")
 //    private Double rating;
 //    @Column(name = "Gender")
 //    private Gender gender;
+    @Getter
     @Column(name = "country")
     private String country;
 
     //private List<Language> languageSpoken;
-    @OneToMany
+    @Getter
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name="members")
     private List<Trip> tripList;
 

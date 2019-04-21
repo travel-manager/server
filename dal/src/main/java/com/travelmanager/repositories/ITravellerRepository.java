@@ -8,7 +8,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ITravellerRepository extends PagingAndSortingRepository<Traveller, Integer> {
-
-    @Query("SELECT u FROM Travellers u WHERE u.username = :username")
-    Traveller getTravellerByUsername(@Param("username") String username);
 }

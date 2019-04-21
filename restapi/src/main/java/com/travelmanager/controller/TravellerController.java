@@ -41,13 +41,14 @@ public class TravellerController extends HateoasController<Traveller, Integer> {
     }
 
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<String> register(@RequestParam(name = "firstName", required = true) String firstName, @RequestParam(name = "lastName", required = true) String lastName, @RequestParam(name = "username", required = true) String username, @RequestParam(name = "password", required = true) String password, @RequestParam(name = "country", required = true) String country){
         Traveller traveller = new Traveller();
         traveller.setUsername(username);
         traveller.setFirstname(firstName);
         traveller.setSurname(lastName);
         traveller.setCountry(country);
+
         Traveller result = service.register(traveller, password);
         if(result != null){
             if(result.getUsername() == null){
@@ -57,6 +58,17 @@ public class TravellerController extends HateoasController<Traveller, Integer> {
         }else{
             return new ResponseEntity<String>("Woops something went wrong", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public ResponseEntity<String> test(){
+        Traveller traveller = new Traveller();
+        traveller.setUsername("aefegsg");
+        traveller.setFirstname("");
+        traveller.setSurname("");
+        traveller.setCountry("");
+        traveller.setBio("");
+        return new ResponseEntity<String>(service.test(traveller).toString(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Override

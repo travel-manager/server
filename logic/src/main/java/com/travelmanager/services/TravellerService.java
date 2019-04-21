@@ -32,6 +32,10 @@ public class TravellerService extends HateoasService<Traveller, Integer> {
         return component.register(tr, password);
     }
 
+    public Boolean test(Traveller tr){
+        return component.createTraveller(tr);
+    }
+
     @Override
     public Class<? extends HateoasService<Traveller, Integer>> getClazz() {
         return this.getClass();

@@ -39,7 +39,7 @@ public class TravellerComponent {
 
     public Traveller register(Traveller tr, String password) {
         Traveller result;
-        if(getUser(tr.getUsername()) == null){
+        if(getTraveller(tr.getUsername()) == null && getUser(tr.getUsername()) == null){
             User user = new User(tr.getUsername(), hashpassword(password));
             if(!createUser(user)){
                 return null;
@@ -64,12 +64,18 @@ public class TravellerComponent {
     }
 
     private Traveller getTraveller(String username){
+        Traveller result = null;
         try {
-            return travellerRepository.getTravellerByUsername(username);
+            for (Traveller tr:travellerRepository.findAll()) {
+                if(tr.getUsername().equals(username)){
+                    result = tr;
+                }
+            }
         }catch (Exception e){
             System.out.println(e);
             return null;
         }
+        return result;
     }
 
     private String hashpassword(String plaintext){
@@ -90,7 +96,7 @@ public class TravellerComponent {
         }
     }
 
-    private boolean createTraveller(Traveller tr){
+    public boolean createTraveller(Traveller tr){
         try {
             travellerRepository.save(tr);
             return true;
