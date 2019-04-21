@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TripService extends HateoasService<Trip, Integer> {
 
@@ -16,6 +18,10 @@ public class TripService extends HateoasService<Trip, Integer> {
     @Autowired
     public TripService(ITripRepository repository) {
         super(repository);
+    }
+
+    public List<Trip> getAllByDateEndAndDateStart(String dateStart, String dateEnd, Boolean isPublic){
+        
     }
 
     @Override
