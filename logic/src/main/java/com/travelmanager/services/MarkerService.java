@@ -6,6 +6,8 @@ import com.travelmanager.repositories.IMarkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.OneToMany;
+
 @Service
 public class MarkerService extends HateoasService<Marker, Integer> {
 
@@ -15,6 +17,7 @@ public class MarkerService extends HateoasService<Marker, Integer> {
     public MarkerService(IMarkerRepository _repo) {
         super(_repo);
     }
+
 
     @Override
     public Class<? extends HateoasService<Marker, Integer>> getClazz() {

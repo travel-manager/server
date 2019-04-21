@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
@@ -12,12 +13,14 @@ import java.util.List;
 @Entity(name = "Travellers")
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
 public class Traveller extends ResourceSupport {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     @JsonProperty("id")
-    private Integer id;
+    public Integer id;
 
     @Getter
     @Column(name = "username")
@@ -49,7 +52,7 @@ public class Traveller extends ResourceSupport {
 
     //private List<Language> languageSpoken;
     @Getter
-    @OneToMany(cascade = CascadeType.MERGE)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "members",
             joinColumns = {@JoinColumn(name = "id")},
             inverseJoinColumns = {@JoinColumn(name = "trips_id")})
