@@ -6,6 +6,8 @@ import com.travelmanager.repositories.INotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class NotificationService extends HateoasService<Notification, Integer> {
 
@@ -21,5 +23,13 @@ public class NotificationService extends HateoasService<Notification, Integer> {
     @Override
     public Class<? extends HateoasService<Notification, Integer>> getClazz() {
         return this.getClass();
+    }
+
+    public List<Notification> getAllNotificationsByTripId(int tripId) {
+        return null;
+    }
+
+    public boolean deleteAllNotificationsByTripId(int tripId) {
+        return false;
     }
 }
