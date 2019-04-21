@@ -4,44 +4,50 @@ import com.travelmanager.enums.Gender;
 import com.travelmanager.enums.Language;
 import com.travelmanager.enums.Nationality;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Getter
+@Setter
 @Entity(name = "Travellers")
 public class Traveller extends ResourceSupport {
     @Id
     @GeneratedValue
     private Integer id;
 
-    public Link getId() {
-        return new Link(id.toString());
-    }
+    @Getter
     @Column(name = "username")
     private String username;
+    @Getter
     @Column(name = "firstname")
     private String firstname;
+    @Getter
     @Column(name = "lastname")
     private String surname;
 //    @Column(name = "Mail")
 //    private String email;
+    @Getter
     @Column(name = "bio")
     private String bio;
+    @Getter
     @Column(name = "picture")
     private String profilePictureURL;
 //    @Column(name = "Rating")
 //    private Double rating;
 //    @Column(name = "Gender")
 //    private Gender gender;
+    @Getter
     @Column(name = "country")
     private String country;
-    @Column(name = "password")
-    private String password;
+//    @Getter
+//    @Column(name = "password")
+//    private String password;
 
     //private List<Language> languageSpoken;
+    @Getter
     @OneToMany
     @JoinTable(name="members")
     private List<Trip> tripList;
@@ -51,14 +57,13 @@ public class Traveller extends ResourceSupport {
     public Traveller() {
     }
 
-    public Traveller(String username, String firstname, String surname, String bio, String profilePictureURL, String country, String password, List<Trip> tripList) {
+    public Traveller(String username, String firstname, String surname, String bio, String profilePictureURL, String country, List<Trip> tripList) {
         this.username = username;
         this.firstname = firstname;
         this.surname = surname;
         this.bio = bio;
         this.profilePictureURL = profilePictureURL;
         this.country = country;
-        this.password = password;
         this.tripList = tripList;
     }
 }
