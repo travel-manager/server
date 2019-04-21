@@ -18,6 +18,10 @@ public class TravellerService extends HateoasService<Traveller, Integer> {
         this.repository = repository;
     }
 
+    public Traveller getByUsername(String username){
+        return null;
+    }
+
     @Override
     public Class<? extends HateoasService<Traveller, Integer>> getClazz() {
         return this.getClass();
