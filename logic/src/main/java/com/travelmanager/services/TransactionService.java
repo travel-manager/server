@@ -35,4 +35,12 @@ public class TransactionService extends HateoasService<Transaction, Integer> imp
     public Class<? extends HateoasService<Transaction, Integer>> getClazz() {
         return this.getClass();
     }
+
+    public List<Transaction> getAllByPayerAndTripId(String payer, int tripId){
+        return null;
+    }
+
+    public List<Transaction> getAllByFreeLoaderAndTripId(String freeLoader, int tripId){
+        return null;
+    }
 }
