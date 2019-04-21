@@ -6,6 +6,8 @@ import com.travelmanager.repositories.IMarkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MarkerService extends HateoasService<Marker, Integer> {
 
@@ -19,5 +21,13 @@ public class MarkerService extends HateoasService<Marker, Integer> {
     @Override
     public Class<? extends HateoasService<Marker, Integer>> getClazz() {
         return this.getClass();
+    }
+
+    public List<Marker> getAllMarkersByTripId(int tripId){
+        return null;
+    }
+
+    public Boolean deleteAllMarkersByTripId(int tripId){
+        return false;
     }
 }
