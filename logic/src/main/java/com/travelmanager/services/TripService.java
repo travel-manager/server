@@ -7,6 +7,9 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -20,8 +23,22 @@ public class TripService extends HateoasService<Trip, Integer> {
         super(repository);
     }
 
-    public List<Trip> getAllByDateEndAndDateStart(String dateStart, String dateEnd, Boolean isPublic){
-        
+    public List<Trip> getAllByDateEndAndDateStart(Date dateStart, Date dateEnd, Boolean isPublic){
+        if(dateEnd.after(dateStart)){
+            return null;// get trips public and start na datestart en end voor dateend;
+        }else{
+            List<Trip> trips = new ArrayList<>();
+            trips.add(null);
+            return trips;
+        }
+    }
+
+    public List<Trip> getAllByLatAndLong(long latitude, long longitude, long range){
+        long latMinusRange = latitude - range;
+        long latPlusRange = latitude + range;
+        long longMinusRange = longitude - range;
+        long longPlusRange = latitude + range;
+        return null;
     }
 
     @Override
