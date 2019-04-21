@@ -1,22 +1,22 @@
 package com.travelmanager.models;
 
-import com.travelmanager.enums.Gender;
-import com.travelmanager.enums.Language;
-import com.travelmanager.enums.Nationality;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
-import org.springframework.hateoas.Link;
+import lombok.NoArgsConstructor;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Setter
 @Entity(name = "Travellers")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Traveller extends ResourceSupport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @JsonProperty("id")
     private Integer id;
 
     @Getter
@@ -48,23 +48,22 @@ public class Traveller extends ResourceSupport {
 //    private String password;
 
     //private List<Language> languageSpoken;
-//    @Getter
-//    @OneToMany
-//    @JoinTable(name="members")
-//    private List<Trip> tripList;
+    @Getter
+    @OneToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "members",
+            joinColumns = {@JoinColumn(name = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "trips_id")})
+    private List<Trip> tripList;
 
     //private Nationality nationality;
 
-    public Traveller() {
-    }
-
-    public Traveller(String username, String firstname, String surname, String bio, String profilePictureURL, String country) {
+    public Traveller(String username, String firstname, String surname, String bio, String profilePictureURL, String country, List<Trip> tripList) {
         this.username = username;
         this.firstname = firstname;
         this.surname = surname;
         this.bio = bio;
         this.profilePictureURL = profilePictureURL;
         this.country = country;
-        //this.tripList = tripList;
+        this.tripList = tripList;
     }
 }

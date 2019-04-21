@@ -86,8 +86,7 @@ public abstract class HateoasController<T extends ResourceSupport, Identifier ex
 
     @PutMapping(value = "/")
     @WrapWithLink
-    public HttpEntity<HateoasResponse> update(@RequestBody String entityString) {
-        T entity = gson.fromJson(entityString, (Type) this.getType());
+    public HttpEntity<HateoasResponse> update(@RequestBody T entity) {
         service.update(entity);
         return HateoasUtil.build(entity);
     }
