@@ -1,5 +1,6 @@
 package com.travelmanager.hateoas.abstracts;
 
+import com.google.gson.Gson;
 import com.travelmanager.hateoas.annotations.WrapWithLink;
 import com.travelmanager.hateoas.utils.HateoasResponse;
 import com.travelmanager.hateoas.utils.HateoasUtil;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +26,8 @@ import java.util.stream.Collectors;
  * @author lfb0801
  */
 public abstract class HateoasController<T extends ResourceSupport, Identifier extends Serializable> {
+
+    Gson gson = new Gson();
 
     private HateoasService<T, Identifier> service;
 
@@ -37,6 +41,8 @@ public abstract class HateoasController<T extends ResourceSupport, Identifier ex
      * @return class of the instance.
      */
     public abstract Class<? extends HateoasController<T, Identifier>> getClazz();
+
+    public abstract Class<? extends ResourceSupport> getType();
 
     /**
      * Retrieve the options for this rest services.
@@ -78,9 +84,10 @@ public abstract class HateoasController<T extends ResourceSupport, Identifier ex
         return HateoasUtil.build(result);
     }
 
-    @PutMapping(value = "/{entity}")
+    @PutMapping(value = "/")
     @WrapWithLink
-    public HttpEntity<HateoasResponse> update(@PathVariable T entity) {
+    public HttpEntity<HateoasResponse> update(@RequestBody String entityString) {
+        T entity = gson.fromJson(entityString, (Type) this.getType());
         service.update(entity);
         return HateoasUtil.build(entity);
     }

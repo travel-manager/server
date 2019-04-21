@@ -4,11 +4,12 @@ import com.travelmanager.hateoas.abstracts.HateoasController;
 import com.travelmanager.models.Traveller;
 import com.travelmanager.services.TravellerService;
 import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/traveller")
+@RequestMapping("/travellers")
 public class TravellerController extends HateoasController<Traveller, Integer> {
 
     @Setter
@@ -36,5 +37,10 @@ public class TravellerController extends HateoasController<Traveller, Integer> {
     @Override
     public Class<? extends HateoasController<Traveller, Integer>> getClazz() {
         return this.getClass();
+    }
+
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Traveller.class;
     }
 }

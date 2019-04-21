@@ -15,7 +15,8 @@ import java.util.List;
 @Entity(name = "Travellers")
 public class Traveller extends ResourceSupport {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     @Getter
@@ -47,23 +48,23 @@ public class Traveller extends ResourceSupport {
 //    private String password;
 
     //private List<Language> languageSpoken;
-    @Getter
-    @OneToMany
-    @JoinTable(name="members")
-    private List<Trip> tripList;
+//    @Getter
+//    @OneToMany
+//    @JoinTable(name="members")
+//    private List<Trip> tripList;
 
     //private Nationality nationality;
 
     public Traveller() {
     }
 
-    public Traveller(String username, String firstname, String surname, String bio, String profilePictureURL, String country, List<Trip> tripList) {
+    public Traveller(String username, String firstname, String surname, String bio, String profilePictureURL, String country) {
         this.username = username;
         this.firstname = firstname;
         this.surname = surname;
         this.bio = bio;
         this.profilePictureURL = profilePictureURL;
         this.country = country;
-        this.tripList = tripList;
+        //this.tripList = tripList;
     }
 }

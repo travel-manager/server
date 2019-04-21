@@ -8,6 +8,7 @@ import com.travelmanager.models.Traveller;
 import com.travelmanager.services.TransactionService;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,5 +30,10 @@ public class TransactionController extends HateoasController<Transaction, Intege
     @Override
     public Class<? extends HateoasController<Transaction, Integer>> getClazz() {
         return this.getClass();
+    }
+
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Transaction.class;
     }
 }
