@@ -45,6 +45,7 @@ public class Trip extends ResourceSupport {
 //    @JoinColumn(name = "id",table = "travellers")
 //    private Traveller owner;
 
+    @Getter
     private String owner;
 
     @Getter @OneToMany(cascade = CascadeType.ALL)
