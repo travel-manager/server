@@ -5,6 +5,7 @@ import com.travelmanager.hateoas.abstracts.HateoasController;
 import com.travelmanager.services.TripService;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,5 +23,10 @@ public class TripController extends HateoasController<Trip, Integer> {
     @Override
     public Class<? extends HateoasController<Trip, Integer>> getClazz() {
         return this.getClass();
+    }
+
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Trip.class;
     }
 }

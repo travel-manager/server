@@ -1,8 +1,10 @@
 package com.travelmanager.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.catalina.User;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
@@ -31,9 +33,7 @@ public class Trip extends ResourceSupport {
     private DateFormat dateStartTrip;
     @Column(name = "dateend")
     private DateFormat dateEndTrip;
-    @OneToMany
-    @JoinTable(name = "members")
-    private List<Traveller>travellerList;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id",table = "travellers")
     private Traveller owner;
@@ -76,10 +76,15 @@ public class Trip extends ResourceSupport {
     private String description;
     @Column(name = "public")
     private Boolean isPublic;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id",table = "travellers")
+    @JsonIgnore
     private Traveller owner;
-
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "members",
+            joinColumns = {@JoinColumn(name = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "travellers_id")})
+    private List<Traveller>travellerList;
 
     public Trip() {
     }

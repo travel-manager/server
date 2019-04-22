@@ -6,6 +6,7 @@ import com.travelmanager.models.Notification;
 import com.travelmanager.services.NotificationService;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +25,10 @@ public class NotificationController extends HateoasController<Notification, Inte
     @Override
     public Class<? extends HateoasController<Notification, Integer>> getClazz() {
         return this.getClass();
+    }
+
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Notification.class;
     }
 }

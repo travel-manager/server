@@ -28,6 +28,7 @@
     <orderEntry type="module" module-name="domain" />
     <orderEntry type="module" module-name="hateoas" />
     <orderEntry type="library" name="Maven: org.assertj:assertj-core:3.11.1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.5" level="project" />
     <orderEntry type="module" module-name="logic" />
     <orderEntry type="module" module-name="dal" />
     <orderEntry type="library" name="Maven: org.mindrot:jbcrypt:0.3m" level="project" />

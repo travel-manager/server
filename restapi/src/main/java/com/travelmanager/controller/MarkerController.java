@@ -6,6 +6,7 @@ import com.travelmanager.models.Marker;
 import com.travelmanager.services.MarkerService;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.ResourceSupport;
 
 public class MarkerController extends HateoasController<Marker, Integer> {
 
@@ -21,4 +22,8 @@ public class MarkerController extends HateoasController<Marker, Integer> {
     public Class<? extends HateoasController<Marker, Integer>> getClazz() {
         return this.getClass();
     }
-}
+    @Override
+
+    public Class<? extends ResourceSupport> getType() {
+        return Marker.class;
+    }}
