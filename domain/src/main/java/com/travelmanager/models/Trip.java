@@ -40,11 +40,13 @@ public class Trip extends ResourceSupport {
     @Getter @Column(name = "public")
     private Boolean isPublic;
 
-    @Getter @OneToMany(cascade = CascadeType.MERGE)
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id",table = "travellers")
-    @JsonIgnore
-    private Traveller owner;
+//    @Getter @OneToMany(cascade = CascadeType.MERGE)
+//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "id",table = "travellers")
+//    private Traveller owner;
+
+    @Getter
+    private String owner;
 
     @Getter @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "members",
@@ -52,7 +54,7 @@ public class Trip extends ResourceSupport {
             inverseJoinColumns = {@JoinColumn(name = "travellers_id")})
     private List<Traveller>travellerList;
 
-    public Trip(String location, String name, String picture, String datestart, String dateend, Float latitude, Float longtitude, String description, Boolean isPublic, Traveller owner) {
+    public Trip(String location, String name, String picture, String datestart, String dateend, Float latitude, Float longtitude, String description, Boolean isPublic, String owner) {
         this.location = location;
         this.name = name;
         this.picture = picture;

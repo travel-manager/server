@@ -31,7 +31,7 @@ public class TravellerService extends HateoasService<Traveller, Integer> {
             tr.setSurname(traveller.getSurname());
             tr.setUsername(traveller.getUsername());
             tr.setBio(traveller.getBio());
-            tr.setProfilePictureURL(traveller.getProfilePictureURL());
+            tr.setPicture(traveller.getPicture());
             tr.setTrips(traveller.getTrips());
             repository.save(tr);
         }

@@ -38,7 +38,7 @@ public class Traveller extends ResourceSupport {
     private String bio;
     @Getter
     @Column(name = "picture")
-    private String profilePictureURL;
+    private String picture;
 //    @Column(name = "Rating")
 //    private Double rating;
 //    @Column(name = "Gender")
@@ -66,7 +66,7 @@ public class Traveller extends ResourceSupport {
         this.firstname = firstname;
         this.surname = surname;
         this.bio = bio;
-        this.profilePictureURL = profilePictureURL;
+        this.picture = profilePictureURL;
         this.country = country;
         this.trips = trips;
     }
