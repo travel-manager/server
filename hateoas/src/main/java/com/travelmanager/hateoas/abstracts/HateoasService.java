@@ -2,6 +2,7 @@ package com.travelmanager.hateoas.abstracts;
 
 import lombok.Getter;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.hateoas.ResourceSupport;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -12,7 +13,7 @@ import java.util.Optional;
  *
  * @author lfb0801
  */
-public abstract class HateoasService<T, Identifier> {
+public abstract class HateoasService<T extends ResourceSupport, Identifier> {
 
     @Getter
     private PagingAndSortingRepository<T, Identifier> repo;
@@ -27,6 +28,8 @@ public abstract class HateoasService<T, Identifier> {
      * @return class of the instance.
      */
     public abstract Class<? extends HateoasService<T, Identifier>> getClazz();
+
+    public abstract Class<? extends ResourceSupport> getType();
 
     public void create(T entity) {
         repo.save(entity);

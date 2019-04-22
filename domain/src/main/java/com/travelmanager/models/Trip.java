@@ -2,6 +2,7 @@ package com.travelmanager.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.catalina.User;
 import org.springframework.data.jpa.repository.Query;
@@ -12,82 +13,42 @@ import javax.persistence.*;
 import java.text.DateFormat;
 import java.util.List;
 
-@Getter
 @Entity(name = "Trips")
+@NoArgsConstructor
 public class Trip extends ResourceSupport {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    public Link getId() {
-        return new Link(id.toString());
-    }
-
-    //    @Column(name = "LocationList")
-    //  private List<Location> locationList;
-/*
-    private String name;
-    @Column(name = "picture")
-    private String pictureURL;
-    @Column(name = "datestart")
-    private DateFormat dateStartTrip;
-    @Column(name = "dateend")
-    private DateFormat dateEndTrip;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id",table = "travellers")
-    private Traveller owner;
-//    @OneToOne
-//    private Chat chat;
-    @OneToMany
-    @JoinTable(name = "members")
-    private List<Transaction>transactionList;
-    @OneToMany
-    private List<Marker> markerList;
-    //  private List<Notification>notificationL ist;
-
-    @Column(name = "lat")
-    private float latitude;
-
-    @Column(name = "long")
-    private float longitude;
-
-    @Column(name = "public")
-    private int isPublic;
-
-    private String description;
-
-*/
-    @Column(name = "location")
+    @Getter @Column(name = "location")
     private String location;
-    @Column(name = "name")
+    @Getter @Column(name = "name")
     private String name;
-    @Column(name = "picture")
+    @Getter @Column(name = "picture")
     private String picture;
-    @Column(name = "datestart")
+    @Getter @Column(name = "datestart")
     private String datestart;
-    @Column(name = "dateend")
+    @Getter @Column(name = "dateend")
     private String dateend;
-    @Column(name = "lat")
+    @Getter @Column(name = "lat")
     private Float latitude;
-    @Column(name = "long")
+    @Getter @Column(name = "long")
     private Float longtitude;
-    @Column(name = "description")
+    @Getter @Column(name = "description")
     private String description;
-    @Column(name = "public")
+    @Getter @Column(name = "public")
     private Boolean isPublic;
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @Getter @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+
     @JoinColumn(name = "id",table = "travellers")
     @JsonIgnore
     private Traveller owner;
-    @OneToMany(cascade = CascadeType.MERGE)
+
+    @Getter @OneToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "members",
             joinColumns = {@JoinColumn(name = "id")},
             inverseJoinColumns = {@JoinColumn(name = "travellers_id")})
     private List<Traveller>travellerList;
-
-    public Trip() {
-    }
 
     public Trip(String location, String name, String picture, String datestart, String dateend, Float latitude, Float longtitude, String description, Boolean isPublic, Traveller owner) {
         this.location = location;

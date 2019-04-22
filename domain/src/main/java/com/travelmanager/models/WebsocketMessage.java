@@ -1,9 +1,11 @@
 package com.travelmanager.models;
 
+import org.springframework.hateoas.ResourceSupport;
+
 import javax.persistence.*;
 
 @Entity(name = "messages")
-public class WebsocketMessage {
+public class WebsocketMessage extends ResourceSupport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

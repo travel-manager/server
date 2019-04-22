@@ -7,6 +7,7 @@ import com.travelmanager.interfaces.ITransactionService;
 import com.travelmanager.models.Transaction;
 import com.travelmanager.models.Traveller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,5 +35,10 @@ public class TransactionService extends HateoasService<Transaction, Integer> imp
     @Override
     public Class<? extends HateoasService<Transaction, Integer>> getClazz() {
         return this.getClass();
+    }
+
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Transaction.class;
     }
 }

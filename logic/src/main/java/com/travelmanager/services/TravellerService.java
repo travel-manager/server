@@ -5,6 +5,7 @@ import com.travelmanager.repositories.ITravellerRepository;
 import com.travelmanager.hateoas.abstracts.HateoasService;
 import com.travelmanager.models.Traveller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,5 +22,10 @@ public class TravellerService extends HateoasService<Traveller, Integer> {
     @Override
     public Class<? extends HateoasService<Traveller, Integer>> getClazz() {
         return this.getClass();
+    }
+
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Traveller.class;
     }
 }
