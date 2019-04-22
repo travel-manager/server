@@ -13,11 +13,6 @@ import java.util.List;
 @Entity(name = "travellers")
 @NoArgsConstructor
 @AllArgsConstructor
-<<<<<<< HEAD
-//  @NamedQuery(name = "Travellers.update", query = "UPDATE travellers SET firstname = 'name' WHERE travellers.traveller_id = id ")
-=======
-@Setter
->>>>>>> 7e677bd0f3bca614f5d4674b3f6741ae5cc3967b
 public class Traveller extends ResourceSupport {
 
     @Id
