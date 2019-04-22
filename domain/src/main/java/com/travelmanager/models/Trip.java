@@ -38,6 +38,7 @@ public class Trip extends ResourceSupport {
     private String description;
     @Getter @Column(name = "public")
     private Boolean isPublic;
+<<<<<<< HEAD
     @Getter @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 
     @JoinColumn(name = "id",table = "travellers")
@@ -45,6 +46,13 @@ public class Trip extends ResourceSupport {
     private Traveller owner;
 
     @Getter @OneToMany(cascade = CascadeType.MERGE)
+=======
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id",table = "travellers")
+    @JsonIgnore
+    private Traveller owner;
+    @OneToMany(cascade = CascadeType.ALL)
+>>>>>>> 7e677bd0f3bca614f5d4674b3f6741ae5cc3967b
     @JoinTable(name = "members",
             joinColumns = {@JoinColumn(name = "id")},
             inverseJoinColumns = {@JoinColumn(name = "travellers_id")})
