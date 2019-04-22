@@ -10,6 +10,7 @@ import org.springframework.hateoas.ResourceSupport;
 import javax.persistence.*;
 import java.util.List;
 
+@Setter
 @Entity(name = "travellers")
 @NoArgsConstructor
 @AllArgsConstructor
