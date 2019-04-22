@@ -10,10 +10,10 @@ import org.springframework.hateoas.ResourceSupport;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "Travellers")
+@Setter
+@Entity(name = "travellers")
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
 public class Traveller extends ResourceSupport {
 
     @Id
@@ -51,22 +51,23 @@ public class Traveller extends ResourceSupport {
 //    private String password;
 
     //private List<Language> languageSpoken;
+
     @Getter
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "members",
             joinColumns = {@JoinColumn(name = "id")},
             inverseJoinColumns = {@JoinColumn(name = "trips_id")})
-    private List<Trip> tripList;
+    private List<Trip> trips;
 
     //private Nationality nationality;
 
-    public Traveller(String username, String firstname, String surname, String bio, String profilePictureURL, String country, List<Trip> tripList) {
+    public Traveller(String username, String firstname, String surname, String bio, String profilePictureURL, String country, List<Trip> trips) {
         this.username = username;
         this.firstname = firstname;
         this.surname = surname;
         this.bio = bio;
         this.profilePictureURL = profilePictureURL;
         this.country = country;
-        this.tripList = tripList;
+        this.trips = trips;
     }
 }

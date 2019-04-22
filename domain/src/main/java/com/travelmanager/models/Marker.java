@@ -2,21 +2,19 @@ package com.travelmanager.models;
 
 import com.travelmanager.enums.MarkerType;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 
-@Getter
+@Setter
 @Entity(name = "Markers")
 public class Marker  extends ResourceSupport {
     @Id
     @GeneratedValue
-    private Integer id;
+    public Integer id;
 
-    public Link getId() {
-        return new Link(id.toString());
-    }
     /*private String markerJsonString;
     @OneToOne
     private Traveller placedBy;
@@ -29,17 +27,17 @@ public class Marker  extends ResourceSupport {
     private String location;
     private MarkerType type;*/
 
-    @Column(name = "lat")
+    @Getter @Column(name = "lat")
     private Float latitude;
-    @Column(name = "long")
+    @Getter @Column(name = "long")
     private Float longtitude;
-    @Column(name = "type")
+    @Getter @Column(name = "type")
     private String type;
-    @Column(name = "creator")
+    @Getter @Column(name = "creator")
     private String creator;
-    @Column(name = "note")
+    @Getter @Column(name = "note")
     private String note;
-    @OneToOne
+    @Getter @OneToOne
     @JoinColumn(name = "id",table = "trips")
     private Trip trip;
 

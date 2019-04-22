@@ -1,6 +1,7 @@
 package com.travelmanager.hateoas.abstracts;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.travelmanager.hateoas.annotations.WrapWithLink;
 import com.travelmanager.hateoas.utils.HateoasResponse;
 import com.travelmanager.hateoas.utils.HateoasUtil;
@@ -83,13 +84,13 @@ public abstract class HateoasController<T extends ResourceSupport, Identifier ex
         final T result = service.read(id);
         return HateoasUtil.build(result);
     }
-
-    @PutMapping(value = "/")
-    @WrapWithLink
-    public HttpEntity<HateoasResponse> update(@RequestBody T entity) {
-        service.update(entity);
-        return HateoasUtil.build(entity);
-    }
+// TODO: 22-4-2019 fix: get id from entity
+//    @PutMapping(value = "/")
+//    @WrapWithLink
+//    public HttpEntity<HateoasResponse> update(@RequestBody T entity) {
+//        service.update(entity);
+//        return HateoasUtil.build(entity);
+//    }
 
     @DeleteMapping(value = "/{id}")
     @WrapWithLink
