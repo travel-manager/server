@@ -2,31 +2,33 @@ package com.travelmanager.models;
 
 import com.travelmanager.enums.NotificationType;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Getter
+@Setter
 @Entity(name = "Notifications")
 public class Notification extends ResourceSupport {
     @Id
     @GeneratedValue
-    private Integer id;
+    public Integer id;
 
-    public Link getId() {
-        return new Link(id.toString());
-    }
-
+    @Getter
     @Column(name = "timestamp")
     private String timestamp;
+    @Getter
     @Column(name = "type")
     private String type;
+    @Getter
     @Column(name = "content")
     private String content;
+    @Getter
     @Column(name = "icon")
     private String icon;
+    @Getter
     @OneToOne
     @JoinColumn(name = "id",table = "trips")
     private Trip trip;

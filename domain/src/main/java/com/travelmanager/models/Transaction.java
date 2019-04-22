@@ -1,6 +1,7 @@
 package com.travelmanager.models;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
@@ -8,32 +9,29 @@ import javax.persistence.*;
 import java.text.DateFormat;
 import java.util.List;
 
-@Getter
+@Setter
 @Entity(name = "Transactions")
 public class Transaction extends ResourceSupport {
     @Id
     @GeneratedValue
-    private Integer id;
+    public Integer id;
 
-    public Link getId() {
-        return new Link(id.toString());
-    }
-    @OneToOne(fetch = FetchType.LAZY)
+    @Getter @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id",table = "travellers")
     private Traveller payer;
     /*@OneToOne
     @JoinColumn(name = "idTrips",referencedColumnName = "id")
 */
-    @OneToOne(fetch = FetchType.LAZY)
+    @Getter @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id",table = "trips")
     private Trip trip;
-    @Column(name = "amount")
+    @Getter @Column(name = "amount")
     private Double amount;
-    @Column(name = "freeloader")
+    @Getter @Column(name = "freeloader")
     private String freeloaders;
-    @Column(name = "subject")
+    @Getter @Column(name = "subject")
     private String subject;
-    @Column(name = "unit")
+    @Getter @Column(name = "unit")
     private String unit;
 
     public Transaction() {

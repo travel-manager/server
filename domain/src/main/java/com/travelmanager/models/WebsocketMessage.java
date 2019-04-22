@@ -1,21 +1,28 @@
 package com.travelmanager.models;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 
+@Setter
 @Entity(name = "messages")
 public class WebsocketMessage extends ResourceSupport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    public Integer id;
 
+    @Getter
     @Column(name = "idTravellers")
     private Integer idTravellers;
+    @Getter
     @Column(name = "idTrips")
     private Integer idTrips;
 
+    @Getter
     private String content;
+    @Getter
     private String timestamp;
 
     public WebsocketMessage() {

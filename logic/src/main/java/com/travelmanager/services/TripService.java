@@ -1,5 +1,6 @@
 package com.travelmanager.services;
 
+import com.travelmanager.models.Traveller;
 import com.travelmanager.repositories.ITripRepository;
 import com.travelmanager.hateoas.abstracts.HateoasService;
 import com.travelmanager.models.Trip;
@@ -17,6 +18,24 @@ public class TripService extends HateoasService<Trip, Integer> {
     @Autowired
     public TripService(ITripRepository repository) {
         super(repository);
+    }
+
+    public void update(Trip trip){
+        if(repository.findById(trip.id).isPresent()){
+            Trip tr = repository.findById(trip.id).get();
+            tr.setDateend(trip.getDateend());
+            tr.setDatestart(tr.getDatestart());
+            tr.setDescription(trip.getDescription());
+            tr.setIsPublic(trip.getIsPublic());
+            tr.setLatitude(trip.getLatitude());
+            tr.setLongtitude(trip.getLongtitude());
+            tr.setLocation(trip.getLocation());
+            tr.setName(trip.getName());
+            tr.setOwner(trip.getOwner());
+            tr.setPicture(trip.getPicture());
+            tr.setTravellerList(trip.getTravellerList());
+            repository.save(tr);
+        }
     }
 
     @Override

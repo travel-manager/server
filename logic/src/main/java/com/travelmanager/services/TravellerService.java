@@ -9,6 +9,7 @@ import org.springframework.hateoas.ResourceSupport;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Convert;
+import java.lang.reflect.Field;
 
 @Service
 public class TravellerService extends HateoasService<Traveller, Integer> {

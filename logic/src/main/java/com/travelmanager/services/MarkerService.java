@@ -12,13 +12,23 @@ import javax.persistence.OneToMany;
 @Service
 public class MarkerService extends HateoasService<Marker, Integer> {
 
-    private IMarkerRepository repo;
+    private IMarkerRepository repository;
 
     @Autowired
     public MarkerService(IMarkerRepository _repo) {
         super(_repo);
     }
 
+    public void update(Marker object){
+        if(repository.findById(object.id).isPresent()){
+            Marker ent = repository.findById(object.id).get();
+            ent.setLatitude(object.getLatitude());
+            ent.setLongtitude(object.getLongtitude());
+            ent.setNote(object.getNote());
+            ent.setType(object.getType());
+            repository.save(ent);
+        }
+    }
 
     @Override
     public Class<? extends HateoasService<Marker, Integer>> getClazz() {

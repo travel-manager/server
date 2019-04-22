@@ -26,6 +26,19 @@ public class TransactionService extends HateoasService<Transaction, Integer> imp
         this.component = _component;
     }
 
+    public void update(Transaction object){
+        if(repository.findById(object.id).isPresent()){
+            Transaction ent = repository.findById(object.id).get();
+            ent.setAmount(object.getAmount());
+            ent.setFreeloaders(object.getFreeloaders());
+            ent.setPayer(object.getPayer());
+            ent.setTrip(object.getTrip());
+            ent.setSubject(object.getSubject());
+            ent.setUnit(object.getUnit());
+            repository.save(ent);
+        }
+    }
+
     @Override
     public Transaction calculatePayRequestForTraveller(Traveller traveller) {
         // TODO: 10-4-2019 let component handle the calculation 

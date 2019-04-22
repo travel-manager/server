@@ -13,12 +13,13 @@ import javax.persistence.*;
 import java.text.DateFormat;
 import java.util.List;
 
+@Setter
 @Entity(name = "Trips")
 @NoArgsConstructor
 public class Trip extends ResourceSupport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    public Integer id;
 
     @Getter @Column(name = "location")
     private String location;
@@ -45,7 +46,7 @@ public class Trip extends ResourceSupport {
     @JsonIgnore
     private Traveller owner;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @Getter @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "members",
             joinColumns = {@JoinColumn(name = "id")},
             inverseJoinColumns = {@JoinColumn(name = "travellers_id")})
