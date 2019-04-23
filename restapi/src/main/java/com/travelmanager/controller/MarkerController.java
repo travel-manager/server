@@ -15,18 +15,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/marker")
 public class MarkerController extends HateoasController<Marker, Integer> {
 
-    Gson json = new Gson();
+    Gson gson = new Gson();
 
     @Setter
-    MarkerService service;
+    private MarkerService service;
 
-    @Autowired
     public MarkerController(MarkerService _service) {
         super(_service);
+        service = _service;
     }
 
     @Override
@@ -36,7 +38,9 @@ public class MarkerController extends HateoasController<Marker, Integer> {
 
     @RequestMapping(value = "/getallbytrip", method = RequestMethod.GET)
     public ResponseEntity<String> getAllMarkersByTripId(@RequestParam(name = "tripid") int tripId){
-        return new ResponseEntity<String>(json.toJson(service.getAllMarkersByTripId(tripId)), HttpStatus.OK);
+        List<Marker> markers = service.getAllMarkersByTripId(tripId);
+        String json = gson.toJson(markers);
+        return new ResponseEntity<String>(json, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/deletebytrip", method = RequestMethod.DELETE)

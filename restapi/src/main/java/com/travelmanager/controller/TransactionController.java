@@ -25,9 +25,9 @@ public class TransactionController extends HateoasController<Transaction, Intege
     @Setter
     private TransactionService service;
 
-    @Autowired
     public TransactionController(TransactionService _service) {
         super(_service);
+        service = _service;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class TransactionController extends HateoasController<Transaction, Intege
     }
 
     @RequestMapping(value = "/getallbypayerandtripid", method = RequestMethod.GET)
-    public ResponseEntity<String> getAllByPayerAndTripId(@RequestParam(name = "payer") String payer, @RequestParam(name = "tripId") int tripId){
+    public ResponseEntity<String> getAllByPayerAndTripId(@RequestParam(name = "payer") int payer, @RequestParam(name = "tripId") int tripId){
         return new ResponseEntity<String>(json.toJson(service.getAllByPayerAndTripId(payer,tripId)), HttpStatus.OK);
     }
 

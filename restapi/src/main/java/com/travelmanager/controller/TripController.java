@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.travelmanager.models.Traveller;
 import com.travelmanager.models.Trip;
 import com.travelmanager.hateoas.abstracts.HateoasController;
+import com.travelmanager.services.TravellerService;
 import com.travelmanager.services.TripService;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,11 @@ public class TripController extends HateoasController<Trip, Integer> {
     private Gson gson = new Gson();
 
     @Setter
-    TripService service;
+    private TripService service;
 
-    @Autowired
     public TripController(TripService _service) {
         super(_service);
+        service = _service;
     }
 
     @GetMapping(value = "/getbydate")

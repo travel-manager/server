@@ -12,8 +12,8 @@ import java.text.DateFormat;
 import java.util.List;
 
 @Getter
-@Entity(name = "Transactions")
-public class Transaction extends ResourceSupport implements HateoasObject {
+@Entity(name = "transactions")
+public class Transaction extends ResourceSupport implements HateoasObject{
     @Id
     @GeneratedValue
     private Integer id;

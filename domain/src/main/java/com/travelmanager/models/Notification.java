@@ -12,8 +12,8 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Getter
-@Entity(name = "Notifications")
-public class Notification extends ResourceSupport implements HateoasObject {
+@Entity(name = "notifications")
+public class Notification extends ResourceSupport implements HateoasObject{
     @Id
     @GeneratedValue
     private Integer id;

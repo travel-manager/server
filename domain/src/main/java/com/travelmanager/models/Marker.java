@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Getter
-@Entity(name = "Markers")
+@Entity(name = "markers")
 public class Marker  extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue

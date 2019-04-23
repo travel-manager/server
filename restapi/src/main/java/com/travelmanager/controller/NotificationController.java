@@ -2,11 +2,9 @@ package com.travelmanager.controller;
 
 import com.google.gson.Gson;
 import com.travelmanager.hateoas.abstracts.HateoasController;
-import com.travelmanager.hateoas.abstracts.HateoasService;
 import com.travelmanager.models.Notification;
 import com.travelmanager.services.NotificationService;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +21,9 @@ public class NotificationController extends HateoasController<Notification, Inte
     @Setter
     private NotificationService service;
 
-    @Autowired
     public NotificationController(NotificationService _service) {
         super(_service);
+        service = _service;
     }
 
     @Override

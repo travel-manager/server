@@ -15,8 +15,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @Setter
-@Entity(name = "Travellers")
-public class Traveller extends ResourceSupport implements HateoasObject {
+@Entity(name = "travellers")
+public class Traveller extends ResourceSupport  implements HateoasObject{
     @Id
     @GeneratedValue
     private Integer id;
@@ -53,21 +53,21 @@ public class Traveller extends ResourceSupport implements HateoasObject {
     @Getter
     @OneToMany
     @JoinTable(name="members")
-    private List<Trip> tripList;
+    private transient List<Trip> trips;
 
     //private Nationality nationality;
 
     public Traveller() {
     }
 
-    public Traveller(String username, String firstname, String surname, String bio, String profilePictureURL, String country, List<Trip> tripList) {
+    public Traveller(String username, String firstname, String surname, String bio, String profilePictureURL, String country, List<Trip> trips) {
         this.username = username;
         this.firstname = firstname;
         this.surname = surname;
         this.bio = bio;
         this.profilePictureURL = profilePictureURL;
         this.country = country;
-        this.tripList = tripList;
+        this.trips = trips;
     }
 
     @Override
