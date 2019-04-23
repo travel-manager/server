@@ -1,9 +1,14 @@
 package com.travelmanager.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+import org.springframework.hateoas.ResourceSupport;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name = "messages")
-public class WebsocketMessage {
+public class WebsocketMessage extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,5 +29,11 @@ public class WebsocketMessage {
         this.idTrips = idTrips;
         this.content = content;
         this.timestamp = timestamp;
+    }
+
+    @Override
+    @JsonIgnore
+    public Serializable getIdentifier() {
+        return this.id;
     }
 }

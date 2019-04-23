@@ -1,15 +1,18 @@
 package com.travelmanager.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travelmanager.enums.MarkerType;
+import com.travelmanager.hateoas.abstracts.HateoasObject;
 import lombok.Getter;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @Entity(name = "Markers")
-public class Marker  extends ResourceSupport {
+public class Marker  extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
     private Integer id;
@@ -53,5 +56,11 @@ public class Marker  extends ResourceSupport {
         this.creator = creator;
         this.note = note;
         this.trip = trip;
+    }
+
+    @Override
+    @JsonIgnore
+    public Serializable getIdentifier() {
+        return this.id;
     }
 }

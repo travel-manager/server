@@ -1,19 +1,22 @@
 package com.travelmanager.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travelmanager.enums.Gender;
 import com.travelmanager.enums.Language;
 import com.travelmanager.enums.Nationality;
+import com.travelmanager.hateoas.abstracts.HateoasObject;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Setter
 @Entity(name = "Travellers")
-public class Traveller extends ResourceSupport {
+public class Traveller extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
     private Integer id;
@@ -65,5 +68,11 @@ public class Traveller extends ResourceSupport {
         this.profilePictureURL = profilePictureURL;
         this.country = country;
         this.tripList = tripList;
+    }
+
+    @Override
+    @JsonIgnore
+    public Serializable getIdentifier() {
+        return this.id;
     }
 }

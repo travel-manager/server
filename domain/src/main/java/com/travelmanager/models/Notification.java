@@ -1,16 +1,19 @@
 package com.travelmanager.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travelmanager.enums.NotificationType;
+import com.travelmanager.hateoas.abstracts.HateoasObject;
 import lombok.Getter;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Getter
 @Entity(name = "Notifications")
-public class Notification extends ResourceSupport {
+public class Notification extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
     private Integer id;
@@ -40,5 +43,11 @@ public class Notification extends ResourceSupport {
         this.content = content;
         this.icon = icon;
         this.trip = trip;
+    }
+
+    @Override
+    @JsonIgnore
+    public Serializable getIdentifier() {
+        return this.id;
     }
 }

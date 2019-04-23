@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  *
  * @author lfb0801
  */
-public abstract class HateoasController<T extends ResourceSupport, Identifier extends Serializable> {
+public abstract class HateoasController<T extends ResourceSupport & HateoasObject, Identifier extends Serializable> {
 
     private HateoasService<T, Identifier> service;
 
@@ -78,9 +78,9 @@ public abstract class HateoasController<T extends ResourceSupport, Identifier ex
         return HateoasUtil.build(result);
     }
 
-    @PutMapping(value = "/{entity}")
+    @PutMapping(value = "/")
     @WrapWithLink
-    public HttpEntity<HateoasResponse> update(@PathVariable T entity) {
+    public HttpEntity<HateoasResponse> update(@RequestBody T entity) {
         service.update(entity);
         return HateoasUtil.build(entity);
     }

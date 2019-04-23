@@ -1,5 +1,7 @@
 package com.travelmanager.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.travelmanager.hateoas.abstracts.HateoasObject;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.catalina.User;
@@ -7,12 +9,13 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.List;
 
 @Getter
 @Entity(name = "Trips")
-public class Trip extends ResourceSupport {
+public class Trip extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
     private Integer id;
@@ -95,6 +98,12 @@ public class Trip extends ResourceSupport {
         this.description = description;
         this.isPublic = isPublic;
         this.owner = owner;
+    }
+
+    @Override
+    @JsonIgnore
+    public Serializable getIdentifier() {
+        return this.id;
     }
 
     /*public Trip(String name, String pictureURL, DateFormat dateStartTrip, DateFormat dateEndTrip, List<Traveller> travellerList, Traveller owner, List<Transaction> transactionList, List<Marker> markerList, float latitude, float longitude, int isPublic, String description) {
