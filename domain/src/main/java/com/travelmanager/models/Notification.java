@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Getter
-@Entity(name = "Notifications")
+@Entity(name = "notifications")
 public class Notification extends ResourceSupport {
     @Id
     @GeneratedValue

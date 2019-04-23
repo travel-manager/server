@@ -8,7 +8,7 @@ import org.springframework.hateoas.ResourceSupport;
 import javax.persistence.*;
 
 @Getter
-@Entity(name = "Markers")
+@Entity(name = "markers")
 public class Marker  extends ResourceSupport {
     @Id
     @GeneratedValue

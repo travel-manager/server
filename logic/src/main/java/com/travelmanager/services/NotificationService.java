@@ -26,10 +26,11 @@ public class NotificationService extends HateoasService<Notification, Integer> {
     }
 
     public List<Notification> getAllNotificationsByTripId(int tripId) {
-        return null;
+        return repository.getAllMarkersByTripId(tripId);
     }
 
     public boolean deleteAllNotificationsByTripId(int tripId) {
-        return false;
+        repository.deleteAllMarkersByTripId(tripId);
+        return true;
     }
 }
