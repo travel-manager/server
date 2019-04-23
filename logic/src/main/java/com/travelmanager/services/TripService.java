@@ -7,9 +7,9 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,11 +21,12 @@ public class TripService extends HateoasService<Trip, Integer> {
     @Autowired
     public TripService(ITripRepository repository) {
         super(repository);
+        this.repository  = repository;
     }
 
     public List<Trip> getAllByDateEndAndDateStart(Date dateStart, Date dateEnd, Boolean isPublic){
         if(dateEnd.after(dateStart)){
-            return null;// get trips public and start na datestart en end voor dateend;
+            return repository.getAllBetweenDates(dateStart,dateEnd);// get trips public and start na datestart en end voor dateend;
         }else{
             List<Trip> trips = new ArrayList<>();
             trips.add(null);
@@ -33,12 +34,12 @@ public class TripService extends HateoasService<Trip, Integer> {
         }
     }
 
-    public List<Trip> getAllByLatAndLong(long latitude, long longitude, long range){
-        long latMinusRange = latitude - range;
-        long latPlusRange = latitude + range;
-        long longMinusRange = longitude - range;
-        long longPlusRange = latitude + range;
-        return null;
+    public List<Trip> getAllByLatAndLong(Float latitude, Float longitude, Float range){
+        Float latMinusRange = latitude - range;
+        Float latPlusRange = latitude + range;
+        Float longMinusRange = longitude - range;
+        Float longPlusRange = latitude + range;
+        return repository.getAllBetweenLatAndLong(latMinusRange, latPlusRange, longMinusRange, longPlusRange);
     }
 
     @Override
