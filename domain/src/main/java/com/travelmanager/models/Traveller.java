@@ -18,7 +18,7 @@ import java.util.List;
 @Entity(name = "travellers")
 public class Traveller extends ResourceSupport  implements HateoasObject{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Getter
