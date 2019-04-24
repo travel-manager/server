@@ -1,5 +1,6 @@
 package com.travelmanager.controller;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.Gson;
 import com.travelmanager.hateoas.abstracts.HateoasController;
 import com.travelmanager.models.Traveller;
@@ -29,8 +30,8 @@ public class TravellerController extends HateoasController<Traveller, Integer> {
        return new ResponseEntity<>(gson.toJson(result), HttpStatus.OK);
     }
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<String> login(@RequestParam(name = "username", required = true) String username, @RequestParam(name = "password", required = true) String password){
-        Traveller result = service.login(username,password);
+    public ResponseEntity<String> login(@RequestBody ObjectNode node){
+        Traveller result = service.login(node.get("username").asText(),node.get("password").asText());
         if(result != null){
             if(result.getUsername() != null){
                 return new ResponseEntity<String>(gson.toJson(result), HttpStatus.OK);
@@ -44,14 +45,16 @@ public class TravellerController extends HateoasController<Traveller, Integer> {
 
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<String> register(@RequestParam(name = "firstName", required = true) String firstName, @RequestParam(name = "lastName", required = true) String lastName, @RequestParam(name = "username", required = true) String username, @RequestParam(name = "password", required = true) String password, @RequestParam(name = "country", required = true) String country){
+    public ResponseEntity<String> register(@RequestBody ObjectNode node){
         Traveller traveller = new Traveller();
-        traveller.setUsername(username);
-        traveller.setFirstname(firstName);
-        traveller.setLastname(lastName);
-        traveller.setCountry(country);
+        traveller.setUsername(node.get("username").asText());
+        traveller.setBio(node.get("bio").asText());
+        traveller.setPicture(node.get("picture").asText());
+        traveller.setFirstname(node.get("firstname").asText());
+        traveller.setLastname(node.get("lastname").asText());
+        traveller.setCountry(node.get("country").asText());
 
-        Traveller result = service.register(traveller, password);
+        Traveller result = service.register(traveller, node.get("password").asText());
         if(result != null){
             if(result.getUsername() == null){
                 return new ResponseEntity<String>("Username is Occupied", HttpStatus.METHOD_NOT_ALLOWED);

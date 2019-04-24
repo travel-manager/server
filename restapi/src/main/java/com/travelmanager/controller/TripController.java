@@ -16,6 +16,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+@CrossOrigin(origins = "http://travel-manager-final.herokuapp.com", maxAge = 3600)
 @RestController
 @RequestMapping("/trips")
 public class TripController extends HateoasController<Trip, Integer> {
