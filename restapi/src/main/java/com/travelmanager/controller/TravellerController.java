@@ -7,13 +7,10 @@ import com.travelmanager.services.TravellerService;
 import lombok.Setter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/traveller")
+@RequestMapping("/travellers")
 public class TravellerController extends HateoasController<Traveller, Integer> {
 
     private Gson gson = new Gson();
@@ -51,7 +48,7 @@ public class TravellerController extends HateoasController<Traveller, Integer> {
         Traveller traveller = new Traveller();
         traveller.setUsername(username);
         traveller.setFirstname(firstName);
-        traveller.setSurname(lastName);
+        traveller.setLastname(lastName);
         traveller.setCountry(country);
 
         Traveller result = service.register(traveller, password);
@@ -70,7 +67,7 @@ public class TravellerController extends HateoasController<Traveller, Integer> {
         Traveller traveller = new Traveller();
         traveller.setUsername("aefegsg");
         traveller.setFirstname("");
-        traveller.setSurname("");
+        traveller.setLastname("");
         traveller.setCountry("");
         traveller.setBio("");
         return new ResponseEntity<String>(service.test(traveller).toString(), HttpStatus.INTERNAL_SERVER_ERROR);

@@ -19,5 +19,8 @@ public interface ITripRepository extends PagingAndSortingRepository<Trip, Intege
     List<Trip> getAllBetweenDates(@Param("dateBegin") Date dateBegin, @Param("dateEnd") Date dateEnd);
 
     @Query("SELECT t from Trips t WHERE t.latitude BETWEEN :latMinus AND :latPlus AND t.longtitude BETWEEN :longMinus AND :longPlus")
-    List<Trip> getAllBetweenLatAndLong(@Param("latMinus") Float latMinus, @Param("latPlus") Float latPlus, @Param("longMinus") Float longMinus, @Param("longPlus") Float longPlus);
+    List<Trip> getAllBetweenLatAndLongWithRange(@Param("latMinus") Float latMinus, @Param("latPlus") Float latPlus, @Param("longMinus") Float longMinus, @Param("longPlus") Float longPlus);
+
+    @Query("SELECT t from Trips t WHERE t.latitude = :lat AND t.longtitude = :longitude")
+    List<Trip> getAllBetweenLatAndLong(@Param("lat") Float lat, @Param("longitude") Float longitude);
 }

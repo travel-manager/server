@@ -29,7 +29,7 @@ public class Traveller extends ResourceSupport  implements HateoasObject{
     private String firstname;
     @Getter
     @Column(name = "lastname")
-    private String surname;
+    private String lastname;
 //    @Column(name = "Mail")
 //    private String email;
     @Getter
@@ -37,7 +37,7 @@ public class Traveller extends ResourceSupport  implements HateoasObject{
     private String bio;
     @Getter
     @Column(name = "picture")
-    private String profilePictureURL;
+    private String picture;
 //    @Column(name = "Rating")
 //    private Double rating;
 //    @Column(name = "Gender")
@@ -63,9 +63,9 @@ public class Traveller extends ResourceSupport  implements HateoasObject{
     public Traveller(String username, String firstname, String surname, String bio, String profilePictureURL, String country, List<Trip> trips) {
         this.username = username;
         this.firstname = firstname;
-        this.surname = surname;
+        this.lastname = surname;
         this.bio = bio;
-        this.profilePictureURL = profilePictureURL;
+        this.picture = profilePictureURL;
         this.country = country;
         this.trips = trips;
     }

@@ -46,14 +46,16 @@ public class TripController extends HateoasController<Trip, Integer> {
     }
 
     @GetMapping(value = "/byLongAndLat")
-    public ResponseEntity<String> getAllByLatAndLong(@RequestParam(name = "lat", required = true) String latitude, @RequestParam(name = "long", required = true) String longitude, @RequestParam(name = "range", required = true) String range){
+    public ResponseEntity<String> getAllByLatAndLong(@RequestParam(name = "lat", required = true) String latitude, @RequestParam(name = "long", required = true) String longitude, @RequestParam(name = "range", required = false) String range){
         Float floatLatitude;
         Float floarLongitude;
-        Float floatRange;
+        Float floatRange = null;
         try{
             floatLatitude = Float.parseFloat(latitude);
             floarLongitude = Float.parseFloat(longitude);
-            floatRange = Float.parseFloat(range);
+            if(range != null){
+                floatRange = Float.parseFloat(range);
+            }
         }catch (Exception e){
             return new ResponseEntity<>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

@@ -35,11 +35,15 @@ public class TripService extends HateoasService<Trip, Integer> {
     }
 
     public List<Trip> getAllByLatAndLong(Float latitude, Float longitude, Float range){
-        Float latMinusRange = latitude - range;
-        Float latPlusRange = latitude + range;
-        Float longMinusRange = longitude - range;
-        Float longPlusRange = latitude + range;
-        return repository.getAllBetweenLatAndLong(latMinusRange, latPlusRange, longMinusRange, longPlusRange);
+        if(range != null){
+            Float latMinusRange = latitude - range;
+            Float latPlusRange = latitude + range;
+            Float longMinusRange = longitude - range;
+            Float longPlusRange = latitude + range;
+            return repository.getAllBetweenLatAndLongWithRange(latMinusRange, latPlusRange, longMinusRange, longPlusRange);
+        }else{
+            return repository.getAllBetweenLatAndLong(latitude,longitude);
+        }
     }
 
     @Override

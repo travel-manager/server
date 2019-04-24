@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/marker")
+@RequestMapping("/markers")
 public class MarkerController extends HateoasController<Marker, Integer> {
 
     Gson gson = new Gson();

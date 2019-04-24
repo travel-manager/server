@@ -37,7 +37,7 @@ public class TravellerService extends HateoasService<Traveller, Integer> {
     }
 
     public Traveller getByUsername(String username){
-        return repository.getByUsername(username);
+        return travellerRepository.getByUsername(username);
     }
 
     @Override
