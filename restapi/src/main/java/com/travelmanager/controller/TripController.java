@@ -1,8 +1,8 @@
 package com.travelmanager.controller;
 
 import com.google.gson.Gson;
-import com.travelmanager.models.Traveller;
-import com.travelmanager.models.Trip;
+import com.travelmanager.refactoredModels.Traveller;
+import com.travelmanager.refactoredModels.Trip;
 import com.travelmanager.hateoas.abstracts.HateoasController;
 import com.travelmanager.services.TravellerService;
 import com.travelmanager.services.TripService;

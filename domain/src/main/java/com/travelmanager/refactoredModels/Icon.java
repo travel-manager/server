@@ -1,6 +1,7 @@
 package com.travelmanager.refactoredModels;
 
 import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
@@ -14,10 +15,11 @@ import java.io.Serializable;
 public class Icon extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
+    @Getter
     @Lob
-    @Column
+    @Column(name = "icon")
     private byte[] icon;
 
     @Override

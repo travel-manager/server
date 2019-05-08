@@ -1,6 +1,7 @@
 package com.travelmanager.refactoredModels;
 
 import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
@@ -15,22 +16,27 @@ import java.sql.Blob;
 public class Location extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
-    @Column
+    @Getter
+    @Column(name = "latitude")
     private float latitude;
 
-    @Column
+    @Getter
+    @Column(name = "longtitude")
     private float longtitude;
 
-    @Column
+    @Getter
+    @Column(name = "city")
     private String city;
 
-    @Column
+    @Getter
+    @Column(name = "country")
     private String country;
 
+    @Getter
     @Lob
-    @Column
+    @Column(name = "flag")
     private byte[] flag;
 
     @Override

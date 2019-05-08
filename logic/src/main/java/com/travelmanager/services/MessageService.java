@@ -1,13 +1,13 @@
 package com.travelmanager.services;
 
 import com.travelmanager.hateoas.abstracts.HateoasService;
-import com.travelmanager.models.Marker;
-import com.travelmanager.models.WebsocketMessage;
+import com.travelmanager.refactoredModels.Marker;
+import com.travelmanager.refactoredModels.Message;
 import com.travelmanager.repositories.IMarkerRepository;
 import com.travelmanager.repositories.IMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class MessageService  extends HateoasService<WebsocketMessage, Integer> {
+public class MessageService  extends HateoasService<Message, Integer> {
 
     private IMarkerRepository repo;
 
@@ -17,7 +17,7 @@ public class MessageService  extends HateoasService<WebsocketMessage, Integer> {
     }
 
     @Override
-    public Class<? extends HateoasService<WebsocketMessage, Integer>> getClazz() {
+    public Class<? extends HateoasService<Message, Integer>> getClazz() {
         return this.getClass();
     }
 }

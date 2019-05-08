@@ -1,7 +1,7 @@
 package com.travelmanager.repositories;
 
 
-import com.travelmanager.models.Notification;
+import com.travelmanager.refactoredModels.Notification;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;

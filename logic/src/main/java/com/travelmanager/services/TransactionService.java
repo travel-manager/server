@@ -4,8 +4,8 @@ import com.travelmanager.components.TransactionComponent;
 import com.travelmanager.repositories.ITransactionRepository;
 import com.travelmanager.hateoas.abstracts.HateoasService;
 import com.travelmanager.interfaces.ITransactionService;
-import com.travelmanager.models.Transaction;
-import com.travelmanager.models.Traveller;
+import com.travelmanager.refactoredModels.Transaction;
+import com.travelmanager.refactoredModels.Traveller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +40,7 @@ public class TransactionService extends HateoasService<Transaction, Integer> imp
         return repository.getAllByPayerAndTripId(payer,tripId);
     }
 
-    public List<Transaction> getAllByFreeLoaderAndTripId(String freeLoader, int tripId){
-        return repository.getAllByFreeLoaderAndTripId(freeLoader,tripId);
+    public List<Transaction> getAllByFreeLoaderAndTripId(int tripId){
+        return repository.getAllByFreeLoaderAndTripId(tripId);
     }
 }

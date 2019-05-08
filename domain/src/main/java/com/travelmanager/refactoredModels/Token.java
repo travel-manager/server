@@ -1,6 +1,7 @@
 package com.travelmanager.refactoredModels;
 
 import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
@@ -15,14 +16,17 @@ import java.sql.Timestamp;
 public class Token extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
-    @Column
+    @Getter
+    @Column(name = "token")
     private String token;
 
-    @Column
+    @Getter
+    @Column(name = "timestamp")
     private Timestamp timestamp;
 
+    @Getter
     @OneToOne
     @JoinColumn(name = "user_id",referencedColumnName = "id")
     private User user;

@@ -1,9 +1,9 @@
 package com.travelmanager.repositories;
 
-import com.travelmanager.models.Transaction;
-import com.travelmanager.models.Traveller;
-import com.travelmanager.models.Trip;
-import com.travelmanager.models.User;
+import com.travelmanager.refactoredModels.Transaction;
+import com.travelmanager.refactoredModels.Traveller;
+import com.travelmanager.refactoredModels.Trip;
+import com.travelmanager.refactoredModels.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;

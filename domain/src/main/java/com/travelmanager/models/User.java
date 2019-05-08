@@ -1,29 +1,29 @@
-package com.travelmanager.models;
-
-import lombok.Getter;
-
-import javax.persistence.*;
-
-@Getter
-@Entity(name="User")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(name = "username")
-    private String username;
-    @Column(name = "password")
-    private String password;
-
-    public User(String username, String password){
-        this.username = username;
-        this.password = password;
-
-    }
-
-    public User(){
-
-    }
-}
+//package com.travelmanager.models;
+//
+//import lombok.Getter;
+//
+//import javax.persistence.*;
+//
+//@Getter
+//@Entity(name="User")
+//public class User {
+//
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer id;
+//
+//    @Column(name = "username")
+//    private String username;
+//    @Column(name = "password")
+//    private String password;
+//
+//    public User(String username, String password){
+//        this.username = username;
+//        this.password = password;
+//
+//    }
+//
+//    public User(){
+//
+//    }
+//}

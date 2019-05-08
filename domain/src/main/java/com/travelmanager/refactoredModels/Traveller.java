@@ -1,6 +1,7 @@
 package com.travelmanager.refactoredModels;
 
 import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
@@ -14,31 +15,37 @@ import java.util.List;
 @NoArgsConstructor
 public class Traveller extends ResourceSupport implements HateoasObject {
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    @Column
+    @Getter
+    @Column(name = "firstname")
     private String firstname;
 
-    @Column
+    @Getter
+    @Column(name = "lastname")
     private String lastname;
 
+    @Getter
     @Lob
-    @Column
+    @Column(name = "picture")
     private byte[] picture;
 
-    @Column
+    @Getter
+    @Column(name = "bio")
     private String bio;
 
+    @Getter
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-
+    @Getter
     @OneToOne
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
 
+    @Getter
     @OneToMany
     @JoinTable(name = "travellers_spoken_languages", joinColumns = @JoinColumn(name = "travellers_id"), inverseJoinColumns = @JoinColumn(name = "languages_id"))
     private List<Language> languages;

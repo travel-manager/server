@@ -1,6 +1,7 @@
 package com.travelmanager.refactoredModels;
 
 import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
@@ -14,14 +15,17 @@ import java.io.Serializable;
 public class User extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
+    @Getter
     @Column(name = "username")
     private String username;
 
+    @Getter
     @Column(name = "password")
     private String password;
 
+    @Getter
     @OneToOne
     @JoinColumn(name = "roles_id", referencedColumnName = "id")
     private Role role;

@@ -18,9 +18,10 @@ import java.io.Serializable;
 public class Role extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
-    @Column
+    @Getter
+    @Column(name = "role")
     private String role;
 
     @Override

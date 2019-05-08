@@ -1,7 +1,8 @@
 package com.travelmanager.interfaces;
 
-import com.travelmanager.models.Transaction;
-import com.travelmanager.models.Traveller;
+
+import com.travelmanager.refactoredModels.Transaction;
+import com.travelmanager.refactoredModels.Traveller;
 
 import java.util.List;
 

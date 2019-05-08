@@ -1,6 +1,7 @@
 package com.travelmanager.refactoredModels;
 
 import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
@@ -15,29 +16,35 @@ import java.sql.Date;
 public class Trip extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
+    @Getter
     @OneToOne
     @JoinColumn(name = "location_id",referencedColumnName = "id")
     private Location location;
 
-    @Column
+    @Getter
+    @Column(name = "name")
     private String name;
 
-    @Column
+    @Getter
+    @Column(name = "datestart")
     private Date datestart;
 
-    @Column
+    @Column(name = "dateend")
     private Date dateend;
 
-    @Column
+    @Getter
+    @Column(name = "description")
     private String description;
 
+    @Getter
     @Column(name = "public")
     private boolean isPublic;
 
+    @Getter
     @Lob
-    @Column
+    @Column(name = "picture")
     private byte[] picture;
 
     @Override

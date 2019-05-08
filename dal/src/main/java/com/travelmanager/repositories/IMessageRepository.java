@@ -1,7 +1,7 @@
 package com.travelmanager.repositories;
 
-import com.travelmanager.models.WebsocketMessage;
+import com.travelmanager.refactoredModels.Message;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface IMessageRepository extends PagingAndSortingRepository<WebsocketMessage, Integer> {
+public interface IMessageRepository extends PagingAndSortingRepository<Message, Integer> {
 }

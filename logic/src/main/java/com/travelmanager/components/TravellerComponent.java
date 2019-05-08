@@ -2,8 +2,9 @@ package com.travelmanager.components;
 
 import com.google.gson.Gson;
 import com.travelmanager.hateoas.abstracts.HateoasService;
-import com.travelmanager.models.Traveller;
-import com.travelmanager.models.User;
+import com.travelmanager.refactoredModels.Role;
+import com.travelmanager.refactoredModels.Traveller;
+import com.travelmanager.refactoredModels.User;
 import com.travelmanager.repositories.ITravellerRepository;
 import com.travelmanager.repositories.IUserRepository;
 import org.mindrot.jbcrypt.BCrypt;
@@ -37,10 +38,10 @@ public class TravellerComponent {
         return  result;
     }
 
-    public Traveller register(Traveller tr, String password) {
+    public Traveller register(Traveller tr, String password, Role role) {
         Traveller result;
-        if(getTraveller(tr.getUsername()) == null && getUser(tr.getUsername()) == null){
-            User user = new User(tr.getUsername(), hashpassword(password));
+        if(getTraveller(tr.getUser().getUsername()) == null && getUser(tr.getUser().getUsername()) == null){
+            User user = new User(tr.getUser().getUsername(), hashpassword(password), role);
             if(!createUser(user)){
                 return null;
             }
@@ -67,7 +68,7 @@ public class TravellerComponent {
         Traveller result = null;
         try {
             for (Traveller tr:travellerRepository.findAll()) {
-                if(tr.getUsername().equals(username)){
+                if(tr.getUser().getUsername().equals(username)){
                     result = tr;
                 }
             }

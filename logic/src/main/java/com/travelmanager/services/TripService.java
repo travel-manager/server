@@ -2,7 +2,7 @@ package com.travelmanager.services;
 
 import com.travelmanager.repositories.ITripRepository;
 import com.travelmanager.hateoas.abstracts.HateoasService;
-import com.travelmanager.models.Trip;
+import com.travelmanager.refactoredModels.Trip;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

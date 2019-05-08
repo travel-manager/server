@@ -2,7 +2,7 @@ package com.travelmanager.controller;
 
 import com.google.gson.Gson;
 import com.travelmanager.hateoas.abstracts.HateoasController;
-import com.travelmanager.models.Notification;
+import com.travelmanager.refactoredModels.Notification;
 import com.travelmanager.services.NotificationService;
 import lombok.Setter;
 import org.springframework.http.HttpStatus;

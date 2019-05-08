@@ -4,8 +4,8 @@ import com.google.gson.Gson;
 import com.travelmanager.enums.Gender;
 import com.travelmanager.hateoas.abstracts.HateoasController;
 import com.travelmanager.hateoas.abstracts.HateoasService;
-import com.travelmanager.models.Transaction;
-import com.travelmanager.models.Traveller;
+import com.travelmanager.refactoredModels.Transaction;
+import com.travelmanager.refactoredModels.Traveller;
 import com.travelmanager.services.TransactionService;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +41,8 @@ public class TransactionController extends HateoasController<Transaction, Intege
     }
 
     @RequestMapping(value = "/getallbyfreeloaderandtripid", method = RequestMethod.GET)
-    public ResponseEntity<String> getAllByFreeLoaderAndTripId(@RequestParam(name = "freeloader") String freeLoader, @RequestParam(name = "tripId") int tripId){
-        return new ResponseEntity<String>(json.toJson(service.getAllByFreeLoaderAndTripId(freeLoader,tripId)), HttpStatus.OK);
+    public ResponseEntity<String> getAllByFreeLoaderAndTripId(@RequestParam(name = "tripId") int tripId){
+        return new ResponseEntity<String>(json.toJson(service.getAllByFreeLoaderAndTripId(tripId)), HttpStatus.OK);
     }
 
 }

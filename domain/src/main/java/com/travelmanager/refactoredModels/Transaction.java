@@ -1,12 +1,14 @@
 package com.travelmanager.refactoredModels;
 
 import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Setter
 @Entity(name = "transactions")
@@ -14,36 +16,46 @@ import java.io.Serializable;
 public class Transaction extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
-    @Column
+    @Getter
+    @Column(name = "amount")
     private double amount;
 
-    @Column
+    @Getter
+    @Column(name = "subject")
     private String subject;
 
+    @Getter
     @OneToOne
     @JoinColumn(name = "units_id", referencedColumnName = "id")
     private Unit unit;
 
+    @Getter
     @OneToOne
-    @JoinColumn(name = "travellers_id",referencedColumnName = "id")
-    private Traveller traveller;
+    @JoinColumn(name = "payer",referencedColumnName = "id")
+    private Traveller payer;
 
+    @Getter
     @OneToOne
     @JoinColumn(name = "trips_id",referencedColumnName = "id")
     private Trip trip;
+
+    @Getter
+    @OneToMany(mappedBy = "transaction", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Freeloader> freeloaders;
+
 
     @Override
     public Serializable getIdentifier() {
         return this.id;
     }
 
-    public Transaction(double amount, String subject, Unit unit, Traveller traveller, Trip trip) {
+    public Transaction(double amount, String subject, Unit unit, Traveller payer, Trip trip) {
         this.amount = amount;
         this.subject = subject;
         this.unit = unit;
-        this.traveller = traveller;
+        this.payer = payer;
         this.trip = trip;
     }
 }
