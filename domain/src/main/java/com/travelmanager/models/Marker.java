@@ -1,66 +1,44 @@
-//package com.travelmanager.models;
-//
-//import com.fasterxml.jackson.annotation.JsonIgnore;
-//import com.travelmanager.enums.MarkerType;
-//import com.travelmanager.hateoas.abstracts.HateoasObject;
-//import lombok.Getter;
-//import org.springframework.hateoas.Link;
-//import org.springframework.hateoas.ResourceSupport;
-//
-//import javax.persistence.*;
-//import java.io.Serializable;
-//
-//@Getter
-//@Entity(name = "markers")
-//public class Marker  extends ResourceSupport implements HateoasObject {
-//    @Id
-//    @GeneratedValue
-//    private Integer id;
-//
-//    public Link getId() {
-//        return new Link(id.toString());
-//    }
-//    /*private String markerJsonString;
-//    @OneToOne
-//    private Traveller placedBy;
-//    @ManyToOne
-//    @JoinColumn(name = "TripId")
-//    private Trip trip;
-//    @Column(name = "Note")
-//    private String note;
-//    @Column(name = "Location")
-//    private String location;
-//    private MarkerType type;*/
-//
-//    @Column(name = "lat")
-//    private Float latitude;
-//    @Column(name = "long")
-//    private Float longtitude;
-//    @Column(name = "type")
-//    private String type;
-//    @Column(name = "creator")
-//    private String creator;
-//    @Column(name = "note")
-//    private String note;
-//    @OneToOne
-//    @JoinColumn(name = "id",table = "trips")
-//    private Trip trip;
-//
-//    public Marker() {
-//    }
-//
-//    public Marker(Float latitude, Float longtitude, String type, String creator, String note, Trip trip) {
-//        this.latitude = latitude;
-//        this.longtitude = longtitude;
-//        this.type = type;
-//        this.creator = creator;
-//        this.note = note;
-//        this.trip = trip;
-//    }
-//
-//    @Override
-//    @JsonIgnore
-//    public Serializable getIdentifier() {
-//        return this.id;
-//    }
-//}
+package com.travelmanager.models;
+
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Setter
+@Entity(name = "markers")
+@NoArgsConstructor
+public class Marker extends ResourceSupport implements HateoasObject {
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    @Getter
+    @Column(name = "type")
+    private int type;
+
+    @Getter
+    @OneToOne
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Location location;
+
+    @Getter
+    @ManyToOne
+    @JoinColumn(name = "trips_id", referencedColumnName = "id")
+    private Trip trip;
+
+    @Override
+    public Serializable getIdentifier() {
+        return this.id;
+    }
+
+    public Marker(int type, Location location, Trip trip) {
+        this.type = type;
+        this.location = location;
+        this.trip = trip;
+    }
+}

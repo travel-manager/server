@@ -1,4 +1,4 @@
-package com.travelmanager.refactoredModels;
+package com.travelmanager.models;
 
 import com.travelmanager.hateoas.abstracts.HateoasObject;
 import lombok.Getter;

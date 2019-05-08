@@ -1,16 +1,11 @@
 package com.travelmanager.components;
 
-import com.google.gson.Gson;
-import com.travelmanager.hateoas.abstracts.HateoasService;
-import com.travelmanager.refactoredModels.Role;
-import com.travelmanager.refactoredModels.Traveller;
-import com.travelmanager.refactoredModels.User;
+import com.travelmanager.models.Role;
+import com.travelmanager.models.Traveller;
+import com.travelmanager.models.User;
 import com.travelmanager.repositories.ITravellerRepository;
 import com.travelmanager.repositories.IUserRepository;
 import org.mindrot.jbcrypt.BCrypt;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
 
 public class TravellerComponent {
 

@@ -2,13 +2,12 @@ package com.travelmanager.services;
 
 import com.travelmanager.repositories.ITripRepository;
 import com.travelmanager.hateoas.abstracts.HateoasService;
-import com.travelmanager.refactoredModels.Trip;
+import com.travelmanager.models.Trip;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 

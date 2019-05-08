@@ -1,4 +1,4 @@
-package com.travelmanager.refactoredModels;
+package com.travelmanager.models;
 
 import com.travelmanager.hateoas.abstracts.HateoasObject;
 import lombok.Getter;
@@ -8,7 +8,6 @@ import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Blob;
 
 @Setter
 @Entity(name = "location")

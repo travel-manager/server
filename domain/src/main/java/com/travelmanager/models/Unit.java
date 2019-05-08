@@ -1,4 +1,4 @@
-package com.travelmanager.refactoredModels;
+package com.travelmanager.models;
 
 import com.travelmanager.hateoas.abstracts.HateoasObject;
 import lombok.Getter;
@@ -13,23 +13,23 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @Setter
-@Entity(name = "languages")
+@Entity(name = "units")
 @NoArgsConstructor
-public class Language extends ResourceSupport implements HateoasObject {
+public class Unit extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
     private Integer id;
 
     @Getter
-    @Column(name = "language")
-    private String language;
+    @Column(name = "unit")
+    private String unit;
 
     @Override
     public Serializable getIdentifier() {
         return this.id;
     }
 
-    public Language(String language) {
-        this.language = language;
+    public Unit(String unit) {
+        this.unit = unit;
     }
 }

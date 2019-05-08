@@ -1,13 +1,10 @@
 package com.travelmanager.controller;
 
 import com.google.gson.Gson;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.travelmanager.hateoas.abstracts.HateoasController;
-import com.travelmanager.hateoas.abstracts.HateoasService;
-import com.travelmanager.refactoredModels.Marker;
+import com.travelmanager.models.Marker;
 import com.travelmanager.services.MarkerService;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;

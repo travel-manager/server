@@ -1,7 +1,7 @@
 package com.travelmanager.repositories;
 
 
-import com.travelmanager.refactoredModels.Marker;
+import com.travelmanager.models.Marker;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;

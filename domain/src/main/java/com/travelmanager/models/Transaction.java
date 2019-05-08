@@ -1,59 +1,61 @@
-//package com.travelmanager.models;
-//
-//import com.fasterxml.jackson.annotation.JsonIgnore;
-//import com.travelmanager.hateoas.abstracts.HateoasObject;
-//import lombok.Getter;
-//import org.springframework.hateoas.Link;
-//import org.springframework.hateoas.ResourceSupport;
-//
-//import javax.persistence.*;
-//import java.io.Serializable;
-//import java.text.DateFormat;
-//import java.util.List;
-//
-//@Getter
-//@Entity(name = "transactions")
-//public class Transaction extends ResourceSupport implements HateoasObject{
-//    @Id
-//    @GeneratedValue
-//    private Integer id;
-//
-//    public Link getId() {
-//        return new Link(id.toString());
-//    }
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id",table = "travellers")
-//    private Traveller payer;
-//    /*@OneToOne
-//    @JoinColumn(name = "idTrips",referencedColumnName = "id")
-//*/
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id",table = "trips")
-//    private Trip trip;
-//    @Column(name = "amount")
-//    private Double amount;
-//    @Column(name = "freeloader")
-//    private String freeloaders;
-//    @Column(name = "subject")
-//    private String subject;
-//    @Column(name = "unit")
-//    private String unit;
-//
-//    public Transaction() {
-//    }
-//
-//    public Transaction(Traveller payer, Trip trip, Double amount, String freeloaders, String subject, String unit) {
-//        this.payer = payer;
-//        this.trip = trip;
-//        this.amount = amount;
-//        this.freeloaders = freeloaders;
-//        this.subject = subject;
-//        this.unit = unit;
-//    }
-//
-//    @Override
-//    @JsonIgnore
-//    public Serializable getIdentifier() {
-//        return this.id;
-//    }
-//}
+package com.travelmanager.models;
+
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
+
+@Setter
+@Entity(name = "transactions")
+@NoArgsConstructor
+public class Transaction extends ResourceSupport implements HateoasObject {
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    @Getter
+    @Column(name = "amount")
+    private double amount;
+
+    @Getter
+    @Column(name = "subject")
+    private String subject;
+
+    @Getter
+    @OneToOne
+    @JoinColumn(name = "units_id", referencedColumnName = "id")
+    private Unit unit;
+
+    @Getter
+    @OneToOne
+    @JoinColumn(name = "payer",referencedColumnName = "id")
+    private Traveller payer;
+
+    @Getter
+    @OneToOne
+    @JoinColumn(name = "trips_id",referencedColumnName = "id")
+    private Trip trip;
+
+    @Getter
+    @OneToMany(mappedBy = "transaction", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Freeloader> freeloaders;
+
+
+    @Override
+    public Serializable getIdentifier() {
+        return this.id;
+    }
+
+    public Transaction(double amount, String subject, Unit unit, Traveller payer, Trip trip) {
+        this.amount = amount;
+        this.subject = subject;
+        this.unit = unit;
+        this.payer = payer;
+        this.trip = trip;
+    }
+}
