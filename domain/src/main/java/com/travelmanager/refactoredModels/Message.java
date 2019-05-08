@@ -1,10 +1,18 @@
 package com.travelmanager.refactoredModels;
 
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-@Entity
-public class Message {
+@Setter
+@Entity(name = "messages")
+@NoArgsConstructor
+public class Message extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
     private int id;
@@ -16,10 +24,22 @@ public class Message {
     private String content;
 
     @OneToOne
-    @JoinTable(name = "travellers", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinColumn(name = "travellers_id",referencedColumnName = "id")
     private Traveller traveller;
 
     @ManyToOne
-    @JoinTable
+    @JoinColumn(name = "trips_id", referencedColumnName = "id")
     private Trip trip;
+
+    @Override
+    public Serializable getIdentifier() {
+        return this.id;
+    }
+
+    public Message(Timestamp timestamp, String content, Traveller traveller, Trip trip) {
+        this.timestamp = timestamp;
+        this.content = content;
+        this.traveller = traveller;
+        this.trip = trip;
+    }
 }

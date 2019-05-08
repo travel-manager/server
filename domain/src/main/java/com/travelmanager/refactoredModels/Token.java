@@ -1,10 +1,18 @@
 package com.travelmanager.refactoredModels;
 
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-@Entity
-public class Token {
+@Setter
+@Entity(name = "token")
+@NoArgsConstructor
+public class Token extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
     private int id;
@@ -16,6 +24,17 @@ public class Token {
     private Timestamp timestamp;
 
     @OneToOne
-    @JoinTable(name = "user",joinColumns = @JoinColumn(name = "id"),inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinColumn(name = "user_id",referencedColumnName = "id")
     private User user;
+
+    @Override
+    public Serializable getIdentifier() {
+        return this.id;
+    }
+
+    public Token(String token, Timestamp timestamp, User user) {
+        this.token = token;
+        this.timestamp = timestamp;
+        this.user = user;
+    }
 }

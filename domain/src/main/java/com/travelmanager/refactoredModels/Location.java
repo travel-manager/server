@@ -1,10 +1,18 @@
 package com.travelmanager.refactoredModels;
 
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Blob;
 
+@Setter
 @Entity(name = "location")
-public class Location {
+@NoArgsConstructor
+public class Location extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
     private int id;
@@ -24,4 +32,17 @@ public class Location {
     @Lob
     @Column
     private byte[] flag;
+
+    @Override
+    public Serializable getIdentifier() {
+        return this.id;
+    }
+
+    public Location(float latitude, float longtitude, String city, String country, byte[] flag) {
+        this.latitude = latitude;
+        this.longtitude = longtitude;
+        this.city = city;
+        this.country = country;
+        this.flag = flag;
+    }
 }

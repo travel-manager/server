@@ -1,9 +1,17 @@
 package com.travelmanager.refactoredModels;
 
-import javax.persistence.*;
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Setter
 @Entity(name = "transactions")
-public class Transaction {
+@NoArgsConstructor
+public class Transaction extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
     private int id;
@@ -15,15 +23,27 @@ public class Transaction {
     private String subject;
 
     @OneToOne
-    @JoinTable(name = "units",joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinColumn(name = "units_id", referencedColumnName = "id")
     private Unit unit;
 
     @OneToOne
-    @JoinTable(name = "travellers",joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinColumn(name = "travellers_id",referencedColumnName = "id")
     private Traveller traveller;
 
     @OneToOne
-    @JoinTable(name = "trips",joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinColumn(name = "trips_id",referencedColumnName = "id")
     private Trip trip;
 
+    @Override
+    public Serializable getIdentifier() {
+        return this.id;
+    }
+
+    public Transaction(double amount, String subject, Unit unit, Traveller traveller, Trip trip) {
+        this.amount = amount;
+        this.subject = subject;
+        this.unit = unit;
+        this.traveller = traveller;
+        this.trip = trip;
+    }
 }

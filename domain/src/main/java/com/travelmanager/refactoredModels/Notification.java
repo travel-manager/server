@@ -1,10 +1,18 @@
 package com.travelmanager.refactoredModels;
 
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-@Entity
-public class Notification {
+@Setter
+@Entity(name = "notifications")
+@NoArgsConstructor
+public class Notification extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
     private int id;
@@ -19,10 +27,23 @@ public class Notification {
     private Timestamp timestamp;
 
     @ManyToOne
-    @JoinTable(name = "trips", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinColumn(name = "trips_id", referencedColumnName = "id")
     private Trip trip;
 
     @OneToOne
-    @JoinTable(name = "icons", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinColumn(name = "icons_id", referencedColumnName = "id")
     private Icon icon;
+
+    @Override
+    public Serializable getIdentifier() {
+        return this.id;
+    }
+
+    public Notification(String content, String type, Timestamp timestamp, Trip trip, Icon icon) {
+        this.content = content;
+        this.type = type;
+        this.timestamp = timestamp;
+        this.trip = trip;
+        this.icon = icon;
+    }
 }

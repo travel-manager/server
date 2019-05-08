@@ -1,9 +1,18 @@
 package com.travelmanager.refactoredModels;
 
-import javax.persistence.*;
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
+
+@Setter
 @Entity(name = "travellers")
-public class Traveller {
+@NoArgsConstructor
+public class Traveller extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
     private int id;
@@ -22,11 +31,30 @@ public class Traveller {
     private String bio;
 
     @OneToOne
-    @JoinTable(name = "user",joinColumns = @JoinColumn(name = "id"),inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
 
     @OneToOne
-    @JoinTable(name = "location",joinColumns = @JoinColumn(name = "id"),inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
+
+    @OneToMany
+    @JoinTable(name = "travellers_spoken_languages", joinColumns = @JoinColumn(name = "travellers_id"), inverseJoinColumns = @JoinColumn(name = "languages_id"))
+    private List<Language> languages;
+
+    @Override
+    public Serializable getIdentifier() {
+        return this.id;
+    }
+
+    public Traveller(String firstname, String lastname, byte[] picture, String bio, User user, Location location, List<Language> languages) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.picture = picture;
+        this.bio = bio;
+        this.user = user;
+        this.location = location;
+        this.languages = languages;
+    }
 }
