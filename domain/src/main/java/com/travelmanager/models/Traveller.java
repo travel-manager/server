@@ -1,13 +1,9 @@
 package com.travelmanager.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.travelmanager.enums.Gender;
-import com.travelmanager.enums.Language;
-import com.travelmanager.enums.Nationality;
-import com.travelmanager.hateoas.abstracts.HateoasObject;
+import com.travelmanager.interfaces.HateoasObject;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;

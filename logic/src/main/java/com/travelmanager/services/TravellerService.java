@@ -3,7 +3,6 @@ package com.travelmanager.services;
 
 import com.travelmanager.components.TravellerComponent;
 import com.travelmanager.repositories.ITravellerRepository;
-import com.travelmanager.hateoas.abstracts.HateoasService;
 import com.travelmanager.models.Traveller;
 import com.travelmanager.repositories.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

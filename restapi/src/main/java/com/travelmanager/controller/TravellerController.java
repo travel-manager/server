@@ -2,7 +2,6 @@ package com.travelmanager.controller;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.Gson;
-import com.travelmanager.hateoas.abstracts.HateoasController;
 import com.travelmanager.models.Traveller;
 import com.travelmanager.services.TravellerService;
 import lombok.Setter;

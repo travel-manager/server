@@ -1,4 +1,4 @@
-package com.travelmanager.hateoas.utils;
+package com.travelmanager.utils;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;

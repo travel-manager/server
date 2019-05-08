@@ -1,8 +1,10 @@
-package com.travelmanager.hateoas.abstracts;
+package com.travelmanager.controller;
 
-import com.travelmanager.hateoas.annotations.WrapWithLink;
-import com.travelmanager.hateoas.utils.HateoasResponse;
-import com.travelmanager.hateoas.utils.HateoasUtil;
+import com.travelmanager.annotations.WrapWithLink;
+import com.travelmanager.interfaces.HateoasObject;
+import com.travelmanager.services.HateoasService;
+import com.travelmanager.utils.HateoasResponse;
+import com.travelmanager.utils.HateoasUtil;
 import org.assertj.core.util.Lists;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpEntity;

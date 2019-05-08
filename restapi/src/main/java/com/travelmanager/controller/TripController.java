@@ -1,13 +1,9 @@
 package com.travelmanager.controller;
 
 import com.google.gson.Gson;
-import com.travelmanager.models.Traveller;
 import com.travelmanager.models.Trip;
-import com.travelmanager.hateoas.abstracts.HateoasController;
-import com.travelmanager.services.TravellerService;
 import com.travelmanager.services.TripService;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +28,7 @@ public class TripController extends HateoasController<Trip, Integer> {
     }
 
     @GetMapping(value = "/byDate")
+    // TODO: 8-5-2019 use @RequestBody for parameters
     public ResponseEntity<String> getAllByDateEndAndDateStart(@RequestParam(name = "dateStart", required = true) String dateStart, @RequestParam(name = "dateEnd", required = true) String dateEnd, @RequestParam(name = "isPublic", required = true) Boolean isPublic){
         Date start;
         Date end;
@@ -47,6 +44,7 @@ public class TripController extends HateoasController<Trip, Integer> {
     }
 
     @GetMapping(value = "/byLongAndLat")
+    // TODO: 8-5-2019 use @RequestBody for parameter
     public ResponseEntity<String> getAllByLatAndLong(@RequestParam(name = "lat", required = true) String latitude, @RequestParam(name = "long", required = true) String longitude, @RequestParam(name = "range", required = false) String range){
         Float floatLatitude;
         Float floarLongitude;

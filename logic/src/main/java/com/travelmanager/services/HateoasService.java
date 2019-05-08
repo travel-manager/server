@@ -1,5 +1,6 @@
-package com.travelmanager.hateoas.abstracts;
+package com.travelmanager.services;
 
+import com.travelmanager.interfaces.HateoasObject;
 import lombok.Getter;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.hateoas.ResourceSupport;

@@ -1,7 +1,5 @@
 package com.travelmanager.services;
 
-import com.travelmanager.hateoas.abstracts.HateoasService;
-import com.travelmanager.models.Marker;
 import com.travelmanager.models.WebsocketMessage;
 import com.travelmanager.repositories.IMarkerRepository;
 import com.travelmanager.repositories.IMessageRepository;

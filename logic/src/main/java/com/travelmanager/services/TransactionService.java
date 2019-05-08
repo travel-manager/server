@@ -2,7 +2,6 @@ package com.travelmanager.services;
 
 import com.travelmanager.components.TransactionComponent;
 import com.travelmanager.repositories.ITransactionRepository;
-import com.travelmanager.hateoas.abstracts.HateoasService;
 import com.travelmanager.interfaces.ITransactionService;
 import com.travelmanager.models.Transaction;
 import com.travelmanager.models.Traveller;

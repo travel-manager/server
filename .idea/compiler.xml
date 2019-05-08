@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="dal" />
         <module name="domain" />
-        <module name="hateoas" />
         <module name="logic" />
         <module name="restapi" />
         <module name="websocket" />

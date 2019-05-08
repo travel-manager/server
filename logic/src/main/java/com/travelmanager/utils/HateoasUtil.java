@@ -1,4 +1,4 @@
-package com.travelmanager.hateoas.utils;
+package com.travelmanager.utils;
 
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpEntity;

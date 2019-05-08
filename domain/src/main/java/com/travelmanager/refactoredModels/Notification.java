@@ -1,6 +1,6 @@
 package com.travelmanager.refactoredModels;
 
-import com.travelmanager.hateoas.abstracts.HateoasObject;
+import com.travelmanager.interfaces.HateoasObject;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;

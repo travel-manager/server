@@ -1,6 +1,5 @@
 package com.travelmanager.services;
 
-import com.travelmanager.hateoas.abstracts.HateoasService;
 import com.travelmanager.models.Notification;
 import com.travelmanager.repositories.INotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;

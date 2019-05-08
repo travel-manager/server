@@ -1,17 +1,13 @@
 package com.travelmanager.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.travelmanager.hateoas.abstracts.HateoasObject;
+import com.travelmanager.interfaces.HateoasObject;
 import lombok.Getter;
-import lombok.Setter;
-import org.apache.catalina.User;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.util.List;
 
 @Getter
 @Entity(name = "Trips")

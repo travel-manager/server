@@ -1,6 +1,6 @@
-package com.travelmanager.hateoas.annotations;
+package com.travelmanager.annotations;
 
-import com.travelmanager.hateoas.utils.HateoasUtil;
+import com.travelmanager.utils.HateoasUtil;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpEntity;
 
