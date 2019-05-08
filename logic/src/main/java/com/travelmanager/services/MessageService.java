@@ -18,9 +18,9 @@ public class MessageService  extends HateoasService<Message, Integer> {
         repository = _repo;
     }
 
-    public void update(WebsocketMessage object){
+    public void update(Message object){
         if(repository.findById(object.id).isPresent()){
-            WebsocketMessage ent = repository.findById(object.id).get();
+            Message ent = repository.findById(object.id).get();
             ent.setContent(object.getContent());
             ent.setTimestamp(object.getTimestamp());
             repository.save(ent);
@@ -34,6 +34,6 @@ public class MessageService  extends HateoasService<Message, Integer> {
 
     @Override
     public Class<? extends ResourceSupport> getType() {
-        return WebsocketMessage.class;
+        return Message.class;
     }
 }

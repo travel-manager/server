@@ -5,6 +5,7 @@ import com.travelmanager.models.Trip;
 import com.travelmanager.hateoas.abstracts.HateoasController;
 import com.travelmanager.services.TripService;
 import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -70,4 +71,5 @@ public class TripController extends HateoasController<Trip, Integer> {
     public Class<? extends ResourceSupport> getType() {
         return Trip.class;
     }
+
 }

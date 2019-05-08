@@ -50,6 +50,11 @@ public class TransactionService extends HateoasService<Transaction, Integer> imp
         return this.getClass();
     }
 
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Transaction.class;
+    }
+
     public List<Transaction> getAllByPayerAndTripId(int payer, int tripId){
         return repository.getAllByPayerAndTripId(payer,tripId);
     }

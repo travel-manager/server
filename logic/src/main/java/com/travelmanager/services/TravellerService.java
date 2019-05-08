@@ -48,15 +48,14 @@ public class TravellerService extends HateoasService<Traveller, Integer> {
 
     @Override
     public void update(Traveller traveller){
-        if(repository.findById(traveller.id).isPresent()){
-            Traveller tr = repository.findById(traveller.id).get();
+        if(travellerRepository.findById(traveller.id).isPresent()){
+            Traveller tr = travellerRepository.findById(traveller.id).get();
             tr.setFirstname(traveller.getFirstname());
-            tr.setSurname(traveller.getSurname());
-            tr.setUsername(traveller.getUsername());
+            tr.setLastname(traveller.getLastname());
+            tr.setUser(traveller.getUser());
             tr.setBio(traveller.getBio());
             tr.setPicture(traveller.getPicture());
-            tr.setTrips(traveller.getTrips());
-            repository.save(tr);
+            travellerRepository.save(tr);
         }
     }
 

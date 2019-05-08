@@ -53,14 +53,10 @@ public class TripService extends HateoasService<Trip, Integer> {
             tr.setDateend(trip.getDateend());
             tr.setDatestart(tr.getDatestart());
             tr.setDescription(trip.getDescription());
-            tr.setIsPublic(trip.getIsPublic());
-            tr.setLatitude(trip.getLatitude());
-            tr.setLongtitude(trip.getLongtitude());
+            tr.setPublic(trip.isPublic());
             tr.setLocation(trip.getLocation());
             tr.setName(trip.getName());
-            tr.setOwner(trip.getOwner());
             tr.setPicture(trip.getPicture());
-            tr.setTravellerList(trip.getTravellerList());
             repository.save(tr);
         }
     }

@@ -38,6 +38,11 @@ public class NotificationService extends HateoasService<Notification, Integer> {
         return this.getClass();
     }
 
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Notification.class;
+    }
+
     public List<Notification> getAllNotificationsByTripId(int tripId) {
         return repository.getAllMarkersByTripId(tripId);
     }
