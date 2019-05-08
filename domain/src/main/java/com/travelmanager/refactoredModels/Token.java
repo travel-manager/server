@@ -1,5 +1,6 @@
 package com.travelmanager.refactoredModels;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.travelmanager.interfaces.HateoasObject;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +19,7 @@ public class Token extends ResourceSupport implements HateoasObject {
     private int id;
 
     @Column
+    @Setter
     private String token;
 
     @Column
@@ -31,6 +33,11 @@ public class Token extends ResourceSupport implements HateoasObject {
     public Serializable getIdentifier() {
         return this.id;
     }
+
+    public Token(@JsonProperty("token") String token) {
+        this.token = token;
+    }
+
 
     public Token(String token, Timestamp timestamp, User user) {
         this.token = token;
