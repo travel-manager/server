@@ -1,46 +1,55 @@
 package com.travelmanager.models;
 
-import com.travelmanager.enums.NotificationType;
+import com.travelmanager.hateoas.abstracts.HateoasObject;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Setter
-@Entity(name = "Notifications")
-public class Notification extends ResourceSupport {
+@Entity(name = "notifications")
+@NoArgsConstructor
+public class Notification extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    public Integer id;
+    private Integer id;
 
-    @Getter
-    @Column(name = "timestamp")
-    private String timestamp;
-    @Getter
-    @Column(name = "type")
-    private String type;
     @Getter
     @Column(name = "content")
     private String content;
+
     @Getter
-    @Column(name = "icon")
-    private String icon;
+    @Column(name = "type")
+    private String type;
+
     @Getter
-    @OneToOne
-    @JoinColumn(name = "id",table = "trips")
+    @Column(name = "timestamp")
+    private Timestamp timestamp;
+
+    @Getter
+    @ManyToOne
+    @JoinColumn(name = "trips_id", referencedColumnName = "id")
     private Trip trip;
 
-    public Notification() {
+    @Getter
+    @OneToOne
+    @JoinColumn(name = "icons_id", referencedColumnName = "id")
+    private Icon icon;
+
+    @Override
+    public Serializable getIdentifier() {
+        return this.id;
     }
 
-    public Notification(String timestamp, String type, String content, String icon, Trip trip) {
-        this.timestamp = timestamp;
-        this.type = type;
+    public Notification(String content, String type, Timestamp timestamp, Trip trip, Icon icon) {
         this.content = content;
-        this.icon = icon;
+        this.type = type;
+        this.timestamp = timestamp;
         this.trip = trip;
+        this.icon = icon;
     }
 }

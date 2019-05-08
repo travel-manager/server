@@ -4,6 +4,7 @@ import lombok.Getter;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.hateoas.ResourceSupport;
 
+import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -13,7 +14,7 @@ import java.util.Optional;
  *
  * @author lfb0801
  */
-public abstract class HateoasService<T extends ResourceSupport, Identifier> {
+public abstract class HateoasService<T extends ResourceSupport & HateoasObject, Identifier> {
 
     @Getter
     private PagingAndSortingRepository<T, Identifier> repo;
@@ -46,7 +47,19 @@ public abstract class HateoasService<T extends ResourceSupport, Identifier> {
     }
 
     public void update(T entity) {
-        repo.save(entity);
+        try {
+            Identifier id = (Identifier) entity.getIdentifier();
+            T storable = repo.findById(id).get();
+            Field[] fields = storable.getClass().getDeclaredFields();
+            for (Field f : fields){
+                f.setAccessible(true);
+                f.get(entity);
+                f.set(storable, f.get(entity));
+            }
+            repo.save(storable);
+        } catch (IllegalAccessException ex){
+            System.out.println(ex);
+        }
     }
 
     public void delete(T entity) {

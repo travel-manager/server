@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  *
  * @author lfb0801
  */
-public abstract class HateoasController<T extends ResourceSupport, Identifier extends Serializable> {
+public abstract class HateoasController<T extends ResourceSupport & HateoasObject, Identifier extends Serializable> {
 
     Gson gson = new Gson();
 
@@ -84,13 +84,13 @@ public abstract class HateoasController<T extends ResourceSupport, Identifier ex
         final T result = service.read(id);
         return HateoasUtil.build(result);
     }
-// TODO: 22-4-2019 fix: get id from entity
-//    @PutMapping(value = "/")
-//    @WrapWithLink
-//    public HttpEntity<HateoasResponse> update(@RequestBody T entity) {
-//        service.update(entity);
-//        return HateoasUtil.build(entity);
-//    }
+
+    @PutMapping(value = "/")
+    @WrapWithLink
+    public HttpEntity<HateoasResponse> update(@RequestBody T entity) {
+        service.update(entity);
+        return HateoasUtil.build(entity);
+    }
 
     @DeleteMapping(value = "/{id}")
     @WrapWithLink

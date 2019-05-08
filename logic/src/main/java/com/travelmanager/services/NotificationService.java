@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class NotificationService extends HateoasService<Notification, Integer> {
 
@@ -36,8 +38,12 @@ public class NotificationService extends HateoasService<Notification, Integer> {
         return this.getClass();
     }
 
-    @Override
-    public Class<? extends ResourceSupport> getType() {
-        return Notification.class;
+    public List<Notification> getAllNotificationsByTripId(int tripId) {
+        return repository.getAllMarkersByTripId(tripId);
+    }
+
+    public boolean deleteAllNotificationsByTripId(int tripId) {
+        repository.deleteAllMarkersByTripId(tripId);
+        return true;
     }
 }

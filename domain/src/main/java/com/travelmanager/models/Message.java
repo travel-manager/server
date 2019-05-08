@@ -1,39 +1,47 @@
 package com.travelmanager.models;
 
+import com.travelmanager.hateoas.abstracts.HateoasObject;
 import lombok.Getter;
-import org.springframework.hateoas.Link;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-@Getter
-@Entity(name = "Messages")
-public class Message  extends ResourceSupport {
+@Setter
+@Entity(name = "messages")
+@NoArgsConstructor
+public class Message extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
     private Integer id;
 
-    public Link getId() {
-        return new Link(id.toString());
-    }
-
+    @Getter
     @Column(name = "timestamp")
-    private String timestamp;
+    private Timestamp timestamp;
+
+    @Getter
     @Column(name = "content")
     private String content;
+
+    @Getter
     @OneToOne
+    @JoinColumn(name = "travellers_id",referencedColumnName = "id")
     private Traveller traveller;
+
+    @Getter
     @ManyToOne
+    @JoinColumn(name = "trips_id", referencedColumnName = "id")
     private Trip trip;
 
-    /*public Message(Traveller sender, String content, Timestamp timeSent) {
-        this.sender = sender;
-        this.content = content;
-        this.timeSent = timeSent;
-    }*/
+    @Override
+    public Serializable getIdentifier() {
+        return this.id;
+    }
 
-    public Message(String timestamp, String content, Traveller traveller, Trip trip) {
+    public Message(Timestamp timestamp, String content, Traveller traveller, Trip trip) {
         this.timestamp = timestamp;
         this.content = content;
         this.traveller = traveller;

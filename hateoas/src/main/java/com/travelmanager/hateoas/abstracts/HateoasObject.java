@@ -8,15 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-@Getter
-public abstract class PersistenceEntity<Identifier extends Serializable> extends ResourceSupport {
-
-    @Id
-    @GeneratedValue
-    private Identifier id;
-
-    public Link getId() {
-        return new Link(id.toString());
-    }
-
+public interface HateoasObject<Identifier extends Serializable>{
+    Identifier getIdentifier();
 }

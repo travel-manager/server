@@ -1,22 +1,23 @@
 package com.travelmanager.controller;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.google.gson.Gson;
 import com.travelmanager.hateoas.abstracts.HateoasController;
-import com.travelmanager.hateoas.annotations.WrapWithLink;
-import com.travelmanager.hateoas.utils.HateoasResponse;
-import com.travelmanager.hateoas.utils.HateoasUtil;
+import com.travelmanager.models.Role;
 import com.travelmanager.models.Traveller;
 import com.travelmanager.services.TravellerService;
 import lombok.Setter;
-import org.springframework.hateoas.ResourceSupport;
-import org.springframework.http.HttpEntity;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/travellers")
 public class TravellerController extends HateoasController<Traveller, Integer> {
+
+    private Gson gson = new Gson();
 
     @Setter
     private TravellerService service;
@@ -26,19 +27,57 @@ public class TravellerController extends HateoasController<Traveller, Integer> {
         service = _service;
     }
 
-//    @Override
-//    @RequestMapping(value = "/login", method = RequestMethod.POST)
-//    public ResponseEntity<String> login(@RequestParam(name = "username", required = true) String username, @RequestParam(name = "password", required = true) String password){
-//        service.login(username,password);
-//        return new ResponseEntity<String>(username + " : " + password, HttpStatus.OK);
-//    }
-//
-//    @Override
-//    @RequestMapping(value = "/create", method = RequestMethod.POST)
-//    public ResponseEntity<String> register(@RequestParam(name = "firstName", required = true) String firstName, @RequestParam(name = "lastName", required = true) String lastName, @RequestParam(name = "username", required = true) String username, @RequestParam(name = "password", required = true) String password){
-//        service.register(firstName,lastName,username,password);
-//        return new ResponseEntity<String>("First name: " + firstName + ", last name: " + lastName + ", username: " + username + ", password : " + password, HttpStatus.OK);
-//    }
+    @GetMapping(value = "/get")
+    public ResponseEntity<String> getByUsername(@RequestParam(name = "username", required = true) String username){
+       Traveller result = service.getByUsername(username);
+       return new ResponseEntity<>(gson.toJson(result), HttpStatus.OK);
+    }
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResponseEntity<String> login(@RequestBody ObjectNode node){
+        Traveller result = service.login(node.get("username").asText(),node.get("password").asText());
+        if(result != null){
+            if(result.getUser().getUsername() != null){
+                return new ResponseEntity<String>(gson.toJson(result), HttpStatus.OK);
+            }else{
+                return new ResponseEntity<String>("Username or Password is incorrect", HttpStatus.NOT_FOUND);
+            }
+        }else{
+            return new ResponseEntity<String>("Woops something went wrong", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<String> register(@RequestBody ObjectNode node) throws IOException {
+        Traveller traveller = new Traveller();
+        traveller.getUser().setUsername(node.get("username").asText());
+        traveller.setBio(node.get("bio").asText());
+        traveller.setPicture(node.get("picture").binaryValue());
+        traveller.setFirstname(node.get("firstname").asText());
+        traveller.setLastname(node.get("lastname").asText());
+        //traveller.setCountry(node.get("country").asText());
+
+        Traveller result = service.register(traveller, node.get("password").asText(),new Role(node.get("role").asText()));
+        if(result != null){
+            if(result.getUser().getUsername() == null){
+                return new ResponseEntity<String>("Username is Occupied", HttpStatus.METHOD_NOT_ALLOWED);
+            }
+            return new ResponseEntity<String>(gson.toJson(result), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<String>("Woops something went wrong", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public ResponseEntity<String> test(){
+        Traveller traveller = new Traveller();
+        traveller.getUser().setUsername("aefegsg");
+        traveller.setFirstname("");
+        traveller.setLastname("");
+        //traveller.setCountry("");
+        traveller.setBio("");
+        return new ResponseEntity<String>(service.test(traveller).toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
     @PutMapping(value = "/")
     @WrapWithLink

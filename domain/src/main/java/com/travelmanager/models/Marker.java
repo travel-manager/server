@@ -1,55 +1,44 @@
 package com.travelmanager.models;
 
-import com.travelmanager.enums.MarkerType;
+import com.travelmanager.hateoas.abstracts.HateoasObject;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Setter
-@Entity(name = "Markers")
-public class Marker  extends ResourceSupport {
+@Entity(name = "markers")
+@NoArgsConstructor
+public class Marker extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
     public Integer id;
 
-    /*private String markerJsonString;
+    @Getter
+    @Column(name = "type")
+    private int type;
+
+    @Getter
     @OneToOne
-    private Traveller placedBy;
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Location location;
+
+    @Getter
     @ManyToOne
-    @JoinColumn(name = "TripId")
-    private Trip trip;
-    @Column(name = "Note")
-    private String note;
-    @Column(name = "Location")
-    private String location;
-    private MarkerType type;*/
-
-    @Getter @Column(name = "lat")
-    private Float latitude;
-    @Getter @Column(name = "long")
-    private Float longtitude;
-    @Getter @Column(name = "type")
-    private String type;
-    @Getter @Column(name = "creator")
-    private String creator;
-    @Getter @Column(name = "note")
-    private String note;
-    @Getter @OneToOne
-    @JoinColumn(name = "id",table = "trips")
+    @JoinColumn(name = "trips_id", referencedColumnName = "id")
     private Trip trip;
 
-    public Marker() {
+    @Override
+    public Serializable getIdentifier() {
+        return this.id;
     }
 
-    public Marker(Float latitude, Float longtitude, String type, String creator, String note, Trip trip) {
-        this.latitude = latitude;
-        this.longtitude = longtitude;
+    public Marker(int type, Location location, Trip trip) {
         this.type = type;
-        this.creator = creator;
-        this.note = note;
+        this.location = location;
         this.trip = trip;
     }
 }
