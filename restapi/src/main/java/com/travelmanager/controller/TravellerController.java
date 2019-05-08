@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/travellers")
 public class TravellerController extends HateoasController<Traveller, Integer> {
 
@@ -65,15 +66,26 @@ public class TravellerController extends HateoasController<Traveller, Integer> {
         }
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.POST)
-    public ResponseEntity<String> test(){
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public ResponseEntity<Traveller> test(){
         Traveller traveller = new Traveller();
         traveller.setUsername("aefegsg");
         traveller.setFirstname("");
         traveller.setLastname("");
         traveller.setCountry("");
         traveller.setBio("");
-        return new ResponseEntity<String>(service.test(traveller).toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<Traveller>(traveller, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/test1", method = RequestMethod.POST)
+    public ResponseEntity<Traveller> test1(){
+        Traveller traveller = new Traveller();
+        traveller.setUsername("posted");
+        traveller.setFirstname("");
+        traveller.setLastname("");
+        traveller.setCountry("");
+        traveller.setBio("");
+        return new ResponseEntity<Traveller>(traveller, HttpStatus.OK);
     }
 
     @Override

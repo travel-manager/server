@@ -23,6 +23,8 @@ import java.util.stream.Collectors;
  *
  * @author lfb0801
  */
+
+@CrossOrigin(origins = "http://localhost:4200")
 public abstract class HateoasController<T extends ResourceSupport & HateoasObject, Identifier extends Serializable> {
 
     private HateoasService<T, Identifier> service;

@@ -17,6 +17,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/transactions")
 public class TransactionController extends HateoasController<Transaction, Integer> {
 
