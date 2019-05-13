@@ -1,11 +1,7 @@
 package com.travelmanager.models;
 
-<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travelmanager.interfaces.HateoasObject;
-=======
-import com.travelmanager.hateoas.abstracts.HateoasObject;
->>>>>>> 25aa2d4346d3cc4ab6053bb7f2befc2bb6afac35
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +9,7 @@ import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Setter
 @Entity(name = "messages")

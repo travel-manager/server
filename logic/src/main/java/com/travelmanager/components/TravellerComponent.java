@@ -1,9 +1,6 @@
 package com.travelmanager.components;
 
-<<<<<<< HEAD
-=======
 import com.travelmanager.models.Role;
->>>>>>> 25aa2d4346d3cc4ab6053bb7f2befc2bb6afac35
 import com.travelmanager.models.Traveller;
 import com.travelmanager.models.User;
 import com.travelmanager.repositories.ITravellerRepository;

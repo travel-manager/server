@@ -1,18 +1,11 @@
 package com.travelmanager.controller;
 
-<<<<<<< HEAD:restapi/src/main/java/com/travelmanager/controller/HateoasController.java
 import com.travelmanager.annotations.WrapWithLink;
 import com.travelmanager.interfaces.HateoasObject;
 import com.travelmanager.services.HateoasService;
 import com.travelmanager.utils.HateoasResponse;
 import com.travelmanager.utils.HateoasUtil;
-=======
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.travelmanager.hateoas.annotations.WrapWithLink;
-import com.travelmanager.hateoas.utils.HateoasResponse;
-import com.travelmanager.hateoas.utils.HateoasUtil;
->>>>>>> 25aa2d4346d3cc4ab6053bb7f2befc2bb6afac35:hateoas/src/main/java/com/travelmanager/hateoas/abstracts/HateoasController.java
 import org.assertj.core.util.Lists;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpEntity;

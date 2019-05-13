@@ -2,8 +2,9 @@ package com.travelmanager.services;
 
 import com.nimbusds.jose.JOSEException;
 import com.travelmanager.components.AuthenticationComponent;
+import com.travelmanager.models.Role;
+import com.travelmanager.models.Token;
 import com.travelmanager.models.User;
-import com.travelmanager.refactoredModels.Token;
 import com.travelmanager.repositories.ITokenRepository;
 import com.travelmanager.repositories.IUserRepository;
 import com.travelmanager.utils.AuthUtils;
@@ -33,7 +34,7 @@ public class AuthenticationService {
         String oriPassword = newUser.getPassword();
         newUser.setPassword(component.hashPassword(newUser.getPassword()));
         User savedUser = userRepository.save(newUser);
-        return new User(newUser.getUsername(), oriPassword);
+        return new User(newUser.getUsername(), oriPassword, newUser.getRole());
     }
 
     public Token login(User loginAttempt, HttpServletRequest request) throws JOSEException {
@@ -45,8 +46,6 @@ public class AuthenticationService {
         }
         return null;
     }
-
-
 
     /**
      * I wonder what this does.

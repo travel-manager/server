@@ -7,10 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-=======
-import javax.persistence.OneToMany;
->>>>>>> 25aa2d4346d3cc4ab6053bb7f2befc2bb6afac35
 import java.util.List;
 
 @Service

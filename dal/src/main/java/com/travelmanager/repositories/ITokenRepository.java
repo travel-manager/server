@@ -1,6 +1,6 @@
 package com.travelmanager.repositories;
 
-import com.travelmanager.refactoredModels.Token;
+import com.travelmanager.models.Token;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

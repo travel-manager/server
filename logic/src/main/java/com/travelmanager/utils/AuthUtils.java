@@ -7,7 +7,7 @@ import com.nimbusds.jose.JWSSigner;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-import com.travelmanager.refactoredModels.Token;
+import com.travelmanager.models.Token;
 
 import java.time.LocalDateTime;
 
