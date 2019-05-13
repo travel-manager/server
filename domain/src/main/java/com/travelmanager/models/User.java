@@ -28,4 +28,8 @@ public class User {
     public User(){
 
     }
+
+    public Integer getIdentifier(){
+        return id;
+    }
 }

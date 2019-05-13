@@ -51,7 +51,7 @@ public class TravellerComponent {
 
     private User getUser(String username){
         try {
-            return userRepository.getUserByUsername(username);
+            return userRepository.findByUsername(username);
         }catch (Exception e){
             System.out.println(e);
             return null;

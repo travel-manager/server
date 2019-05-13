@@ -62,6 +62,6 @@ public class AuthenticationService {
         Token token = tokenRepository.findByToken(t);
         if (token == null)
             return false;
-        return token.getTimesatamp().before(Timestamp.from(Instant.now()));
+        return token.getTimestamp().before(Timestamp.from(Instant.now()));
     }
 }

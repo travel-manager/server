@@ -2,6 +2,7 @@ package com.travelmanager.refactoredModels;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.travelmanager.interfaces.HateoasObject;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
@@ -19,10 +20,11 @@ public class Token extends ResourceSupport implements HateoasObject {
     private int id;
 
     @Column
-    @Setter
+    @Getter
     private String token;
 
     @Column
+    @Getter
     private Timestamp timestamp;
 
     @OneToOne

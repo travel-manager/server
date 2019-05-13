@@ -1,5 +1,6 @@
 package com.travelmanager.utils;
 
+import com.travelmanager.annotations.LoginRequired;
 import com.travelmanager.services.AuthenticationService;
 import lombok.Setter;
 import org.aspectj.lang.ProceedingJoinPoint;
