@@ -1,5 +1,6 @@
-package com.travelmanager.hateoas.abstracts;
+package com.travelmanager.services;
 
+import com.travelmanager.interfaces.HateoasObject;
 import lombok.Getter;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.hateoas.ResourceSupport;
@@ -29,6 +30,8 @@ public abstract class HateoasService<T extends ResourceSupport & HateoasObject, 
      * @return class of the instance.
      */
     public abstract Class<? extends HateoasService<T, Identifier>> getClazz();
+
+    public abstract Class<? extends ResourceSupport> getType();
 
     public void create(T entity) {
         repo.save(entity);

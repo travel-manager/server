@@ -1,6 +1,6 @@
 package com.travelmanager.models;
 
-import com.travelmanager.hateoas.abstracts.HateoasObject;
+import com.travelmanager.interfaces.HateoasObject;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,14 +30,14 @@ public class User extends ResourceSupport implements HateoasObject {
     @JoinColumn(name = "roles_id", referencedColumnName = "id")
     private Role role;
 
-    @Override
-    public Serializable getIdentifier() {
-        return this.id;
-    }
-
     public User(String username, String password, Role role) {
         this.username = username;
         this.password = password;
         this.role = role;
+    }
+
+    @Override
+    public Integer getIdentifier(){
+        return id;
     }
 }

@@ -1,8 +1,11 @@
-package com.travelmanager.hateoas.abstracts;
+package com.travelmanager.controller;
 
-import com.travelmanager.hateoas.annotations.WrapWithLink;
-import com.travelmanager.hateoas.utils.HateoasResponse;
-import com.travelmanager.hateoas.utils.HateoasUtil;
+import com.travelmanager.annotations.WrapWithLink;
+import com.travelmanager.interfaces.HateoasObject;
+import com.travelmanager.services.HateoasService;
+import com.travelmanager.utils.HateoasResponse;
+import com.travelmanager.utils.HateoasUtil;
+import com.google.gson.Gson;
 import org.assertj.core.util.Lists;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpEntity;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +28,8 @@ import java.util.stream.Collectors;
  * @author lfb0801
  */
 public abstract class HateoasController<T extends ResourceSupport & HateoasObject, Identifier extends Serializable> {
+
+    Gson gson = new Gson();
 
     private HateoasService<T, Identifier> service;
 
@@ -37,6 +43,8 @@ public abstract class HateoasController<T extends ResourceSupport & HateoasObjec
      * @return class of the instance.
      */
     public abstract Class<? extends HateoasController<T, Identifier>> getClazz();
+
+    public abstract Class<? extends ResourceSupport> getType();
 
     /**
      * Retrieve the options for this rest services.

@@ -1,10 +1,10 @@
 package com.travelmanager.controller;
 
 import com.google.gson.Gson;
-import com.travelmanager.hateoas.abstracts.HateoasController;
 import com.travelmanager.models.Marker;
 import com.travelmanager.services.MarkerService;
 import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +31,11 @@ public class MarkerController extends HateoasController<Marker, Integer> {
     @Override
     public Class<? extends HateoasController<Marker, Integer>> getClazz() {
         return this.getClass();
+    }
+
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Marker.class;
     }
 
     @RequestMapping(value = "/getallbytrip", method = RequestMethod.GET)

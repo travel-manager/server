@@ -1,6 +1,7 @@
 package com.travelmanager.models;
 
-import com.travelmanager.hateoas.abstracts.HateoasObject;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.travelmanager.interfaces.HateoasObject;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import java.io.Serializable;
 public class Marker extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private Integer id;
+    public Integer id;
 
     @Getter
     @Column(name = "type")

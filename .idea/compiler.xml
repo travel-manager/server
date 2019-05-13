@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="dal" />
         <module name="domain" />
-        <module name="hateoas" />
         <module name="logic" />
         <module name="restapi" />
         <module name="websocket" />
@@ -27,12 +26,12 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="dal" options="-parameters" />
-      <module name="domain" options="-parameters" />
-      <module name="hateoas" options="-parameters" />
-      <module name="logic" options="-parameters" />
-      <module name="restapi" options="-parameters" />
-      <module name="websocket" options="-parameters" />
+      <module name="dal" options="" />
+      <module name="domain" options="" />
+      <module name="hateoas" options="" />
+      <module name="logic" options="" />
+      <module name="restapi" options="" />
+      <module name="websocket" options="" />
     </option>
   </component>
 </project>

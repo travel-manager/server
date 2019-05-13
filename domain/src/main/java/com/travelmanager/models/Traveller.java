@@ -1,6 +1,7 @@
 package com.travelmanager.models;
 
-import com.travelmanager.hateoas.abstracts.HateoasObject;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.travelmanager.interfaces.HateoasObject;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +17,7 @@ import java.util.List;
 public class Traveller extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    public Integer id;
 
     @Getter
     @Column(name = "firstname")
@@ -49,6 +50,11 @@ public class Traveller extends ResourceSupport implements HateoasObject {
     @OneToMany
     @JoinTable(name = "travellers_spoken_languages", joinColumns = @JoinColumn(name = "travellers_id"), inverseJoinColumns = @JoinColumn(name = "languages_id"))
     private List<Language> languages;
+
+    @Getter
+    @OneToMany
+    @JoinTable(name = "members", joinColumns = @JoinColumn(name = "travellers_id"), inverseJoinColumns = @JoinColumn(name = "trips_id"))
+    private List<Trip> trips;
 
     @Override
     public Serializable getIdentifier() {

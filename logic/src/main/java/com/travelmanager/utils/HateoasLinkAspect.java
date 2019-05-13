@@ -1,7 +1,7 @@
-package com.travelmanager.hateoas.utils;
+package com.travelmanager.utils;
 
-import com.travelmanager.hateoas.annotations.WrapWithLink;
-import com.travelmanager.hateoas.annotations.WrapWithLinks;
+import com.travelmanager.annotations.WrapWithLink;
+import com.travelmanager.annotations.WrapWithLinks;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

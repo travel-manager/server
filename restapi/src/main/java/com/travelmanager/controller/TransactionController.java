@@ -1,10 +1,10 @@
 package com.travelmanager.controller;
 
 import com.google.gson.Gson;
-import com.travelmanager.hateoas.abstracts.HateoasController;
 import com.travelmanager.models.Transaction;
 import com.travelmanager.services.TransactionService;
 import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +26,11 @@ public class TransactionController extends HateoasController<Transaction, Intege
     @Override
     public Class<? extends HateoasController<Transaction, Integer>> getClazz() {
         return this.getClass();
+    }
+
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Transaction.class;
     }
 
     @RequestMapping(value = "/getallbypayerandtripid", method = RequestMethod.GET)
