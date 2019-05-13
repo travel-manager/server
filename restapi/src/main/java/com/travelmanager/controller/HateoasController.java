@@ -1,11 +1,13 @@
 package com.travelmanager.controller;
 
+import com.travelmanager.annotations.LoginRequired;
 import com.travelmanager.annotations.WrapWithLink;
 import com.travelmanager.interfaces.HateoasObject;
 import com.travelmanager.services.HateoasService;
 import com.travelmanager.utils.HateoasResponse;
 import com.travelmanager.utils.HateoasUtil;
 import com.google.gson.Gson;
+import lombok.extern.java.Log;
 import org.assertj.core.util.Lists;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpEntity;
@@ -58,6 +60,7 @@ public abstract class HateoasController<T extends ResourceSupport & HateoasObjec
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
+    @LoginRequired
     @PostMapping(value = "/{entity}")
     @WrapWithLink
     public HttpEntity<HateoasResponse> create(@PathVariable T entity) {
@@ -86,6 +89,7 @@ public abstract class HateoasController<T extends ResourceSupport & HateoasObjec
         return HateoasUtil.build(result);
     }
 
+    @LoginRequired
     @PutMapping(value = "/")
     @WrapWithLink
     public HttpEntity<HateoasResponse> update(@RequestBody T entity) {
@@ -93,6 +97,7 @@ public abstract class HateoasController<T extends ResourceSupport & HateoasObjec
         return HateoasUtil.build(entity);
     }
 
+    @LoginRequired
     @DeleteMapping(value = "/{id}")
     @WrapWithLink
     public HttpEntity<HateoasResponse> delete(@PathVariable("id") Identifier id) {

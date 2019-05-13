@@ -26,7 +26,7 @@ public class TravellerController extends HateoasController<Traveller, Integer> {
         service = _service;
     }
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/byUsername")
     // TODO: 13-5-2019 use requestbody? 
     public ResponseEntity<String> getByUsername(@RequestParam(name = "username", required = true) String username){
        Traveller result = service.getByUsername(username);
