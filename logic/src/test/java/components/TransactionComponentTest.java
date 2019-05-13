@@ -1,13 +1,7 @@
 package components;
 
-import com.travelmanager.components.TransactionComponent;
-import com.travelmanager.models.PaymentRequest;
-import com.travelmanager.models.Transaction;
-import com.travelmanager.models.Traveller;
-import org.junit.Test;
+//import com.travelmanager.refactoredModels.PaymentRequest;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class TransactionComponentTest {
 

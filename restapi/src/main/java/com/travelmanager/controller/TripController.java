@@ -2,8 +2,15 @@ package com.travelmanager.controller;
 
 import com.google.gson.Gson;
 import com.travelmanager.models.Trip;
+<<<<<<< HEAD
 import com.travelmanager.services.TripService;
 import lombok.Setter;
+=======
+import com.travelmanager.hateoas.abstracts.HateoasController;
+import com.travelmanager.services.TripService;
+import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
+>>>>>>> 25aa2d4346d3cc4ab6053bb7f2befc2bb6afac35
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -66,4 +73,10 @@ public class TripController extends HateoasController<Trip, Integer> {
     public Class<? extends HateoasController<Trip, Integer>> getClazz() {
         return this.getClass();
     }
+
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Trip.class;
+    }
+
 }

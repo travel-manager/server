@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ITravellerRepository extends PagingAndSortingRepository<Traveller, Integer> {
 
-    @Query(value = "SELECT t from travellers t where t.username = :username")
+    @Query(value = "SELECT t from travellers t join user u ON t.user = u.id where u.username = :username")
     Traveller getByUsername(@Param("username") String username);
 }

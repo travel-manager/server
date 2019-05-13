@@ -2,11 +2,16 @@ package com.travelmanager.services;
 
 
 import com.travelmanager.components.TravellerComponent;
+import com.travelmanager.models.Role;
 import com.travelmanager.repositories.ITravellerRepository;
 import com.travelmanager.models.Traveller;
 import com.travelmanager.repositories.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.stereotype.Service;
+
+import javax.persistence.Convert;
+import java.lang.reflect.Field;
 
 @Service
 public class TravellerService extends HateoasService<Traveller, Integer> {
@@ -27,8 +32,8 @@ public class TravellerService extends HateoasService<Traveller, Integer> {
         return component.login(username, password);
     }
 
-    public Traveller register(Traveller tr, String password){
-        return component.register(tr, password);
+    public Traveller register(Traveller tr, String password, Role role){
+        return component.register(tr, password, role);
     }
 
     public Boolean test(Traveller tr){
@@ -39,8 +44,27 @@ public class TravellerService extends HateoasService<Traveller, Integer> {
         return travellerRepository.getByUsername(username);
     }
 
+
+    @Override
+    public void update(Traveller traveller){
+        if(travellerRepository.findById(traveller.id).isPresent()){
+            Traveller tr = travellerRepository.findById(traveller.id).get();
+            tr.setFirstname(traveller.getFirstname());
+            tr.setLastname(traveller.getLastname());
+            tr.setUser(traveller.getUser());
+            tr.setBio(traveller.getBio());
+            tr.setPicture(traveller.getPicture());
+            travellerRepository.save(tr);
+        }
+    }
+
     @Override
     public Class<? extends HateoasService<Traveller, Integer>> getClazz() {
         return this.getClass();
+    }
+
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Traveller.class;
     }
 }

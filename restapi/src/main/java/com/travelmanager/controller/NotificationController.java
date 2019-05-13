@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.travelmanager.models.Notification;
 import com.travelmanager.services.NotificationService;
 import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,11 @@ public class NotificationController extends HateoasController<Notification, Inte
     @Override
     public Class<? extends HateoasController<Notification, Integer>> getClazz() {
         return this.getClass();
+    }
+
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Notification.class;
     }
 
     @RequestMapping(value = "/getallbytrip", method = RequestMethod.GET)

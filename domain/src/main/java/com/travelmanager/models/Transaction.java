@@ -1,57 +1,69 @@
 package com.travelmanager.models;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travelmanager.interfaces.HateoasObject;
+=======
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+>>>>>>> 25aa2d4346d3cc4ab6053bb7f2befc2bb6afac35
 import lombok.Getter;
-import org.springframework.hateoas.Link;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 import java.io.Serializable;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> 25aa2d4346d3cc4ab6053bb7f2befc2bb6afac35
 
-@Getter
+@Setter
 @Entity(name = "transactions")
-public class Transaction extends ResourceSupport implements HateoasObject{
+@NoArgsConstructor
+public class Transaction extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private Integer id;
+    public Integer id;
 
-    public Link getId() {
-        return new Link(id.toString());
-    }
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id",table = "travellers")
-    private Traveller payer;
-    /*@OneToOne
-    @JoinColumn(name = "idTrips",referencedColumnName = "id")
-*/
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id",table = "trips")
-    private Trip trip;
+    @Getter
     @Column(name = "amount")
-    private Double amount;
-    @Column(name = "freeloader")
-    private String freeloaders;
+    private double amount;
+
+    @Getter
     @Column(name = "subject")
     private String subject;
-    @Column(name = "unit")
-    private String unit;
 
-    public Transaction() {
-    }
+    @Getter
+    @OneToOne
+    @JoinColumn(name = "units_id", referencedColumnName = "id")
+    private Unit unit;
 
-    public Transaction(Traveller payer, Trip trip, Double amount, String freeloaders, String subject, String unit) {
-        this.payer = payer;
-        this.trip = trip;
-        this.amount = amount;
-        this.freeloaders = freeloaders;
-        this.subject = subject;
-        this.unit = unit;
-    }
+    @Getter
+    @OneToOne
+    @JoinColumn(name = "payer",referencedColumnName = "id")
+    private Traveller payer;
+
+    @Getter
+    @OneToOne
+    @JoinColumn(name = "trips_id",referencedColumnName = "id")
+    private Trip trip;
+
+    @Getter
+    @OneToMany(mappedBy = "transaction", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Freeloader> freeloaders;
+
 
     @Override
-    @JsonIgnore
     public Serializable getIdentifier() {
         return this.id;
+    }
+
+    public Transaction(double amount, String subject, Unit unit, Traveller payer, Trip trip) {
+        this.amount = amount;
+        this.subject = subject;
+        this.unit = unit;
+        this.payer = payer;
+        this.trip = trip;
     }
 }

@@ -6,6 +6,7 @@ import com.travelmanager.interfaces.ITransactionService;
 import com.travelmanager.models.Transaction;
 import com.travelmanager.models.Traveller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,19 @@ public class TransactionService extends HateoasService<Transaction, Integer> imp
         this.component = _component;
     }
 
+    public void update(Transaction object){
+        if(repository.findById(object.id).isPresent()){
+            Transaction ent = repository.findById(object.id).get();
+            ent.setAmount(object.getAmount());
+            ent.setFreeloaders(object.getFreeloaders());
+            ent.setPayer(object.getPayer());
+            ent.setTrip(object.getTrip());
+            ent.setSubject(object.getSubject());
+            ent.setUnit(object.getUnit());
+            repository.save(ent);
+        }
+    }
+
     @Override
     public Transaction calculatePayRequestForTraveller(Traveller traveller) {
         // TODO: 10-4-2019 let component handle the calculation 
@@ -35,11 +49,16 @@ public class TransactionService extends HateoasService<Transaction, Integer> imp
         return this.getClass();
     }
 
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Transaction.class;
+    }
+
     public List<Transaction> getAllByPayerAndTripId(int payer, int tripId){
         return repository.getAllByPayerAndTripId(payer,tripId);
     }
 
-    public List<Transaction> getAllByFreeLoaderAndTripId(String freeLoader, int tripId){
-        return repository.getAllByFreeLoaderAndTripId(freeLoader,tripId);
+    public List<Transaction> getAllByFreeLoaderAndTripId(int tripId){
+        return repository.getAllByFreeLoaderAndTripId(tripId);
     }
 }

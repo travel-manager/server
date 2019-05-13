@@ -1,6 +1,11 @@
-package com.travelmanager.refactoredModels;
+package com.travelmanager.models;
 
+<<<<<<< HEAD:domain/src/main/java/com/travelmanager/refactoredModels/Location.java
 import com.travelmanager.interfaces.HateoasObject;
+=======
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.Getter;
+>>>>>>> 25aa2d4346d3cc4ab6053bb7f2befc2bb6afac35:domain/src/main/java/com/travelmanager/models/Location.java
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
@@ -14,22 +19,27 @@ import java.io.Serializable;
 public class Location extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
-    @Column
+    @Getter
+    @Column(name = "latitude")
     private float latitude;
 
-    @Column
+    @Getter
+    @Column(name = "longtitude")
     private float longtitude;
 
-    @Column
+    @Getter
+    @Column(name = "city")
     private String city;
 
-    @Column
+    @Getter
+    @Column(name = "country")
     private String country;
 
+    @Getter
     @Lob
-    @Column
+    @Column(name = "flag")
     private byte[] flag;
 
     @Override

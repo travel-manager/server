@@ -1,4 +1,4 @@
-package com.travelmanager.refactoredModels;
+package com.travelmanager.models;
 
 import com.travelmanager.interfaces.HateoasObject;
 import lombok.NoArgsConstructor;
@@ -17,9 +17,10 @@ import java.io.Serializable;
 public class Role extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
-    @Column
+    @Getter
+    @Column(name = "role")
     private String role;
 
     @Override

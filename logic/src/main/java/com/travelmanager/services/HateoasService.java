@@ -31,6 +31,8 @@ public abstract class HateoasService<T extends ResourceSupport & HateoasObject, 
      */
     public abstract Class<? extends HateoasService<T, Identifier>> getClazz();
 
+    public abstract Class<? extends ResourceSupport> getType();
+
     public void create(T entity) {
         repo.save(entity);
     }

@@ -1,51 +1,59 @@
 package com.travelmanager.models;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travelmanager.interfaces.HateoasObject;
+=======
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+>>>>>>> 25aa2d4346d3cc4ab6053bb7f2befc2bb6afac35
 import lombok.Getter;
-import org.springframework.hateoas.Link;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Getter
+@Setter
 @Entity(name = "notifications")
-public class Notification extends ResourceSupport implements HateoasObject{
+@NoArgsConstructor
+public class Notification extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private Integer id;
+    public Integer id;
 
-    public Link getId() {
-        return new Link(id.toString());
-    }
-
-    @Column(name = "timestamp")
-    private String timestamp;
-    @Column(name = "type")
-    private String type;
+    @Getter
     @Column(name = "content")
     private String content;
-    @Column(name = "icon")
-    private String icon;
-    @OneToOne
-    @JoinColumn(name = "id",table = "trips")
+
+    @Getter
+    @Column(name = "type")
+    private String type;
+
+    @Getter
+    @Column(name = "timestamp")
+    private Timestamp timestamp;
+
+    @Getter
+    @ManyToOne
+    @JoinColumn(name = "trips_id", referencedColumnName = "id")
     private Trip trip;
 
-    public Notification() {
-    }
-
-    public Notification(String timestamp, String type, String content, String icon, Trip trip) {
-        this.timestamp = timestamp;
-        this.type = type;
-        this.content = content;
-        this.icon = icon;
-        this.trip = trip;
-    }
+    @Getter
+    @OneToOne
+    @JoinColumn(name = "icons_id", referencedColumnName = "id")
+    private Icon icon;
 
     @Override
-    @JsonIgnore
     public Serializable getIdentifier() {
         return this.id;
+    }
+
+    public Notification(String content, String type, Timestamp timestamp, Trip trip, Icon icon) {
+        this.content = content;
+        this.type = type;
+        this.timestamp = timestamp;
+        this.trip = trip;
+        this.icon = icon;
     }
 }

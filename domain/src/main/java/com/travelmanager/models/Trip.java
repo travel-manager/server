@@ -1,119 +1,82 @@
 package com.travelmanager.models;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travelmanager.interfaces.HateoasObject;
 import lombok.Getter;
 import org.springframework.hateoas.Link;
+=======
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+>>>>>>> 25aa2d4346d3cc4ab6053bb7f2befc2bb6afac35
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 import java.io.Serializable;
+<<<<<<< HEAD
+=======
+import java.sql.Date;
+import java.util.List;
+>>>>>>> 25aa2d4346d3cc4ab6053bb7f2befc2bb6afac35
 
-@Getter
-@Entity(name = "Trips")
+@Setter
+@Entity(name = "trips")
+@NoArgsConstructor
 public class Trip extends ResourceSupport implements HateoasObject {
     @Id
-    @GeneratedValue
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer id;
 
-    public Link getId() {
-        return new Link(id.toString());
-    }
+    @Getter
+    @OneToOne
+    @JoinColumn(name = "location_id",referencedColumnName = "id")
+    private Location location;
 
-    //    @Column(name = "LocationList")
-    //  private List<Location> locationList;
-/*
-    private String name;
-    @Column(name = "picture")
-    private String pictureURL;
-    @Column(name = "datestart")
-    private DateFormat dateStartTrip;
-    @Column(name = "dateend")
-    private DateFormat dateEndTrip;
-    @OneToMany
-    @JoinTable(name = "members")
-    private List<Traveller>travellerList;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id",table = "travellers")
-    private Traveller owner;
-//    @OneToOne
-//    private Chat chat;
-    @OneToMany
-    @JoinTable(name = "members")
-    private List<Transaction>transactionList;
-    @OneToMany
-    private List<Marker> markerList;
-    //  private List<Notification>notificationL ist;
-
-    @Column(name = "lat")
-    private float latitude;
-
-    @Column(name = "long")
-    private float longitude;
-
-    @Column(name = "public")
-    private int isPublic;
-
-    private String description;
-
-*/
-    @Column(name = "location")
-    private String location;
+    @Getter
     @Column(name = "name")
     private String name;
-    @Column(name = "picture")
-    private String picture;
+
+    @Getter
     @Column(name = "datestart")
-    private String datestart;
+    private Date datestart;
+
+    @Getter
     @Column(name = "dateend")
-    private String dateend;
-    @Column(name = "lat")
-    private Float latitude;
-    @Column(name = "long")
-    private Float longtitude;
+    private Date dateend;
+
+    @Getter
     @Column(name = "description")
     private String description;
+
+    @Getter
     @Column(name = "public")
-    private Boolean isPublic;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id",table = "travellers")
-    private Traveller owner;
+    private boolean isPublic;
 
+    @Getter
+    @OneToMany
+    @JoinTable(name = "members", joinColumns = @JoinColumn(name = "trips_id"), inverseJoinColumns = @JoinColumn(name = "travellers_id"))
+    private List<Traveller> members;
 
-    public Trip() {
-    }
+    @Getter
+    @Lob
+    @Column(name = "picture")
+    private byte[] picture;
 
-    public Trip(String location, String name, String picture, String datestart, String dateend, Float latitude, Float longtitude, String description, Boolean isPublic, Traveller owner) {
-        this.location = location;
-        this.name = name;
-        this.picture = picture;
-        this.datestart = datestart;
-        this.dateend = dateend;
-        this.latitude = latitude;
-        this.longtitude = longtitude;
-        this.description = description;
-        this.isPublic = isPublic;
-        this.owner = owner;
-    }
 
     @Override
-    @JsonIgnore
     public Serializable getIdentifier() {
         return this.id;
     }
 
-    /*public Trip(String name, String pictureURL, DateFormat dateStartTrip, DateFormat dateEndTrip, List<Traveller> travellerList, Traveller owner, List<Transaction> transactionList, List<Marker> markerList, float latitude, float longitude, int isPublic, String description) {
+    public Trip(Location location, String name, Date datestart, Date dateend, String description, boolean isPublic, byte[] picture) {
+        this.location = location;
         this.name = name;
-        this.pictureURL = pictureURL;
-        this.dateStartTrip = dateStartTrip;
-        this.dateEndTrip = dateEndTrip;
-        this.travellerList = travellerList;
-        this.owner = owner;
-        this.transactionList = transactionList;
-        this.markerList = markerList;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.isPublic = isPublic;
+        this.datestart = datestart;
+        this.dateend = dateend;
         this.description = description;
-    }*/
+        this.isPublic = isPublic;
+        this.picture = picture;
+    }
 }

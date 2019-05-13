@@ -1,6 +1,7 @@
-package com.travelmanager.refactoredModels;
+package com.travelmanager.models;
 
 import com.travelmanager.interfaces.HateoasObject;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
@@ -14,12 +15,14 @@ import java.io.Serializable;
 public class Freeloader extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
-    @OneToMany
+    @Getter
+    @ManyToOne
     @JoinColumn(name = "travellers_id", referencedColumnName = "id")
     private Traveller traveller;
 
+    @Getter
     @ManyToOne
     @JoinColumn(name = "transactions_id", referencedColumnName = "id")
     private Transaction transaction;

@@ -1,6 +1,11 @@
-package com.travelmanager.refactoredModels;
+package com.travelmanager.models;
 
+<<<<<<< HEAD:domain/src/main/java/com/travelmanager/refactoredModels/Language.java
 import com.travelmanager.interfaces.HateoasObject;
+=======
+import com.travelmanager.hateoas.abstracts.HateoasObject;
+import lombok.Getter;
+>>>>>>> 25aa2d4346d3cc4ab6053bb7f2befc2bb6afac35:domain/src/main/java/com/travelmanager/models/Language.java
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.hateoas.ResourceSupport;
@@ -17,9 +22,10 @@ import java.io.Serializable;
 public class Language extends ResourceSupport implements HateoasObject {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
-    @Column
+    @Getter
+    @Column(name = "language")
     private String language;
 
     @Override

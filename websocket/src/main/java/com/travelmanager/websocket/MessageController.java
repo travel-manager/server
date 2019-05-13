@@ -1,6 +1,6 @@
 package com.travelmanager.websocket;
 
-import com.travelmanager.models.WebsocketMessage;
+import com.travelmanager.models.Message;
 import com.travelmanager.services.MessageService;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class MessageController {
 
     @MessageMapping("/message")
     @SendTo("/chat/response")
-    public ResponseEntity sendMessage(WebsocketMessage msg){
+    public ResponseEntity sendMessage(Message msg){
         service.create(msg);
         return new ResponseEntity<>(msg, HttpStatus.valueOf(200));
     }

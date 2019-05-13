@@ -1,9 +1,17 @@
 package com.travelmanager.controller;
 
 import com.google.gson.Gson;
+<<<<<<< HEAD
 import com.travelmanager.models.Transaction;
 import com.travelmanager.services.TransactionService;
 import lombok.Setter;
+=======
+import com.travelmanager.hateoas.abstracts.HateoasController;
+import com.travelmanager.models.Transaction;
+import com.travelmanager.services.TransactionService;
+import lombok.Setter;
+import org.springframework.hateoas.ResourceSupport;
+>>>>>>> 25aa2d4346d3cc4ab6053bb7f2befc2bb6afac35
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,14 +35,19 @@ public class TransactionController extends HateoasController<Transaction, Intege
         return this.getClass();
     }
 
+    @Override
+    public Class<? extends ResourceSupport> getType() {
+        return Transaction.class;
+    }
+
     @RequestMapping(value = "/getallbypayerandtripid", method = RequestMethod.GET)
     public ResponseEntity<String> getAllByPayerAndTripId(@RequestParam(name = "payer") int payer, @RequestParam(name = "tripId") int tripId){
         return new ResponseEntity<String>(json.toJson(service.getAllByPayerAndTripId(payer,tripId)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getallbyfreeloaderandtripid", method = RequestMethod.GET)
-    public ResponseEntity<String> getAllByFreeLoaderAndTripId(@RequestParam(name = "freeloader") String freeLoader, @RequestParam(name = "tripId") int tripId){
-        return new ResponseEntity<String>(json.toJson(service.getAllByFreeLoaderAndTripId(freeLoader,tripId)), HttpStatus.OK);
+    public ResponseEntity<String> getAllByFreeLoaderAndTripId(@RequestParam(name = "tripId") int tripId){
+        return new ResponseEntity<String>(json.toJson(service.getAllByFreeLoaderAndTripId(tripId)), HttpStatus.OK);
     }
 
 }
