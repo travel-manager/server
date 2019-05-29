@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
 public class MessageController {
 
     @Setter
-    private MessageService service;
+    private MessageService services;
 
     @Autowired
     public MessageController(MessageService service) {
@@ -23,7 +23,7 @@ public class MessageController {
 
     @MessageMapping("/message")
     @SendTo("/chat/response")
-    public ResponseEntity sendMessage(Message msg){
+    public ResponseEntity sendMessage(Message msg) {
         service.create(msg);
         return new ResponseEntity<>(msg, HttpStatus.valueOf(200));
     }

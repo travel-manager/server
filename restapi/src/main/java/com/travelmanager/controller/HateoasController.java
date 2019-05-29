@@ -80,7 +80,8 @@ public abstract class HateoasController<T extends ResourceSupport & HateoasObjec
                 WrapWithLink.Type.UPDATE.link(request, "/" + entity.getId()),
                 WrapWithLink.Type.DELETE.link(request, "/" + entity.getId())
         )).collect(Collectors.toList()));
-        return HateoasUtil.build(responses);    }
+        return HateoasUtil.build(responses);
+    }
 
     @GetMapping(value = "/{id}")
     @WrapWithLink
