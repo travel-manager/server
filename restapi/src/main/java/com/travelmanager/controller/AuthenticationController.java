@@ -2,7 +2,6 @@ package com.travelmanager.controller;
 
 import com.nimbusds.jose.JOSEException;
 import com.travelmanager.models.Token;
-import com.travelmanager.models.Traveller;
 import com.travelmanager.models.User;
 import com.travelmanager.services.AuthenticationService;
 import com.travelmanager.utils.HateoasResponse;
@@ -24,7 +23,7 @@ public class AuthenticationController {
         this.service = service;
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public HateoasResponse login(@RequestBody User loginAttempt, @Context final HttpServletRequest request) throws JOSEException {
         Token token = service.login(loginAttempt, request);
         if (token != null)
