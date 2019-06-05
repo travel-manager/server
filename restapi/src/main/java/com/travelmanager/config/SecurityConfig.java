@@ -1,4 +1,4 @@
-package com.travelmanager.restapi;
+package com.travelmanager.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

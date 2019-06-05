@@ -1,7 +1,6 @@
 package com.travelmanager.controller;
 
 import com.google.gson.Gson;
-import com.travelmanager.hateoas.abstracts.HateoasController;
 import com.travelmanager.models.Transaction;
 import com.travelmanager.services.TransactionService;
 import lombok.Setter;
@@ -34,12 +33,12 @@ public class TransactionController extends HateoasController<Transaction, Intege
         return Transaction.class;
     }
 
-    @RequestMapping(value = "/getallbypayerandtripid", method = RequestMethod.GET)
+    @RequestMapping(value = "/byPayerAndTrip", method = RequestMethod.GET)
     public ResponseEntity<String> getAllByPayerAndTripId(@RequestParam(name = "payer") int payer, @RequestParam(name = "tripId") int tripId){
         return new ResponseEntity<String>(json.toJson(service.getAllByPayerAndTripId(payer,tripId)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/getallbyfreeloaderandtripid", method = RequestMethod.GET)
+    @RequestMapping(value = "/byFreeloaderAndTrip", method = RequestMethod.GET)
     public ResponseEntity<String> getAllByFreeLoaderAndTripId(@RequestParam(name = "tripId") int tripId){
         return new ResponseEntity<String>(json.toJson(service.getAllByFreeLoaderAndTripId(tripId)), HttpStatus.OK);
     }

@@ -1,7 +1,7 @@
 package com.travelmanager.controller;
 
 import com.google.gson.Gson;
-import com.travelmanager.hateoas.abstracts.HateoasController;
+import com.travelmanager.annotations.LoginRequired;
 import com.travelmanager.models.Marker;
 import com.travelmanager.services.MarkerService;
 import lombok.Setter;
@@ -39,14 +39,15 @@ public class MarkerController extends HateoasController<Marker, Integer> {
         return Marker.class;
     }
 
-    @RequestMapping(value = "/getallbytrip", method = RequestMethod.GET)
+    @RequestMapping(value = "/byTrip", method = RequestMethod.GET)
     public ResponseEntity<String> getAllMarkersByTripId(@RequestParam(name = "tripid") int tripId){
         List<Marker> markers = service.getAllMarkersByTripId(tripId);
         String json = gson.toJson(markers);
         return new ResponseEntity<String>(json, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/deletebytrip", method = RequestMethod.DELETE)
+    @LoginRequired
+    @RequestMapping(value = "/byTrip", method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteAllMarkersByTripId(@RequestParam(name = "tripid") int tripId){
         if (service.deleteAllMarkersByTripId(tripId)){
             return new ResponseEntity<Boolean>(true, HttpStatus.OK);

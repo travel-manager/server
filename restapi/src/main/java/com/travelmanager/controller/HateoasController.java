@@ -1,10 +1,13 @@
-package com.travelmanager.hateoas.abstracts;
+package com.travelmanager.controller;
 
+import com.travelmanager.annotations.LoginRequired;
+import com.travelmanager.annotations.WrapWithLink;
+import com.travelmanager.interfaces.HateoasObject;
+import com.travelmanager.services.HateoasService;
+import com.travelmanager.utils.HateoasResponse;
+import com.travelmanager.utils.HateoasUtil;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.travelmanager.hateoas.annotations.WrapWithLink;
-import com.travelmanager.hateoas.utils.HateoasResponse;
-import com.travelmanager.hateoas.utils.HateoasUtil;
+import lombok.extern.java.Log;
 import org.assertj.core.util.Lists;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpEntity;
@@ -57,6 +60,7 @@ public abstract class HateoasController<T extends ResourceSupport & HateoasObjec
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
+    @LoginRequired
     @PostMapping(value = "/{entity}")
     @WrapWithLink
     public HttpEntity<HateoasResponse> create(@PathVariable T entity) {
@@ -76,7 +80,8 @@ public abstract class HateoasController<T extends ResourceSupport & HateoasObjec
                 WrapWithLink.Type.UPDATE.link(request, "/" + entity.getId()),
                 WrapWithLink.Type.DELETE.link(request, "/" + entity.getId())
         )).collect(Collectors.toList()));
-        return HateoasUtil.build(responses);    }
+        return HateoasUtil.build(responses);
+    }
 
     @GetMapping(value = "/{id}")
     @WrapWithLink
@@ -85,6 +90,7 @@ public abstract class HateoasController<T extends ResourceSupport & HateoasObjec
         return HateoasUtil.build(result);
     }
 
+    @LoginRequired
     @PutMapping(value = "/")
     @WrapWithLink
     public HttpEntity<HateoasResponse> update(@RequestBody T entity) {
@@ -92,6 +98,7 @@ public abstract class HateoasController<T extends ResourceSupport & HateoasObjec
         return HateoasUtil.build(entity);
     }
 
+    @LoginRequired
     @DeleteMapping(value = "/{id}")
     @WrapWithLink
     public HttpEntity<HateoasResponse> delete(@PathVariable("id") Identifier id) {

@@ -1,4 +1,4 @@
-package com.travelmanager.hateoas.abstracts;
+package com.travelmanager.interfaces;
 
 import lombok.Getter;
 import org.springframework.hateoas.Link;

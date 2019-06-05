@@ -1,12 +1,9 @@
 package com.travelmanager.services;
 
-import com.travelmanager.hateoas.abstracts.HateoasService;
 import com.travelmanager.models.Message;
-import com.travelmanager.repositories.IMarkerRepository;
 import com.travelmanager.repositories.IMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ResourceSupport;
-import org.springframework.stereotype.Service;
 
 public class MessageService  extends HateoasService<Message, Integer> {
 

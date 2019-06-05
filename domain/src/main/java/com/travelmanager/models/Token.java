@@ -1,6 +1,7 @@
 package com.travelmanager.models;
 
-import com.travelmanager.hateoas.abstracts.HateoasObject;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.travelmanager.interfaces.HateoasObject;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,6 +36,11 @@ public class Token extends ResourceSupport implements HateoasObject {
     public Serializable getIdentifier() {
         return this.id;
     }
+
+    public Token(@JsonProperty("token") String token) {
+        this.token = token;
+    }
+
 
     public Token(String token, Timestamp timestamp, User user) {
         this.token = token;

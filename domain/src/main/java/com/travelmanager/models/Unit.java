@@ -1,6 +1,6 @@
 package com.travelmanager.models;
 
-import com.travelmanager.hateoas.abstracts.HateoasObject;
+import com.travelmanager.interfaces.HateoasObject;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
