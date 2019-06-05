@@ -42,7 +42,9 @@ public class AuthenticationService {
         final User foundUser = userRepository.findByUsername(loginAttempt.getUsername());
         if (foundUser != null
                 && component.checkPassword(loginAttempt.getPassword(), foundUser.getPassword())) {
-            return AuthUtils.createToken(request.getRemoteHost(), foundUser.getIdentifier().toString());
+            Token token = AuthUtils.createToken(request.getRemoteHost(), foundUser.getIdentifier().toString());
+            tokenRepository.save(token);
+            return token;
         }
         return null;
     }
