@@ -2,9 +2,7 @@ package com.travelmanager.services;
 
 import com.nimbusds.jose.JOSEException;
 import com.travelmanager.components.AuthenticationComponent;
-import com.travelmanager.models.Role;
-import com.travelmanager.models.Token;
-import com.travelmanager.models.User;
+import com.travelmanager.models.*;
 import com.travelmanager.repositories.ITokenRepository;
 import com.travelmanager.repositories.IUserRepository;
 import com.travelmanager.utils.AuthUtils;
@@ -14,6 +12,8 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class AuthenticationService {
@@ -34,15 +34,15 @@ public class AuthenticationService {
         String oriPassword = newUser.getPassword();
         newUser.setPassword(component.hashPassword(newUser.getPassword()));
         User savedUser = userRepository.save(newUser);
-        return new User(newUser.getUsername(), oriPassword, newUser.getRole());
+        savedUser.setPassword(oriPassword);
+        return savedUser;
     }
 
     public Token login(User loginAttempt, HttpServletRequest request) throws JOSEException {
         final User foundUser = userRepository.findByUsername(loginAttempt.getUsername());
         if (foundUser != null
                 && component.checkPassword(loginAttempt.getPassword(), foundUser.getPassword())) {
-            final Token token = AuthUtils.createToken(request.getRemoteHost(), foundUser.getIdentifier().toString());
-            return token;
+            return AuthUtils.createToken(request.getRemoteHost(), foundUser.getIdentifier().toString());
         }
         return null;
     }

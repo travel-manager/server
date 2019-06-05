@@ -13,9 +13,6 @@ import org.springframework.http.ResponseEntity;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * @author peaseloxes
- */
 @Aspect
 public class TokenAspect {
     @Autowired
@@ -47,8 +44,7 @@ public class TokenAspect {
                 // tell the user the bad news
                 return new ResponseEntity<>(
                         new HateoasResponse("You are not logged in or your token has expired."),
-                        HttpStatus.FORBIDDEN)
-                        ;
+                        HttpStatus.FORBIDDEN);
             }
         }
         // tell the user the bad news

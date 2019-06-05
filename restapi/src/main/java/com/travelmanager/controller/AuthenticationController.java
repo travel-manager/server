@@ -2,6 +2,7 @@ package com.travelmanager.controller;
 
 import com.nimbusds.jose.JOSEException;
 import com.travelmanager.models.Token;
+import com.travelmanager.models.Traveller;
 import com.travelmanager.models.User;
 import com.travelmanager.services.AuthenticationService;
 import com.travelmanager.utils.HateoasResponse;
@@ -16,9 +17,7 @@ import javax.ws.rs.core.Context;
 @RequestMapping("/authentication")
 public class AuthenticationController {
 
-    public static final String LOGIN_ERROR_MSG = "Wrong email and/or password";
-
-    AuthenticationService service;
+    private AuthenticationService service;
 
     @Autowired
     public AuthenticationController(AuthenticationService service) {

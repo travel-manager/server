@@ -4,9 +4,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 
-/**
- * @author peaseloxes
- */
 public final class DateUtil {
 
     public static final String DATE_MAY_NOT_BE_NULL = "Date may not be null";

@@ -11,20 +11,13 @@ import com.travelmanager.models.Token;
 
 import java.time.LocalDateTime;
 
-/**
- * Created by alex on 1/13/16.
- */
 public final class AuthUtils {
     private static final JWSHeader JWT_HEADER = new JWSHeader(JWSAlgorithm.HS256);
     private static final String TOKEN_SECRET = "aliceinwonderland";
     public static final String AUTH_HEADER_KEY = "Authorization";
     public static final int FOURTEEN = 14;
 
-    /**
-     * A constructor, what else.
-     */
     private AuthUtils() {
-        // now you see me, now you don't
     }
 
     /**
