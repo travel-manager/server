@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Transaction extends ResourceSupport implements HateoasObject {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
 
     @Getter

@@ -15,7 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class Marker extends ResourceSupport implements HateoasObject {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
 
     @Getter

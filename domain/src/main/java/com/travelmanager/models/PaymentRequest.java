@@ -7,6 +7,7 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ import java.util.HashMap;
 @Getter
 public class PaymentRequest  extends ResourceSupport implements HateoasObject {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     public Link getId() {

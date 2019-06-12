@@ -31,15 +31,12 @@ public class AuthenticationService {
     }
 
     public User register(User newUser, HttpServletRequest request) {
-        String oriPassword = newUser.getPassword();
         newUser.setPassword(component.hashPassword(newUser.getPassword()));
-        User savedUser = userRepository.save(newUser);
-        savedUser.setPassword(oriPassword);
-        return savedUser;
+        return userRepository.save(newUser);
     }
 
     public Token login(User loginAttempt, HttpServletRequest request) throws JOSEException {
-        final User foundUser = userRepository.findByUsername(loginAttempt.getUsername());
+        User foundUser = userRepository.findByUsername(loginAttempt.getUsername());
         if (foundUser != null
                 && component.checkPassword(loginAttempt.getPassword(), foundUser.getPassword())) {
             Token token = AuthUtils.createToken(request.getRemoteHost(), foundUser.getIdentifier().toString());

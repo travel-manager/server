@@ -34,9 +34,9 @@ public class AuthenticationController {
     @PostMapping("/register")
     public HateoasResponse register(@RequestBody User newUser, HttpServletRequest request) throws JOSEException {
         User user = service.register(newUser, request);
-        if (newUser.getId() != null) {
-            return HateoasUtil.build(newUser).getBody();
+        if (user.getIdentifier() != null) {
+            return HateoasUtil.build(true).getBody();
         }
-        return login(user, request);
+        return HateoasUtil.build(false).getBody();
     }
 }

@@ -14,7 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class Freeloader extends ResourceSupport implements HateoasObject {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Getter

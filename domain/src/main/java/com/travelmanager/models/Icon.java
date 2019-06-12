@@ -14,7 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class Icon extends ResourceSupport implements HateoasObject {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Getter

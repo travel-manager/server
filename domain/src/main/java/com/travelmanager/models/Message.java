@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class Message extends ResourceSupport implements HateoasObject {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
 
     @Getter

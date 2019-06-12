@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class Token extends ResourceSupport implements HateoasObject {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Getter

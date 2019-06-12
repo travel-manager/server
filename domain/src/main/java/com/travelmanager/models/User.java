@@ -14,7 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class User extends ResourceSupport implements HateoasObject {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Getter
@@ -28,7 +28,7 @@ public class User extends ResourceSupport implements HateoasObject {
     @Getter
     @OneToOne
     @JoinColumn(name = "roles_id", referencedColumnName = "id")
-    private Role role;
+    private Role role = new Role(2,"user");
 
     public User(String username, String password, Role role) {
         this.username = username;
