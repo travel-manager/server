@@ -1,5 +1,6 @@
 package com.travelmanager.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travelmanager.interfaces.HateoasObject;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

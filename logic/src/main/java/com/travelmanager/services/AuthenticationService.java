@@ -37,8 +37,8 @@ public class AuthenticationService {
 
     public Token login(User loginAttempt, HttpServletRequest request) throws JOSEException {
         User foundUser = userRepository.findByUsername(loginAttempt.getUsername());
-        if (foundUser != null
-                && component.checkPassword(loginAttempt.getPassword(), foundUser.getPassword())) {
+        boolean passwordCorrect = component.checkPassword(loginAttempt.getPassword(), foundUser.getPassword());
+        if (foundUser != null && passwordCorrect) {
             Token token = AuthUtils.createToken(request.getRemoteHost(), foundUser.getIdentifier().toString());
             tokenRepository.save(token);
             return token;
